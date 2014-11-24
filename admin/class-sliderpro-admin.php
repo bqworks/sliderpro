@@ -744,7 +744,7 @@ class BQW_SliderPro_Admin {
 		$slider_name = $slider['name'];
 		$slider_output = $this->plugin->output_slider( $slider, false ) . $this->plugin->get_inline_scripts();
 
-		include( 'views/preview-window.php' );
+		echo $slider_output;
 
 		die();	
 	}

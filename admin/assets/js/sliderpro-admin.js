@@ -4079,19 +4079,28 @@
 		 * @param  {Object} data The data of the slider
 		 */
 		open: function( data ) {
-			this.sliderData = data;
-
 			var that = this,
 				spinner = $( '.preview-spinner' ).css( 'display', 'inline-block' );
+
+			$( 'body' ).append( '<div class="modal-overlay"></div>' +
+				'<div class="modal-window-container preview-window">' +
+				'	<div class="modal-window">' +
+				'		<span class="close-x"></span>' +
+				'	</div>' +
+				'</div>');
+
+			this.sliderData = data;
+
+			this.init();
 
 			$.ajax({
 				url: sp_js_vars.ajaxurl,
 				type: 'post',
 				data: { action: 'sliderpro_preview_slider', data: JSON.stringify( data ) },
 				complete: function( data ) {
-					$( 'body' ).append( data.responseText );
-					that.init();
-
+					that.previewWindow.append( data.responseText );
+					that.slider = that.previewWindow.find( '.slider-pro' );
+					that.previewWindow.css( 'visibility', '' );
 					spinner.css( 'display', '' );
 				}
 			});
@@ -4112,11 +4121,12 @@
 			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
 
 			this.previewWindow = $( '.preview-window .modal-window' );
-			this.slider = this.previewWindow.find( '.sliderpro' );
 
 			this.previewWindow.find( '.close-x' ).on( 'click', function( event ) {
 				that.close();
 			});
+
+			this.previewWindow.css( 'visibility', 'hidden' );
 
 			var previewWidth = this.sliderData[ 'settings' ][ 'width' ],
 				previewHeight = this.sliderData[ 'settings' ][ 'height' ],
