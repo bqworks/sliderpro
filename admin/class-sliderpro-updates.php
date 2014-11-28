@@ -32,7 +32,7 @@ class BQW_SliderPro_Updates {
 	 * starts the updating process for all the sites in the network
 	 */
 	public function __construct() {
-		$this->db_version = get_option( 'sliderpro_version', '1.0.0' );
+		$this->db_version = get_option( 'sliderpro_version', '4.0.0' );
 
 		if ( class_exists( 'BQW_SliderPro_Lite' ) ) {
 			deactivate_plugins( 'sliderpro-lite/sliderpro-lite.php' );
