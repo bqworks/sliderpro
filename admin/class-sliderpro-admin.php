@@ -80,7 +80,7 @@ class BQW_SliderPro_Admin {
 		add_action( 'wp_ajax_sliderpro_add_breakpoint_setting', array( $this, 'ajax_add_breakpoint_setting' ) );
 		add_action( 'wp_ajax_sliderpro_get_taxonomies', array( $this, 'ajax_get_taxonomies' ) );
 		add_action( 'wp_ajax_sliderpro_clear_all_cache', array( $this, 'ajax_clear_all_cache' ) );
-		add_action( 'wp_ajax_sliderpro_getting_started_close', array( $this, 'ajax_getting_started_close' ) );
+		add_action( 'wp_ajax_sliderpro_close_getting_started', array( $this, 'ajax_close_getting_started' ) );
 	}
 
 	/**
@@ -1426,7 +1426,7 @@ class BQW_SliderPro_Admin {
 	 *
 	 * @since 4.0.0
 	 */
-	public function ajax_getting_started_close() {
+	public function ajax_close_getting_started() {
 		update_option( 'sliderpro_hide_getting_started_info', true );
 
 		die();

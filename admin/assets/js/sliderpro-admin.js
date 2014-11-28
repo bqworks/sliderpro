@@ -236,7 +236,7 @@
 				$.ajax({
 					url: sp_js_vars.ajaxurl,
 					type: 'post',
-					data: { action: 'sliderpro_getting_started_close' }
+					data: { action: 'sliderpro_close_getting_started' }
 				});
 			});
 		},
@@ -2531,7 +2531,7 @@
 				customClass = $( '.sidebar-settings' ).find( '.setting[name="custom_class"]' ).val(),
 				mainImageData = this.currentSlide.getData( 'mainImage' ),
 				$viewport = this.$editor.find( '.layer-viewport' ),
-				$viewportLayers = $( '<div class="sliderpro viewport-layers"></div>' ).appendTo( $viewport );
+				$viewportLayers = $( '<div class="slider-pro viewport-layers"></div>' ).appendTo( $viewport );
 
 			if ( viewportWidth.indexOf( '%' ) !== -1 ) {
 				viewportWidth = $( window ).width() - 200;
