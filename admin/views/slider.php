@@ -218,7 +218,7 @@
                                     <div class="info-content">
                                         <p><?php _e( 'Breakpoints allow you to modify the look of the slider for different window sizes.', 'sliderpro' ); ?></p>
                                         <p><?php _e( 'Each breakpoint allows you to set the width of the window for which the breakpoint will apply, and then add several settings which will override the global settings.', 'sliderpro' ); ?></p>
-                                        <p><a href="https://www.youtube.com/watch?v=AzwZvTU1wKI&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
+                                        <p><a href="https://www.youtube.com/watch?v=LKcpUz6K70w&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
                                     </div>
                                 </div>
                             <?php
