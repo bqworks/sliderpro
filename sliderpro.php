@@ -3,7 +3,7 @@
 /*
 	Plugin Name: Slider Pro
 	Plugin URI:  http://bqworks.net/slider-pro/
-	Description: Responsive and touch-enabled sliders.
+	Description: Elegant and professional sliders.
 	Version:     4.0
 	Author:      bqworks
 	Author URI:  http://bqworks.com
