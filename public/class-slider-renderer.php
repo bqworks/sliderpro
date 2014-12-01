@@ -98,7 +98,15 @@ class BQW_SP_Slider_Renderer {
 		$width = isset( $this->settings['width'] ) ? $this->settings['width'] : $this->default_settings['width']['default_value'];
 		$height = isset( $this->settings['height'] ) ? $this->settings['height'] : $this->default_settings['height']['default_value'];
 
-		$this->html_output .= "\r\n" . '<div id="slider-pro-' . $this->id . '" class="' . $classes . '" style="width: ' . $width . 'px; height: ' . $height . 'px;">';
+		if ( is_numeric( $width ) ) {
+			$width .= 'px';
+		}
+
+		if ( is_numeric( $height ) ) {
+			$height .= 'px';
+		}
+
+		$this->html_output .= "\r\n" . '<div id="slider-pro-' . $this->id . '" class="' . $classes . '" style="width: ' . $width . '; height: ' . $height . ';">';
 
 		if ( $this->has_slides() ) {
 			$this->html_output .= "\r\n" . '	<div class="sp-slides">';
