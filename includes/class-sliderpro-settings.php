@@ -158,7 +158,7 @@ class BQW_SliderPro_Settings {
 						'exact' => __( 'Exact', 'sliderpro' ),
 						'none' => __( 'None', 'sliderpro' )
 					),
-					'description' => __( 'Sets the scale mode of the main slide images.', 'sliderpro' )
+					'description' => __( 'Sets the scale mode of the main slide images. <i>Cover</i> will scale and crop the image so that it fills the entire slide. <i>Contain</i> will keep the entire image visible inside the slide. <i>Exact</i> will match the size of the image to the size of the slide. <i>None</i> will leave the image to its original size.', 'sliderpro' )
 				),
 
 				'center_image' => array(
