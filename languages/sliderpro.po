@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Accordion Slider\n"
-"POT-Creation-Date: 2014-11-24 11:27+0200\n"
-"PO-Revision-Date: 2014-11-24 11:27+0200\n"
+"POT-Creation-Date: 2014-12-03 12:51+0200\n"
+"PO-Revision-Date: 2014-12-03 12:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -71,36 +71,36 @@ msgstr ""
 msgid "Slider created."
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:242
+#: admin/class-sliderpro-admin.php:246
 msgid "Slider Pro"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:243 admin/views/sliders.php:2
+#: admin/class-sliderpro-admin.php:247 admin/views/sliders.php:2
 msgid "All Sliders"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:251 admin/views/slider.php:2
+#: admin/class-sliderpro-admin.php:257 admin/views/slider.php:2
 msgid "Add New Slider"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:252
+#: admin/class-sliderpro-admin.php:258
 msgid "Add New"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:260 admin/views/custom-css-js.php:2
+#: admin/class-sliderpro-admin.php:268 admin/views/custom-css-js.php:2
 msgid "Custom CSS and JavaScript"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:261
+#: admin/class-sliderpro-admin.php:269
 msgid "Custom CSS & JS"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:269 admin/class-sliderpro-admin.php:270
+#: admin/class-sliderpro-admin.php:279 admin/class-sliderpro-admin.php:280
 #: admin/views/custom-css-js.php:17 admin/views/plugin-settings.php:2
 msgid "Plugin Settings"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:278 admin/class-sliderpro-admin.php:279
+#: admin/class-sliderpro-admin.php:290 admin/class-sliderpro-admin.php:291
 #: admin/views/sliders.php:13
 msgid "Documentation"
 msgstr ""
@@ -1176,7 +1176,12 @@ msgid "None"
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:161
-msgid "Sets the scale mode of the main slide images."
+msgid ""
+"Sets the scale mode of the main slide images. <i>Cover</i> will scale and "
+"crop the image so that it fills the entire slide. <i>Contain</i> will keep "
+"the entire image visible inside the slide. <i>Exact</i> will match the size "
+"of the image to the size of the slide. <i>None</i> will leave the image to "
+"its original size."
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:166
