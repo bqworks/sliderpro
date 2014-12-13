@@ -277,10 +277,28 @@ class BQW_SP_Slider_Renderer {
 			$this->add_css_dependency( 'lightbox' );
 			$sliderIdAttribute = '#slider-pro-' . $this->id;
 
+			$lightbox_options = array();
+			$lightbox_options = apply_filters( 'sliderpro_lightbox_options', $lightbox_options, $this->id );
+			$lightbox_options_string = '';
+
+			if ( is_null( $lightbox_options ) === false && empty( $lightbox_options ) === false ) {
+				foreach ( $lightbox_options as $key => $value) {
+					$lightbox_option_value = $value;
+
+					if ( is_bool( $lightbox_option_value ) ) {
+						$lightbox_option_value = $lightbox_option_value === true ? 'true' : 'false';
+					} else if ( is_numeric( $lightbox_option_value ) === false ) {
+						$lightbox_option_value = "'" . $lightbox_option_value . "'";
+					}
+
+					$lightbox_options_string .= ', ' . $key . ': ' . $lightbox_option_value;
+				}
+			}
+
 			$js_output .= "\r\n" . '		$( "' . $sliderIdAttribute . ' .sp-image" ).parent( "a" ).on( "click", function( event ) {' .
 							"\r\n" . '			event.preventDefault();' .
 							"\r\n" . '			if ( $( "' . $sliderIdAttribute . '" ).hasClass( "sp-swiping" ) === false ) {' .
-							"\r\n" . '				$.fancybox.open( $( "' . $sliderIdAttribute . ' .sp-image" ).parent( "a" ), { index: $( this ).parents( ".sp-slide" ).index() } );' .
+							"\r\n" . '				$.fancybox.open( $( "' . $sliderIdAttribute . ' .sp-image" ).parent( "a" ), { index: $( this ).parents( ".sp-slide" ).index()' . $lightbox_options_string . ' } );' .
 							"\r\n" . '			}' .
 							"\r\n" . '		});' . "\r\n";
 		}

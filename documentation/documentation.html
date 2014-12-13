@@ -1520,6 +1520,21 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
     return $caption;
   }
   </pre>
+  
+  <h4 id="sliderpro_lightbox_options">sliderpro_lightbox_options</h4>
+  <p>
+    It allows you to add options for the bundled lightbox script (FancyBox).
+  </p>
+  <pre>
+  add_filter( 'sliderpro_lightbox_options', 'lightbox_options' );
+
+  function lightbox_options( $options ) {
+    $options[ 'autoPlay' ] = true;
+    $options[ 'arrows' ] = false;
+
+    return $options;
+  }
+  </pre>
 
   <h4 id="sliderpro_restricted_pages">sliderpro_restricted_pages</h4>
   <p>
