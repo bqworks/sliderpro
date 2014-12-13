@@ -455,6 +455,10 @@ Single slider page
 	margin-left: 10px;
 }
 
+.fancybox-overlay {
+	z-index: 15000 !important;
+}
+
 /* Import/Export window
 --------------------------------------------------*/
 @media (max-width: 560px) {
