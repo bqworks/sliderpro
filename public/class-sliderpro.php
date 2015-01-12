@@ -458,6 +458,10 @@ class BQW_SliderPro {
 	 * @return string The inline JavaScript.
 	 */
 	public function get_inline_scripts() {
+		if ( $this->js_output === '' ) {
+			return;
+		}
+		
 		$inline_js = "\r\n" . '<script type="text/javascript">' .
 					"\r\n" . '	jQuery( document ).ready(function( $ ) {' .
 					$this->js_output;
