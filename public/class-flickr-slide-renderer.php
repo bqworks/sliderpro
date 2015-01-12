@@ -26,6 +26,7 @@ class BQW_SP_Flickr_Slide_Renderer extends BQW_SP_Dynamic_Slide_Renderer {
 		$this->registered_tags = array(
 			'image' => array( $this, 'render_image' ),
 			'image_src' => array( $this, 'render_image_src' ),
+			'image_title' => array( $this, 'render_image_title' ),
 			'image_description' => array( $this, 'render_image_description' ),
 			'image_link' => array( $this, 'render_image_link' ),
 			'date' => array( $this, 'render_date' ),
@@ -150,6 +151,19 @@ class BQW_SP_Flickr_Slide_Renderer extends BQW_SP_Dynamic_Slide_Renderer {
 		$image_src = $this->flickr_instance->get_photo_url( $photo, $image_size );
 
 		return $image_src;
+	}
+
+	/**
+	 * Return the title of the photo.
+	 * 
+	 * @since 4.0.5
+	 * 
+	 * @param  string $tag_arg The argument (optional) of the tag.
+	 * @param  object $photo   The current photo.
+	 * @return string          The photo title.
+	 */
+	protected function render_image_title( $tag_arg, $photo ) {
+		return $photo['title'];
 	}
 
 	/**
