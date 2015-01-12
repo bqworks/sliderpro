@@ -509,7 +509,7 @@ class BQW_SliderPro_Settings {
 				),
 
 				'leave_video_action' => array(
-					'js_name' => 'reachVideoAction',
+					'js_name' => 'leaveVideoAction',
 					'label' => __( 'Leave Video Action', 'sliderpro' ),
 					'type' => 'select',
 					'default_value' => 'pauseVideo',
@@ -524,7 +524,7 @@ class BQW_SliderPro_Settings {
 
 				'play_video_action' => array(
 					'js_name' => 'playVideoAction',
-					'label' => __( 'Leave Video Action', 'sliderpro' ),
+					'label' => __( 'Play Video Action', 'sliderpro' ),
 					'type' => 'select',
 					'default_value' => 'stopAutoplay',
 					'available_values' => array(
