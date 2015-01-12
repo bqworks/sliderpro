@@ -1608,7 +1608,7 @@
 		updateSlidePreview: function() {
 			var slidePreview = this.$slide.find( '.slide-preview' ),
 				contentType = this.data.settings[ 'content_type' ];
-			
+
 			slidePreview.empty();
 
 			if ( typeof contentType === 'undefined' || contentType === 'custom' ) {
@@ -1866,6 +1866,8 @@
 			if ( imageLoader.find( 'img' ).length !== 0 ) {
 				imageLoader.find( 'img' ).remove();
 				$( '<p class="no-image">' + sp_js_vars.no_image + '</p>' ).appendTo( imageLoader );
+
+				this.needsPreviewUpdate = true;
 			}
 		},
 
