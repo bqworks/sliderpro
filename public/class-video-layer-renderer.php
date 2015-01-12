@@ -40,7 +40,7 @@ class BQW_SP_Video_Layer_Renderer extends BQW_SP_Layer_Renderer {
 			if ( $video_load_mode === 'poster' ) {
 				$video_html = '<div class="' .  $this->get_classes() . '"' . $this->get_attributes() . '><a class="sp-video" href="http://www.youtube.com/watch?v=' . $video_id . $params . '"><img' . $poster_src . $video_retina_poster . ' width="100%" height="100%" /></a></div>';
 			} else if ( $video_load_mode === 'video' ) {
-				$video_html = '<iframe class="' .  $this->get_classes() . '"' . $this->get_attributes() . ' src="//www.youtube.com/embed/' . $video_id . '?enablejsapi=1&wmode=opaque' . $params . '" frameborder="0" allowfullscreen></iframe>';
+				$video_html = '<iframe class="sp-video ' .  $this->get_classes() . '"' . $this->get_attributes() . ' src="//www.youtube.com/embed/' . $video_id . '?enablejsapi=1&wmode=opaque' . $params . '" frameborder="0" allowfullscreen></iframe>';
 			}
 		} else if ( $video_source === 'vimeo' ) {
 			if ( $video_load_mode === 'poster' ) {
