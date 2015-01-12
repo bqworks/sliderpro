@@ -637,6 +637,20 @@ class BQW_SliderPro_Settings {
 					'default_value' => true,
 					'description' => __( 'Indicates whether the touch swipe will be enabled for thumbnails.', 'sliderpro' )
 				),
+
+				'link_target' => array(
+					'js_name' => 'linkTarget',
+					'label' => __( 'Link Target', 'sliderpro' ),
+					'type' => 'select',
+					'default_value' => '_self',
+					'available_values' => array(
+						'_self' => __( 'Self', 'sliderpro' ),
+						'_blank' => __( 'Blank', 'sliderpro' ),
+						'_parent' => __( 'Parent', 'sliderpro' ),
+						'_top' => __( 'Top', 'sliderpro' )
+					),
+					'description' => __( 'Sets the location where the slide links will be opened.', 'sliderpro' )
+				)
 			);
 
 			self::$settings = apply_filters( 'sliderpro_default_settings', self::$settings );
@@ -768,6 +782,7 @@ class BQW_SliderPro_Settings {
 						'large_size',
 						'update_hash',
 						'hide_image_title',
+						'link_target',
 						'custom_class'
 					)
 				)

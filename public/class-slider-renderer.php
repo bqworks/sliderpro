@@ -166,16 +166,18 @@ class BQW_SP_Slider_Renderer {
 	 * @return string                The HTML markup of the slide.
 	 */
 	protected function create_slide( $data, $slide_counter ) {
-		$lazy_loading = isset( $this->settings['lazy_loading'] ) ? $this->settings['lazy_loading'] : $this->default_settings['lazy_loading'];
-		$lightbox = isset( $this->settings['lightbox'] ) ? $this->settings['lightbox'] : $this->default_settings['lightbox'];
-		$hide_image_title = isset( $this->settings['hide_image_title'] ) ? $this->settings['hide_image_title'] : $this->default_settings['hide_image_title'];
-		$auto_thumbnail_images = isset( $this->settings['auto_thumbnail_images'] ) ? $this->settings['auto_thumbnail_images'] : $this->default_settings['auto_thumbnail_images'];
-		$thumbnail_image_size = isset( $this->settings['thumbnail_image_size'] ) ? $this->settings['thumbnail_image_size'] : $this->default_settings['thumbnail_image_size'];
+		$lazy_loading = isset( $this->settings['lazy_loading'] ) ? $this->settings['lazy_loading'] : $this->default_settings['lazy_loading']['default_value'];
+		$lightbox = isset( $this->settings['lightbox'] ) ? $this->settings['lightbox'] : $this->default_settings['lightbox']['default_value'];
+		$hide_image_title = isset( $this->settings['hide_image_title'] ) ? $this->settings['hide_image_title'] : $this->default_settings['hide_image_title']['default_value'];
+		$link_target = isset( $this->settings['link_target'] ) ? $this->settings['link_target'] : $this->default_settings['link_target']['default_value'];
+		$auto_thumbnail_images = isset( $this->settings['auto_thumbnail_images'] ) ? $this->settings['auto_thumbnail_images'] : $this->default_settings['auto_thumbnail_images']['default_value'];
+		$thumbnail_image_size = isset( $this->settings['thumbnail_image_size'] ) ? $this->settings['thumbnail_image_size'] : $this->default_settings['thumbnail_image_size']['default_value'];
 
 		$extra_data = new stdClass();
 		$extra_data->lazy_loading = $lazy_loading;
 		$extra_data->lightbox = $lightbox;
 		$extra_data->hide_image_title = $hide_image_title;
+		$extra_data->link_target = $link_target;
 		$extra_data->auto_thumbnail_images = $auto_thumbnail_images;
 		$extra_data->thumbnail_image_size = $thumbnail_image_size;
 

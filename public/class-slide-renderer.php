@@ -52,6 +52,15 @@ class BQW_SP_Slide_Renderer {
 	protected $lightbox = null;
 
 	/**
+	 * Indicates the target of the slide links.
+	 *
+	 * @since 4.1
+	 * 
+	 * @var bool
+	 */
+	protected $link_target = null;
+
+	/**
 	 * Indicates whether the thumbnail images will be generated automatically based on the slide image.
 	 *
 	 * @since 4.0.0
@@ -104,6 +113,7 @@ class BQW_SP_Slide_Renderer {
 		$this->lazy_loading = $extra_data->lazy_loading;
 		$this->lightbox = $extra_data->lightbox;
 		$this->hide_image_title = $extra_data->hide_image_title;
+		$this->link_target = $extra_data->link_target;
 		$this->auto_thumbnail_images = $extra_data->auto_thumbnail_images;
 		$this->thumbnail_image_size = $extra_data->thumbnail_image_size;
 	}
@@ -260,7 +270,7 @@ class BQW_SP_Slide_Renderer {
 
 		$main_image_link_title = isset( $this->data['main_image_link_title'] ) && $this->data['main_image_link_title'] !== '' ? ' title="' . esc_attr( $this->data['main_image_link_title'] ) . '"' : '';
 		$main_image_link = 
-			'<a class="' . $classes . '" href="' . $main_image_link_href . '"' . $main_image_link_title . '>' . 
+			'<a class="' . $classes . '" href="' . $main_image_link_href . '"' . $main_image_link_title . ' target="' . $this->link_target . '">' . 
 				"\r\n" . '				' . $image . 
 			"\r\n" . '			' . '</a>';
 		
