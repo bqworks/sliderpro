@@ -38,7 +38,7 @@ class BQW_SP_Image_Layer_Renderer extends BQW_SP_Layer_Renderer {
 
 		if ( isset( $image_link ) && $image_link !== '' ) {
 			$image_link = apply_filters( 'sliderpro_layer_image_link_url', $image_link );
-			$image_content = '<a href="' . esc_url( $image_link ) . '">' . $image_content . '</a>';
+			$image_content = '<a href="' . esc_attr( $image_link ) . '">' . $image_content . '</a>';
 		}
 		
 		$html_output = "\r\n" . '			' . $image_content;
