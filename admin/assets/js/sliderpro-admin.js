@@ -4428,7 +4428,7 @@
 		},
 
 		_onDragStart: function( event ) {
-			if ( event.which !== 1 || $( event.target ).is( 'select' ) || $( event.target ).is( 'input' ) ) {
+			if ( event.which !== 1 || $( event.target ).is( 'select' ) || $( event.target ).is( 'input' ) || $( event.target ).is( 'a' ) ) {
 				return;
 			}
 
