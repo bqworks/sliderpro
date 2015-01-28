@@ -564,7 +564,7 @@ class BQW_SliderPro_Settings {
 					'label' => __( 'Auto Thumbnail Images', 'sliderpro' ),
 					'type' => 'boolean',
 					'default_value' => false,
-					'description' => __( 'Indicates whether the thumbnail images will be generated automatically based on the main image specified for the slide.', 'sliderpro' )
+					'description' => __( 'Indicates whether the thumbnail images will be generated automatically based on the main image specified for the slide. This option can be used only with manually created sliders, not with dynamic sliders.', 'sliderpro' )
 				),
 
 				'thumbnail_image_size' => array(
