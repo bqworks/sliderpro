@@ -1163,6 +1163,11 @@ class BQW_SliderPro_Settings {
 					),
 					'description' => __( 'By default, custom CSS and JavaScript code added to the slider will be loaded inline. However, if you want to add large amounts of custom CSS or JavaScript, it\'s better to have the code loaded in files, rather than inline. If you chose to load the custom code in files, after selecting this option, you need to re-save the custom CSS and/or JavaScript and the plugin will automatically create the <i>sliderpro-custom</i> folder inside <i>wp-plugins</i> and then <i>custom.css</i> and <i>custom.js</i> inside <i>sliderpro-custom</i>. You might also be prompted to provide credentials if the files can\'t be created due to folder permission issues.' , 'sliderpro' )
 				),
+				'load_js_in_all_pages' => array(
+					'label' => __( 'Load JS files on all pages', 'sliderpro' ),
+					'default_value' => false,
+					'description' => __( 'By enabling this option, the slider\'s JavaScript files will be loaded on all pages. This is necessary in sites that use AJAX for navigation between pages.' , 'sliderpro' )
+				),
 				'load_unminified_scripts' => array(
 					'label' => __( 'Load unminified scripts', 'sliderpro' ),
 					'default_value' => false,

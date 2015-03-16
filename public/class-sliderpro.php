@@ -425,8 +425,12 @@ class BQW_SliderPro {
 	 * @since 4.0.0
 	 */
 	public function load_scripts() {
-		if ( empty( $this->scripts_to_load ) ) {
+		$load_js_in_all_pages = get_option( 'sliderpro_load_js_in_all_pages', false );
+
+		if ( empty( $this->scripts_to_load ) && $load_js_in_all_pages != true ) {
 			return;
+		} else if ( empty( $this->scripts_to_load ) && $load_js_in_all_pages == true ) {
+			$this->add_script_to_load( $this->plugin_slug . '-plugin-script' );
 		}
 
 		if ( get_option( 'sliderpro_is_custom_js' ) == true && get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {

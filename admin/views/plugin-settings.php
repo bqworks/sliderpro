@@ -43,6 +43,17 @@
             </tr>
             <tr>
                 <td>
+                    <label for="load-js-in-all-pages"><?php echo $plugin_settings['load_js_in_all_pages']['label']; ?></label>
+                </td>
+                <td>
+                    <input type="checkbox" id="load-js-in-all-pages" name="load_js_in_all_pages" <?php echo $load_js_in_all_pages == true ? 'checked="checked"' : ''; ?>>
+                </td>
+                <td>
+                    <?php echo $plugin_settings['load_js_in_all_pages']['description']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label for="load-unminified-scripts"><?php echo $plugin_settings['load_unminified_scripts']['label']; ?></label>
                 </td>
                 <td>

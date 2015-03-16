@@ -411,6 +411,7 @@ class BQW_SliderPro_Admin {
 		$plugin_settings = BQW_SliderPro_Settings::getPluginSettings();
 		$load_stylesheets = get_option( 'sliderpro_load_stylesheets', $plugin_settings['load_stylesheets']['default_value'] );
 		$load_custom_css_js = get_option( 'sliderpro_load_custom_css_js', $plugin_settings['load_custom_css_js']['default_value'] );
+		$load_js_in_all_pages = get_option( 'sliderpro_load_js_in_all_pages', $plugin_settings['load_js_in_all_pages']['default_value'] );
 		$load_unminified_scripts = get_option( 'sliderpro_load_unminified_scripts', $plugin_settings['load_unminified_scripts']['default_value'] );
 		$cache_expiry_interval = get_option( 'sliderpro_cache_expiry_interval', $plugin_settings['cache_expiry_interval']['default_value'] );
 		$hide_inline_info = get_option( 'sliderpro_hide_inline_info', $plugin_settings['hide_inline_info']['default_value'] );
@@ -428,6 +429,14 @@ class BQW_SliderPro_Admin {
 			if ( isset( $_POST['load_custom_css_js'] ) ) {
 				$load_custom_css_js = $_POST['load_custom_css_js'];
 				update_option( 'sliderpro_load_custom_css_js', $load_custom_css_js );
+			}
+
+			if ( isset( $_POST['load_js_in_all_pages'] ) ) {
+				$load_js_in_all_pages = true;
+				update_option( 'sliderpro_load_js_in_all_pages', true );
+			} else {
+				$load_js_in_all_pages = false;
+				update_option( 'sliderpro_load_js_in_all_pages', false );
 			}
 
 			if ( isset( $_POST['load_unminified_scripts'] ) ) {
