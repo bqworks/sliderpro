@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Accordion Slider\n"
-"POT-Creation-Date: 2014-12-03 12:51+0200\n"
-"PO-Revision-Date: 2014-12-03 12:52+0200\n"
+"POT-Creation-Date: 2015-03-17 16:10+0200\n"
+"PO-Revision-Date: 2015-03-17 16:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -379,25 +379,25 @@ msgid ""
 msgstr ""
 
 #: admin/views/flickr-slide-settings.php:3
-#: includes/class-sliderpro-settings.php:1087
+#: includes/class-sliderpro-settings.php:1102
 msgid "API Key"
 msgstr ""
 
 #: admin/views/flickr-slide-settings.php:11
-#: includes/class-sliderpro-settings.php:1093
+#: includes/class-sliderpro-settings.php:1108
 msgid "Load By"
 msgstr ""
 
 #: admin/views/flickr-slide-settings.php:26 admin/views/layer-settings.php:94
 #: admin/views/sliders.php:48 admin/views/sliders.php:85
-#: includes/class-sliderpro-settings.php:1103
+#: includes/class-sliderpro-settings.php:1118
 msgid "ID"
 msgstr ""
 
 #: admin/views/flickr-slide-settings.php:34
 #: admin/views/posts-slide-settings.php:109
-#: includes/class-sliderpro-settings.php:1081
-#: includes/class-sliderpro-settings.php:1109
+#: includes/class-sliderpro-settings.php:1096
+#: includes/class-sliderpro-settings.php:1124
 msgid "Limit"
 msgstr ""
 
@@ -477,7 +477,7 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: admin/views/layer-settings.php:21 includes/class-sliderpro-settings.php:826
+#: admin/views/layer-settings.php:21 includes/class-sliderpro-settings.php:841
 msgid "Heading Type"
 msgstr ""
 
@@ -506,7 +506,7 @@ msgid "Params"
 msgstr ""
 
 #: admin/views/layer-settings.php:115
-#: includes/class-sliderpro-settings.php:854
+#: includes/class-sliderpro-settings.php:869
 msgid "Poster"
 msgstr ""
 
@@ -515,24 +515,24 @@ msgid "Retina Poster"
 msgstr ""
 
 #: admin/views/layer-settings.php:138
-#: includes/class-sliderpro-settings.php:663
+#: includes/class-sliderpro-settings.php:677
 msgid "Appearance"
 msgstr ""
 
 #: admin/views/layer-settings.php:144
-#: includes/class-sliderpro-settings.php:860
+#: includes/class-sliderpro-settings.php:875
 msgid "Display"
 msgstr ""
 
 #: admin/views/layer-settings.php:155
 #: includes/class-sliderpro-settings.php:202
-#: includes/class-sliderpro-settings.php:899
+#: includes/class-sliderpro-settings.php:914
 msgid "Horizontal"
 msgstr ""
 
 #: admin/views/layer-settings.php:159
 #: includes/class-sliderpro-settings.php:120
-#: includes/class-sliderpro-settings.php:887
+#: includes/class-sliderpro-settings.php:902
 msgid "Width"
 msgstr ""
 
@@ -541,25 +541,25 @@ msgid "Preset styles"
 msgstr ""
 
 #: admin/views/layer-settings.php:176
-#: includes/class-sliderpro-settings.php:870
+#: includes/class-sliderpro-settings.php:885
 msgid "Position"
 msgstr ""
 
 #: admin/views/layer-settings.php:187
 #: includes/class-sliderpro-settings.php:203
-#: includes/class-sliderpro-settings.php:905
+#: includes/class-sliderpro-settings.php:920
 msgid "Vertical"
 msgstr ""
 
 #: admin/views/layer-settings.php:191
 #: includes/class-sliderpro-settings.php:128
-#: includes/class-sliderpro-settings.php:893
+#: includes/class-sliderpro-settings.php:908
 msgid "Height"
 msgstr ""
 
 #: admin/views/layer-settings.php:195
 #: includes/class-sliderpro-settings.php:454
-#: includes/class-sliderpro-settings.php:923
+#: includes/class-sliderpro-settings.php:938
 msgid "Custom Class"
 msgstr ""
 
@@ -568,47 +568,47 @@ msgid "Animation"
 msgstr ""
 
 #: admin/views/layer-settings.php:212
-#: includes/class-sliderpro-settings.php:929
+#: includes/class-sliderpro-settings.php:944
 msgid "Show Transition"
 msgstr ""
 
 #: admin/views/layer-settings.php:223
-#: includes/class-sliderpro-settings.php:942
+#: includes/class-sliderpro-settings.php:957
 msgid "Show Offset"
 msgstr ""
 
 #: admin/views/layer-settings.php:227
-#: includes/class-sliderpro-settings.php:948
+#: includes/class-sliderpro-settings.php:963
 msgid "Show Delay"
 msgstr ""
 
 #: admin/views/layer-settings.php:231
-#: includes/class-sliderpro-settings.php:954
+#: includes/class-sliderpro-settings.php:969
 msgid "Show Duration"
 msgstr ""
 
 #: admin/views/layer-settings.php:235
-#: includes/class-sliderpro-settings.php:960
+#: includes/class-sliderpro-settings.php:975
 msgid "Stay Duration"
 msgstr ""
 
 #: admin/views/layer-settings.php:241
-#: includes/class-sliderpro-settings.php:966
+#: includes/class-sliderpro-settings.php:981
 msgid "Hide Transition"
 msgstr ""
 
 #: admin/views/layer-settings.php:252
-#: includes/class-sliderpro-settings.php:979
+#: includes/class-sliderpro-settings.php:994
 msgid "Hide Offset"
 msgstr ""
 
 #: admin/views/layer-settings.php:256
-#: includes/class-sliderpro-settings.php:985
+#: includes/class-sliderpro-settings.php:1000
 msgid "Hide Delay"
 msgstr ""
 
 #: admin/views/layer-settings.php:260
-#: includes/class-sliderpro-settings.php:991
+#: includes/class-sliderpro-settings.php:1006
 msgid "Hide Duration"
 msgstr ""
 
@@ -703,7 +703,7 @@ msgid "Troubleshooting chapter"
 msgstr ""
 
 #: admin/views/main-image-editor.php:6
-#: includes/class-sliderpro-settings.php:819
+#: includes/class-sliderpro-settings.php:834
 msgid "Image"
 msgstr ""
 
@@ -780,60 +780,60 @@ msgid ""
 "image."
 msgstr ""
 
-#: admin/views/plugin-settings.php:64
+#: admin/views/plugin-settings.php:75
 msgid "Clear all cache now"
 msgstr ""
 
-#: admin/views/plugin-settings.php:119
+#: admin/views/plugin-settings.php:130
 msgid ""
 "Please enter your purchase code in order to have access to automatic updates."
 msgstr ""
 
-#: admin/views/plugin-settings.php:122
+#: admin/views/plugin-settings.php:133
 msgid "The purchase code is valid."
 msgstr ""
 
-#: admin/views/plugin-settings.php:125
+#: admin/views/plugin-settings.php:136
 msgid "The purchase code is not valid."
 msgstr ""
 
-#: admin/views/plugin-settings.php:128
+#: admin/views/plugin-settings.php:139
 msgid ""
 "An error occurred during the validation. Please try again later and if the "
 "error persists, contact the plugin's author."
 msgstr ""
 
-#: admin/views/plugin-settings.php:134
+#: admin/views/plugin-settings.php:145
 msgid "Purchase Code:"
 msgstr ""
 
 #: admin/views/posts-slide-settings.php:3
-#: includes/class-sliderpro-settings.php:1027
+#: includes/class-sliderpro-settings.php:1042
 msgid "Post Types"
 msgstr ""
 
 #: admin/views/posts-slide-settings.php:18
-#: includes/class-sliderpro-settings.php:1033
+#: includes/class-sliderpro-settings.php:1048
 msgid "Taxonomies"
 msgstr ""
 
 #: admin/views/posts-slide-settings.php:49
-#: includes/class-sliderpro-settings.php:1039
+#: includes/class-sliderpro-settings.php:1054
 msgid "Match"
 msgstr ""
 
 #: admin/views/posts-slide-settings.php:64
-#: includes/class-sliderpro-settings.php:1049
+#: includes/class-sliderpro-settings.php:1064
 msgid "With selected"
 msgstr ""
 
 #: admin/views/posts-slide-settings.php:79
-#: includes/class-sliderpro-settings.php:1059
+#: includes/class-sliderpro-settings.php:1074
 msgid "Order By"
 msgstr ""
 
 #: admin/views/posts-slide-settings.php:94
-#: includes/class-sliderpro-settings.php:1071
+#: includes/class-sliderpro-settings.php:1086
 msgid "Order"
 msgstr ""
 
@@ -860,7 +860,7 @@ msgid ""
 msgstr ""
 
 #: admin/views/settings-editor.php:10
-#: includes/class-sliderpro-settings.php:1015
+#: includes/class-sliderpro-settings.php:1030
 msgid "Content Type"
 msgstr ""
 
@@ -1288,8 +1288,8 @@ msgid ""
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:263
-#: includes/class-sliderpro-settings.php:933
-#: includes/class-sliderpro-settings.php:970
+#: includes/class-sliderpro-settings.php:948
+#: includes/class-sliderpro-settings.php:985
 msgid "Fade"
 msgstr ""
 
@@ -1443,7 +1443,7 @@ msgid "Sets the duration of the fade animation."
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:400
-#: includes/class-sliderpro-settings.php:719
+#: includes/class-sliderpro-settings.php:733
 msgid "Full Screen"
 msgstr ""
 
@@ -1573,7 +1573,6 @@ msgid "Play Video"
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:513
-#: includes/class-sliderpro-settings.php:527
 msgid "Leave Video Action"
 msgstr ""
 
@@ -1592,6 +1591,10 @@ msgstr ""
 #: includes/class-sliderpro-settings.php:522
 msgid ""
 "Sets the action that the video will perform when another slide is selected."
+msgstr ""
+
+#: includes/class-sliderpro-settings.php:527
+msgid "Play Video Action"
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:531
@@ -1636,7 +1639,8 @@ msgstr ""
 #: includes/class-sliderpro-settings.php:567
 msgid ""
 "Indicates whether the thumbnail images will be generated automatically based "
-"on the main image specified for the slide."
+"on the main image specified for the slide. This option can be used only with "
+"manually created sliders, not with dynamic sliders."
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:572
@@ -1670,6 +1674,7 @@ msgid "Thumbnails Position"
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:601
+#: includes/class-sliderpro-settings.php:650
 msgid "Top"
 msgstr ""
 
@@ -1678,14 +1683,14 @@ msgid "Bottom"
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:603
-#: includes/class-sliderpro-settings.php:935
-#: includes/class-sliderpro-settings.php:972
+#: includes/class-sliderpro-settings.php:950
+#: includes/class-sliderpro-settings.php:987
 msgid "Right"
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:604
-#: includes/class-sliderpro-settings.php:934
-#: includes/class-sliderpro-settings.php:971
+#: includes/class-sliderpro-settings.php:949
+#: includes/class-sliderpro-settings.php:986
 msgid "Left"
 msgstr ""
 
@@ -1725,247 +1730,267 @@ msgstr ""
 msgid "Indicates whether the touch swipe will be enabled for thumbnails."
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:683
+#: includes/class-sliderpro-settings.php:643
+msgid "Link Target"
+msgstr ""
+
+#: includes/class-sliderpro-settings.php:647
+msgid "Self"
+msgstr ""
+
+#: includes/class-sliderpro-settings.php:648
+msgid "Blank"
+msgstr ""
+
+#: includes/class-sliderpro-settings.php:649
+msgid "Parent"
+msgstr ""
+
+#: includes/class-sliderpro-settings.php:652
+msgid "Sets the location where the slide links will be opened."
+msgstr ""
+
+#: includes/class-sliderpro-settings.php:697
 msgid "Animations"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:694
+#: includes/class-sliderpro-settings.php:708
 msgid "Navigation"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:711
+#: includes/class-sliderpro-settings.php:725
 msgid "Captions"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:727
+#: includes/class-sliderpro-settings.php:741
 msgid "Layers"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:736
+#: includes/class-sliderpro-settings.php:750
 msgid "Thumbnails"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:751
-#: includes/class-sliderpro-settings.php:820
-#: includes/class-sliderpro-settings.php:855
+#: includes/class-sliderpro-settings.php:765
+#: includes/class-sliderpro-settings.php:835
+#: includes/class-sliderpro-settings.php:870
 msgid "Video"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:762
+#: includes/class-sliderpro-settings.php:776
 msgid "Miscellaneous"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:813
+#: includes/class-sliderpro-settings.php:828
 msgid "Type"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:817
+#: includes/class-sliderpro-settings.php:832
 msgid "Paragraph"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:818
+#: includes/class-sliderpro-settings.php:833
 msgid "Heading"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:821
+#: includes/class-sliderpro-settings.php:836
 msgid "DIV"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:830
+#: includes/class-sliderpro-settings.php:845
 msgid "H1"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:831
+#: includes/class-sliderpro-settings.php:846
 msgid "H2"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:832
+#: includes/class-sliderpro-settings.php:847
 msgid "H3"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:833
+#: includes/class-sliderpro-settings.php:848
 msgid "H4"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:834
+#: includes/class-sliderpro-settings.php:849
 msgid "H5"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:835
+#: includes/class-sliderpro-settings.php:850
 msgid "H6"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:840
+#: includes/class-sliderpro-settings.php:855
 msgid "Video Source"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:844
+#: includes/class-sliderpro-settings.php:859
 msgid "YouTube"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:845
+#: includes/class-sliderpro-settings.php:860
 msgid "Vimeo"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:850
+#: includes/class-sliderpro-settings.php:865
 msgid "Video Load Mode"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:864
+#: includes/class-sliderpro-settings.php:879
 msgid "Animated"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:865
+#: includes/class-sliderpro-settings.php:880
 msgid "Static"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:874
+#: includes/class-sliderpro-settings.php:889
 msgid "Top Left"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:875
+#: includes/class-sliderpro-settings.php:890
 msgid "Top Center"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:876
+#: includes/class-sliderpro-settings.php:891
 msgid "Top Right"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:877
+#: includes/class-sliderpro-settings.php:892
 msgid "Center Left"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:878
+#: includes/class-sliderpro-settings.php:893
 msgid "Center Center"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:879
+#: includes/class-sliderpro-settings.php:894
 msgid "Center Right"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:880
+#: includes/class-sliderpro-settings.php:895
 msgid "Bottom Left"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:881
+#: includes/class-sliderpro-settings.php:896
 msgid "Bottom Center"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:882
+#: includes/class-sliderpro-settings.php:897
 msgid "Bottom Right"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:911
+#: includes/class-sliderpro-settings.php:926
 msgid "Preset Styles"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:915
+#: includes/class-sliderpro-settings.php:930
 msgid "Black"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:916
+#: includes/class-sliderpro-settings.php:931
 msgid "White"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:917
+#: includes/class-sliderpro-settings.php:932
 msgid "Padding"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:918
+#: includes/class-sliderpro-settings.php:933
 msgid "Round Corners"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:936
-#: includes/class-sliderpro-settings.php:973
+#: includes/class-sliderpro-settings.php:951
+#: includes/class-sliderpro-settings.php:988
 msgid "Up"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:937
-#: includes/class-sliderpro-settings.php:974
+#: includes/class-sliderpro-settings.php:952
+#: includes/class-sliderpro-settings.php:989
 msgid "Down"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1019
+#: includes/class-sliderpro-settings.php:1034
 msgid "Custom Content"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1020
+#: includes/class-sliderpro-settings.php:1035
 msgid "Content from posts"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1021
+#: includes/class-sliderpro-settings.php:1036
 msgid "Images from post's gallery"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1022
+#: includes/class-sliderpro-settings.php:1037
 msgid "Flickr images"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1043
+#: includes/class-sliderpro-settings.php:1058
 msgid "At least one"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1044
+#: includes/class-sliderpro-settings.php:1059
 msgid "All"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1053
+#: includes/class-sliderpro-settings.php:1068
 msgid "Include"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1054
+#: includes/class-sliderpro-settings.php:1069
 msgid "Exclude"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1063
+#: includes/class-sliderpro-settings.php:1078
 msgid "Date"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1064
+#: includes/class-sliderpro-settings.php:1079
 msgid "Comments"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1065
+#: includes/class-sliderpro-settings.php:1080
 msgid "Title"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1066
+#: includes/class-sliderpro-settings.php:1081
 msgid "Random"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1075
+#: includes/class-sliderpro-settings.php:1090
 msgid "Descending"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1076
+#: includes/class-sliderpro-settings.php:1091
 msgid "Ascending"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1097
+#: includes/class-sliderpro-settings.php:1112
 msgid "Set ID"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1098
+#: includes/class-sliderpro-settings.php:1113
 msgid "User ID"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1133
+#: includes/class-sliderpro-settings.php:1148
 msgid "Load stylesheets"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1136
+#: includes/class-sliderpro-settings.php:1151
 msgid "Automatically"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1137
+#: includes/class-sliderpro-settings.php:1152
 msgid "On homepage"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1138
+#: includes/class-sliderpro-settings.php:1153
 msgid "On all pages"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1140
+#: includes/class-sliderpro-settings.php:1155
 msgid ""
 "The plugin can detect the presence of the slider in a post, page or widget, "
 "and will automatically load the necessary stylesheets. However, when the "
@@ -1976,19 +2001,19 @@ msgid ""
 "select <i>On all pages</i>."
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1143
+#: includes/class-sliderpro-settings.php:1158
 msgid "Load custom CSS and JavaScript"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1146
+#: includes/class-sliderpro-settings.php:1161
 msgid "Inline"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1147
+#: includes/class-sliderpro-settings.php:1162
 msgid "In files"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1149
+#: includes/class-sliderpro-settings.php:1164
 msgid ""
 "By default, custom CSS and JavaScript code added to the slider will be "
 "loaded inline. However, if you want to add large amounts of custom CSS or "
@@ -2001,69 +2026,79 @@ msgid ""
 "if the files can't be created due to folder permission issues."
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1152
+#: includes/class-sliderpro-settings.php:1167
+msgid "Load JS files on all pages"
+msgstr ""
+
+#: includes/class-sliderpro-settings.php:1169
+msgid ""
+"By enabling this option, the slider's JavaScript files will be loaded on all "
+"pages. This is necessary in sites that use AJAX for navigation between pages."
+msgstr ""
+
+#: includes/class-sliderpro-settings.php:1172
 msgid "Load unminified scripts"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1154
+#: includes/class-sliderpro-settings.php:1174
 msgid ""
 "Check this option if you want to load the unminified/uncompressed CSS and "
 "JavaScript files for the slider. This is useful for debugging purposes."
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1157
+#: includes/class-sliderpro-settings.php:1177
 msgid "Cache expiry interval"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1159
+#: includes/class-sliderpro-settings.php:1179
 msgid ""
 "Indicates the time interval after which a slider's cache will expire. If the "
 "cache of a slider has expired, the slider will be rendered again and cached "
 "the next time it is viewed."
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1162
+#: includes/class-sliderpro-settings.php:1182
 msgid "Hide inline info"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1164
+#: includes/class-sliderpro-settings.php:1184
 msgid ""
 "Indicates whether the inline information will be displayed in admin slides "
 "and wherever it's available."
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1167
+#: includes/class-sliderpro-settings.php:1187
 msgid "Hide <i>Getting Started</i> info"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1169
+#: includes/class-sliderpro-settings.php:1189
 msgid ""
 "Indicates whether the <i>Getting Started</i> information will be displayed "
 "in the <i>All Sliders</i> page, above the list of sliders. This setting will "
 "be disabled if the <i>Close</i> button is clicked in the information box."
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1172
+#: includes/class-sliderpro-settings.php:1192
 msgid "Access"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1175
+#: includes/class-sliderpro-settings.php:1195
 msgid "Administrator"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1176
+#: includes/class-sliderpro-settings.php:1196
 msgid "Editor"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1177
+#: includes/class-sliderpro-settings.php:1197
 msgid "Author"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1178
+#: includes/class-sliderpro-settings.php:1198
 msgid "Contributor"
 msgstr ""
 
-#: includes/class-sliderpro-settings.php:1180
+#: includes/class-sliderpro-settings.php:1200
 msgid ""
 "Sets what category of users will have access to the plugin's admin area."
 msgstr ""
