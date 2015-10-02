@@ -214,7 +214,7 @@
 			$( '.clear-all-cache' ).on( 'click', function( event ) {
 				event.preventDefault();
 
-				$( '.clear-cache-spinner' ).css( 'display', 'inline-block' );
+				$( '.clear-cache-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } );
 
 				var nonce = $( this ).attr( 'data-nonce' );
 
@@ -223,7 +223,7 @@
 					type: 'post',
 					data: { action: 'sliderpro_clear_all_cache', nonce: nonce },
 					complete: function( data ) {
-						$( '.clear-cache-spinner' ).css( 'display', '' );
+						$( '.clear-cache-spinner' ).css( { 'display': '', 'visibility': '' } );
 					}
 				});
 			});
@@ -253,7 +253,7 @@
 		loadSliderData: function() {
 			var that = this;
 
-			$( '.slide-spinner' ).css( 'display', 'inline-block' );
+			$( '.slide-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } );
 
 			$.ajax({
 				url: sp_js_vars.ajaxurl,
@@ -283,7 +283,7 @@
 						that.getSlide( index ).setData( 'all', slideData );
 					});
 
-					$( '.slide-spinner' ).css( 'display', '' );
+					$( '.slide-spinner' ).css( { 'display': '', 'visibility': '' } );
 				}
 			});
 		},
@@ -303,14 +303,14 @@
 
 			var sliderDataString = JSON.stringify( sliderData );
 
-			var spinner = $( '.update-spinner' ).css( 'display', 'inline-block' );
+			var spinner = $( '.update-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } );
 
 			$.ajax({
 				url: sp_js_vars.ajaxurl,
 				type: 'post',
 				data: { action: 'sliderpro_save_slider', data: sliderDataString },
 				complete: function( data ) {
-					spinner.css( 'display', '' );
+					spinner.css( { 'display': '', 'visibility': '' } );
 
 					if ( parseInt( sp_js_vars.id, 10 ) === -1 && isNaN( data.responseText ) === false ) {
 						$( 'h2' ).after( '<div class="updated"><p>' + sp_js_vars.slider_create + '</p></div>' );
@@ -1191,7 +1191,7 @@
 
 			if ( typeof info !== 'undefined' ) {
 				infoTooltip = $( '<div class="info-tooltip">' + info + '</div>' ).appendTo( label.parent() );
-				infoTooltip.css( { 'left': - infoTooltip.outerWidth( true ) ,'marginTop': - infoTooltip.outerHeight( true ) * 0.5 - 9 } );
+				infoTooltip.css( { 'left': - infoTooltip.outerWidth( true ), 'marginTop': - infoTooltip.outerHeight( true ) * 0.5 - 9 } );
 			}
 
 			label.on( 'mouseout', function() {
@@ -1746,7 +1746,7 @@
 			var that = this,
 				data = this.currentSlide.getData( 'mainImage' ),
 				contentType = this.currentSlide.getData( 'settings' )[ 'content_type' ],
-				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( 'display', 'inline-block' );
+				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } );
 
 			if ( typeof contentType === 'undefined' ) {
 				contentType = 'custom';
@@ -1761,7 +1761,7 @@
 					$( 'body' ).append( data.responseText );
 					that.init();
 
-					spinner.css( 'display', '' );
+					spinner.css( { 'display': '', 'visibility': '' } );
 				}
 			});
 		},
@@ -1962,8 +1962,8 @@
 			var that = this,
 				data = this.currentSlide.getData( 'thumbnail' ),
 				contentType = this.currentSlide.getData( 'settings' )[ 'content_type' ],
-				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( 'display', 'inline-block' );
-
+				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } );
+			
 			if ( typeof contentType === 'undefined' ) {
 				contentType = 'custom';
 			}
@@ -1977,7 +1977,7 @@
 					$( 'body' ).append( data.responseText );
 					that.init();
 
-					spinner.css( 'display', '' );
+					spinner.css( { 'display': '', 'visibility': '' } );
 				}
 			});
 		},
@@ -2156,7 +2156,7 @@
 			
 			var that = this,
 				data = this.currentSlide.getData( 'caption' ),
-				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( 'display', 'inline-block' ),
+				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } ),
 				contentType = this.currentSlide.getData( 'settings' )[ 'content_type' ];
 
 			$.ajax({
@@ -2168,7 +2168,7 @@
 					$( 'body' ).append( data.responseText );
 					that.init();
 
-					spinner.css( 'display', '' );
+					spinner.css( { 'display': '', 'visibility': '' } );
 				}
 			});
 		},
@@ -2255,7 +2255,7 @@
 			
 			var that = this,
 				data = this.currentSlide.getData( 'html' ),
-				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( 'display', 'inline-block' ),
+				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } ),
 				contentType = this.currentSlide.getData( 'settings' )[ 'content_type' ];
 
 			$.ajax({
@@ -2267,7 +2267,7 @@
 					$( 'body' ).append( data.responseText );
 					that.init();
 
-					spinner.css( 'display', '' );
+					spinner.css( { 'display': '', 'visibility': '' } );
 				}
 			});
 		},
@@ -2393,7 +2393,7 @@
 			this.layersData = this.currentSlide.getData( 'layers' );
 
 			var that = this,
-				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( 'display', 'inline-block' ),
+				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } ),
 				contentType = this.currentSlide.getData( 'settings' )[ 'content_type' ];
 
 			$.ajax({
@@ -2405,7 +2405,7 @@
 					$( 'body' ).append( data.responseText );
 					that.init();
 
-					spinner.css( 'display', '' );
+					spinner.css( { 'display': '', 'visibility': '' } );
 				}
 			});
 		},
@@ -3784,7 +3784,7 @@
 
 			var that = this,
 				data = this.currentSlide.getData( 'settings' ),
-				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( 'display', 'inline-block' );
+				spinner = $( '.slide[data-id="' + id + '"]' ).find( '.slide-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } );
 
 			$.ajax({
 				url: sp_js_vars.ajaxurl,
@@ -3795,7 +3795,7 @@
 					$( 'body' ).append( data.responseText );
 					that.init();
 
-					spinner.css( 'display', '' );
+					spinner.css( { 'display': '', 'visibility': '' } );
 				}
 			});
 		},
@@ -4082,7 +4082,7 @@
 		 */
 		open: function( data ) {
 			var that = this,
-				spinner = $( '.preview-spinner' ).css( 'display', 'inline-block' );
+				spinner = $( '.preview-spinner' ).css( { 'display': 'inline-block', 'visibility': 'visible' } );
 
 			$( 'body' ).append( '<div class="modal-overlay"></div>' +
 				'<div class="modal-window-container preview-window">' +
@@ -4103,7 +4103,7 @@
 					that.previewWindow.append( data.responseText );
 					that.slider = that.previewWindow.find( '.slider-pro' );
 					that.previewWindow.css( 'visibility', '' );
-					spinner.css( 'display', '' );
+					spinner.css( { 'display': '', 'visibility': '' } );
 				}
 			});
 		},
