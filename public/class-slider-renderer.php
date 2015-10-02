@@ -25,6 +25,24 @@ class BQW_SP_Slider_Renderer {
 	protected $id = null;
 
 	/**
+	 * Name of the slider.
+	 *
+	 * @since 4.2.0
+	 * 
+	 * @var string
+	 */
+	protected $name = '';
+
+	/**
+	 * ID attribute (to be used in HTML) of the slider.
+	 *
+	 * @since 4.2.0
+	 * 
+	 * @var string
+	 */
+	protected $idAttribute = '';
+
+	/**
 	 * Settings of the slider.
 	 *
 	 * @since 4.0.0
@@ -79,8 +97,11 @@ class BQW_SP_Slider_Renderer {
 	public function __construct( $data ) {
 		$this->data = $data;
 		$this->id = $this->data['id'];
+		$this->name = $this->data['name'];
 		$this->settings = $this->data['settings'];
 		$this->default_settings = BQW_SliderPro_Settings::getSettings();
+
+		$this->idAttribute = isset( $this->settings['use_name_as_id'] ) && $this->settings['use_name_as_id'] === true ? str_replace( ' ', '-', strtolower( $this->name ) ) : 'slider-pro-' . $this->id;
 	}
 
 	/**
@@ -106,7 +127,7 @@ class BQW_SP_Slider_Renderer {
 			$height .= 'px';
 		}
 
-		$this->html_output .= "\r\n" . '<div id="slider-pro-' . $this->id . '" class="' . $classes . '" style="width: ' . $width . '; height: ' . $height . ';">';
+		$this->html_output .= "\r\n" . '<div id="' . $this->idAttribute . '" class="' . $classes . '" style="width: ' . $width . '; height: ' . $height . ';">';
 
 		if ( $this->has_slides() ) {
 			$this->html_output .= "\r\n" . '	<div class="sp-slides">';
@@ -270,14 +291,13 @@ class BQW_SP_Slider_Renderer {
 
 		$this->add_js_dependency( 'plugin' );
 
-		$js_output .= "\r\n" . '		$( "#slider-pro-' . $this->id . '" ).sliderPro({' .
+		$js_output .= "\r\n" . '		$( "#' . $this->idAttribute . '" ).sliderPro({' .
 											$settings_js .
 						"\r\n" . '		});' . "\r\n";
 
 		if ( isset ( $this->settings['lightbox'] ) && $this->settings['lightbox'] === true ) {
 			$this->add_js_dependency( 'lightbox' );
 			$this->add_css_dependency( 'lightbox' );
-			$sliderIdAttribute = '#slider-pro-' . $this->id;
 
 			$lightbox_options = array();
 			$lightbox_options = apply_filters( 'sliderpro_lightbox_options', $lightbox_options, $this->id );
@@ -297,10 +317,10 @@ class BQW_SP_Slider_Renderer {
 				}
 			}
 
-			$js_output .= "\r\n" . '		$( "' . $sliderIdAttribute . ' .sp-image" ).parent( "a" ).on( "click", function( event ) {' .
+			$js_output .= "\r\n" . '		$( "#' . $this->idAttribute . ' .sp-image" ).parent( "a" ).on( "click", function( event ) {' .
 							"\r\n" . '			event.preventDefault();' .
-							"\r\n" . '			if ( $( "' . $sliderIdAttribute . '" ).hasClass( "sp-swiping" ) === false ) {' .
-							"\r\n" . '				$.fancybox.open( $( "' . $sliderIdAttribute . ' .sp-image" ).parent( "a" ), { index: $( this ).parents( ".sp-slide" ).index()' . $lightbox_options_string . ' } );' .
+							"\r\n" . '			if ( $( "#' . $this->idAttribute . '" ).hasClass( "sp-swiping" ) === false ) {' .
+							"\r\n" . '				$.fancybox.open( $( "#' . $this->idAttribute . ' .sp-image" ).parent( "a" ), { index: $( this ).parents( ".sp-slide" ).index()' . $lightbox_options_string . ' } );' .
 							"\r\n" . '			}' .
 							"\r\n" . '		});' . "\r\n";
 		}

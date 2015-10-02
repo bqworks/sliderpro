@@ -161,6 +161,14 @@ class BQW_SliderPro_Settings {
 					'description' => __( 'Sets the scale mode of the main slide images. <i>Cover</i> will scale and crop the image so that it fills the entire slide. <i>Contain</i> will keep the entire image visible inside the slide. <i>Exact</i> will match the size of the image to the size of the slide. <i>None</i> will leave the image to its original size.', 'sliderpro' )
 				),
 
+				'allow_scale_up' => array(
+					'js_name' => 'allowScaleUp',
+					'label' => __( 'Allow Scale Up', 'sliderpro' ),
+					'type' => 'boolean',
+					'default_value' => true,
+					'description' => __( 'Indicates if the image can be scaled up to more than its original size.', 'sliderpro' )
+				),
+
 				'center_image' => array(
 					'js_name' => 'centerImage',
 					'label' => __( 'Center Image', 'sliderpro' ),
@@ -496,6 +504,14 @@ class BQW_SliderPro_Settings {
 					'description' => __( 'Indicates whether the hash will be updated when a new slide is selected.', 'sliderpro' )
 				),
 
+				'use_name_as_id' => array(
+					'js_name' => 'useNameAsId',
+					'label' => __( 'Use Name As ID', 'sliderpro' ),
+					'type' => 'boolean',
+					'default_value' => false,
+					'description' => __( 'Indicates whether the name of the slider will be used as the ID attribute in the HTML code.', 'sliderpro' )
+				),
+
 				'reach_video_action' => array(
 					'js_name' => 'reachVideoAction',
 					'label' => __( 'Reach Video Action', 'sliderpro' ),
@@ -688,6 +704,7 @@ class BQW_SliderPro_Settings {
 						'loop',
 						'shuffle',
 						'image_scale_mode',
+						'allow_scale_up',
 						'center_image',
 						'slide_distance'
 					)
@@ -781,6 +798,7 @@ class BQW_SliderPro_Settings {
 						'medium_size',
 						'large_size',
 						'update_hash',
+						'use_name_as_id',
 						'hide_image_title',
 						'link_target',
 						'custom_class'
