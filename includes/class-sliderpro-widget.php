@@ -18,7 +18,7 @@ class BQW_SliderPro_Widget extends WP_Widget {
 			'description' => 'Display a Slider Pro instance in the widgets area.'
 		);
 		
-		$this->WP_Widget( 'bqw-sliderpro-widget', 'Slider Pro', $widget_opts );
+		parent::__construct( 'bqw-sliderpro-widget', 'Slider Pro', $widget_opts );
 	}
 	
 	/**
