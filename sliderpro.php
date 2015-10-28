@@ -2,9 +2,9 @@
 
 /*
 	Plugin Name: Slider Pro
-	Plugin URI:  http://bqworks.net/slider-pro/
+	Plugin URI:  http://bqworks.com/slider-pro/
 	Description: Elegant and professional sliders.
-	Version:     4.2.0
+	Version:     4.2.1
 	Author:      bqworks
 	Author URI:  http://bqworks.com
 */
