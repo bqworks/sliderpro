@@ -31,7 +31,16 @@ class BQW_SliderPro_API {
 	 * 
 	 * @var string
 	 */
-	protected $slug = 'sliderpro/sliderpro.php';
+	protected $slug = 'sliderpro';
+
+	/**
+	 * Plugin reference.
+	 * 
+	 * @since 4.3.0
+	 * 
+	 * @var string
+	 */
+	protected $plugin_reference = 'sliderpro/sliderpro.php';
 
 	/**
 	 * The plugin's purchase code received from envato.
@@ -127,11 +136,10 @@ class BQW_SliderPro_API {
 			return $transient;
 		}
 
-		$current_version = $transient->checked[ $this->slug ];
+		$current_version = $transient->checked[ $this->plugin_reference ];
 		
 		$args = array(
 			'action' => 'update-check',
-			'slug' => $this->slug,
 			'purchase_code' => $this->purchase_code,
 			'purchase_code_status' => $this->purchase_code_status
 		);
@@ -139,7 +147,7 @@ class BQW_SliderPro_API {
 		$response = $this->api_request( $args );
 		
 		if ( $response !== false && version_compare( $current_version, $response->new_version, '<' ) )	{	
-			$transient->response[ $this->slug ] = $response;
+			$transient->response[ $this->plugin_reference ] = $response;
 		}
 
 		return $transient;
@@ -166,7 +174,6 @@ class BQW_SliderPro_API {
 
 		$args = array(
 			'action' => 'plugin-info',
-			'slug' => $this->slug,
 			'purchase_code' => $this->purchase_code,
 			'purchase_code_status' => $this->purchase_code_status
 		);
@@ -199,8 +206,7 @@ class BQW_SliderPro_API {
 		
 		if ( $message === false ) {
 			$args = array(
-				'action' => 'notification-message',
-				'slug' => $this->slug
+				'action' => 'notification-message'
 			);
 			
 			$response = $this->api_request( $args );
@@ -256,7 +262,6 @@ class BQW_SliderPro_API {
 	public function verify_purchase_code( $purchase_code ) {
 		$args = array(
 			'action' => 'verify-purchase',
-			'slug' => $this->slug,
 			'purchase_code' => $purchase_code
 		);
 
