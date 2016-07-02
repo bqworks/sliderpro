@@ -47,8 +47,9 @@ class BQW_SP_Video_Layer_Renderer extends BQW_SP_Layer_Renderer {
 				$params = $video_params !== '' ? '?' . $video_params : '';
 				$video_html = '<div class="' .  $this->get_classes() . '"' . $this->get_attributes() . '><a class="sp-video" href="http://vimeo.com/' . $video_id . $params . '"><img' . $poster_src . $video_retina_poster . ' width="100%" height="100%" /></a></div>';
 			} else if ( $video_load_mode === 'video' ) {
+				$unique_id = "video" . strval( rand( 0, 99999 ) );
 				$params = $video_params !== '' ? '&' . $video_params : '';
-				$video_html = '<iframe class="sp-video ' .  $this->get_classes() . '"' . $this->get_attributes() . ' src="//player.vimeo.com/video/' . $video_id . '?api=1' . $params . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+				$video_html = '<iframe id="' . $unique_id . '" class="sp-video ' .  $this->get_classes() . '"' . $this->get_attributes() . ' src="//player.vimeo.com/video/' . $video_id . '?api=1&player_id=' . $unique_id . $params . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
 			}
 		}
 
