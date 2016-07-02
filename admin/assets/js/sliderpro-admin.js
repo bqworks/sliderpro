@@ -57,10 +57,6 @@
 			} else if ( sp_js_vars.page === 'all' ) {
 				this.initAllSlidersPage();
 			}
-
-			if ( $( '.sliderpro-documentation' ).length === 1 ) {
-				$( '.sliderpro-documentation' ).attr( 'height', $( 'body' ).height() );
-			}
 		},
 
 		/*
@@ -157,7 +153,13 @@
 			} );
 
 			$( '.postbox .hndle, .postbox .handlediv' ).on( 'click', function() {
-				$( this ).parent( '.postbox' ).toggleClass( 'closed' );
+				var postbox = $( this ).parent( '.postbox' );
+				
+				if ( postbox.hasClass( 'closed' ) === true ) {
+					postbox.removeClass( 'closed' );
+				} else {
+					postbox.addClass( 'closed' );
+				}
 			});
 
 			$( '.sidebar-settings' ).on( 'mouseover', 'label', function() {
