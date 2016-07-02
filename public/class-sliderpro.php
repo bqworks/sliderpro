@@ -504,7 +504,7 @@ class BQW_SliderPro {
 	 */
 	public function sliderpro_shortcode( $atts, $content = null ) {
 		// if the CSS file(s) were not enqueued, display a warning message
-		if ( $this->styles_loaded === false ) {
+		if ( $this->styles_loaded === false && is_admin() === false ) {
 			$show_warning = true;
 			
 			// If styles were not checked, check them now, and then check again if they were set to load.
