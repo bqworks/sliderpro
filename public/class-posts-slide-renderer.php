@@ -306,7 +306,7 @@ class BQW_SP_Posts_Slide_Renderer extends BQW_SP_Dynamic_Slide_Renderer {
 	protected function render_date( $tag_arg, $post ) {
 		$date_format = $tag_arg !== false ? $tag_arg : get_option( 'date_format' );
 		
-		return get_post_time( $date_format, false, $post->ID );
+		return get_post_time( $date_format, false, $post->ID, true );
 	}
 
 	/**
