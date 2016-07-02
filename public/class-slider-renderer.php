@@ -320,7 +320,25 @@ class BQW_SP_Slider_Renderer {
 			$js_output .= "\r\n" . '		$( "#' . $this->idAttribute . ' .sp-image" ).parent( "a" ).on( "click", function( event ) {' .
 							"\r\n" . '			event.preventDefault();' .
 							"\r\n" . '			if ( $( "#' . $this->idAttribute . '" ).hasClass( "sp-swiping" ) === false ) {' .
-							"\r\n" . '				$.fancybox.open( $( "#' . $this->idAttribute . ' .sp-image" ).parent( "a" ), { index: $( this ).parents( ".sp-slide" ).index()' . $lightbox_options_string . ' } );' .
+							"\r\n" . '				var sliderInstance = $( "#' . $this->idAttribute . '" ).data( "sliderPro" ),' .
+							"\r\n" . '					isAutoplay = sliderInstance.settings.autoplay;' .
+							"\r\n" .
+							"\r\n" . '				$.fancybox.open( $( "#' . $this->idAttribute . ' .sp-image" ).parent( "a" ), {' .
+							"\r\n" . '					index: $( this ).parents( ".sp-slide" ).index(),' .
+							"\r\n" . '					afterShow: function() {' .
+							"\r\n" . '						if ( isAutoplay === true ) {' .
+							"\r\n" . '							sliderInstance.settings.autoplay = false;' .
+							"\r\n" . '							sliderInstance.stopAutoplay();' .
+							"\r\n" . '						}' .
+							"\r\n" . '					},' .
+							"\r\n" . '					afterClose: function() {' .
+							"\r\n" . '						if ( isAutoplay === true ) {' .
+							"\r\n" . '							sliderInstance.settings.autoplay = true;' .
+							"\r\n" . '							sliderInstance.startAutoplay();' .
+							"\r\n" . '						}' .
+							"\r\n" . '					}' .
+							"\r\n" . '					' . $lightbox_options_string . 
+							"\r\n" . '				});' .
 							"\r\n" . '			}' .
 							"\r\n" . '		});' . "\r\n";
 		}
