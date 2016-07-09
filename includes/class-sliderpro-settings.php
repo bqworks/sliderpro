@@ -185,6 +185,14 @@ class BQW_SliderPro_Settings {
 					'description' => __( 'Indicates if height of the slider will be adjusted to the height of the selected slide.', 'sliderpro' )
 				),
 
+				'auto_slide_size' => array(
+					'js_name' => 'autoSlideSize',
+					'label' => __( 'Auto Slide Size', 'sliderpro' ),
+					'type' => 'boolean',
+					'default_value' => false,
+					'description' => __( 'Will maintain all the slides at the same height, but will allow the width of the slides to be variable if the orientation of the slides is horizontal and vice-versa if the orientation is vertical.', 'sliderpro' )
+				),
+
 				'start_slide' => array(
 					'js_name' => 'startSlide',
 					'label' => __( 'Start Slide', 'sliderpro' ),
@@ -264,6 +272,22 @@ class BQW_SliderPro_Settings {
 					'type' => 'mixed',
 					'default_value' => 'auto',
 					'description' => __( 'Sets the size of the visible area, allowing for more slides to become visible near the selected slide.', 'sliderpro' )
+				),
+
+				'center_selected_slide' => array(
+					'js_name' => 'centerSelectedSlide',
+					'label' => __( 'Center Selected Slide', 'sliderpro' ),
+					'type' => 'boolean',
+					'default_value' => true,
+					'description' => __( 'Indicates whether the selected slide will be in the center of the slider, when there are more slides visible at a time. If set to false, the selected slide will be in the left side of the slider.', 'sliderpro' )
+				),
+
+				'right_to_left' => array(
+					'js_name' => 'rightToLeft',
+					'label' => __( 'Right To Left', 'sliderpro' ),
+					'type' => 'boolean',
+					'default_value' => false,
+					'description' => __( 'Indicates if the direction of the slider will be from right to left instead of the default left to right.', 'sliderpro' )
 				),
 
 				'fade' => array(
@@ -700,13 +724,16 @@ class BQW_SliderPro_Settings {
 						'orientation',
 						'force_size',
 						'auto_height',
+						'auto_slide_size',
 						'start_slide',
 						'loop',
 						'shuffle',
 						'image_scale_mode',
 						'allow_scale_up',
 						'center_image',
-						'slide_distance'
+						'center_selected_slide',
+						'slide_distance',
+						'right_to_left'
 					)
 				),
 
