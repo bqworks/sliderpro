@@ -47,7 +47,7 @@ class BQW_SP_Posts_Slide_Renderer extends BQW_SP_Dynamic_Slide_Renderer {
 		$result = $this->query();
 		$this->html_output = $this->replace_tags( $result );
 
-		return $this->html_output;
+		return do_shortcode( $this->html_output );
 	}
 
 	/**
