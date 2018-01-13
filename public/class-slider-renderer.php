@@ -112,6 +112,19 @@ class BQW_SP_Slider_Renderer {
 	 * @return string The HTML markup of the slider.
 	 */
 	public function render() {
+		$slides_html = '';
+
+		if ( $this->has_slides() ) {
+			$slides_html = $this->create_slides();
+		}
+
+		if ( empty( $slides_html  ) ) {
+			$this->html_output = '<div class="sp-no-slides">The slider with the ID of ' . $this->id . ' is empty.</div>';
+
+			$this->html_output = apply_filters( 'sliderpro_markup', $this->html_output, $this->id );
+			return $this->html_output;
+		}
+
 		$classes = 'slider-pro sp-no-js';
 		$classes .= isset( $this->settings['custom_class'] ) && $this->settings['custom_class'] !== '' ? ' ' . $this->settings['custom_class'] : '';
 		$classes = apply_filters( 'sliderpro_classes' , $classes, $this->id );
@@ -128,13 +141,9 @@ class BQW_SP_Slider_Renderer {
 		}
 
 		$this->html_output .= "\r\n" . '<div id="' . $this->idAttribute . '" class="' . $classes . '" style="width: ' . $width . '; height: ' . $height . ';">';
-
-		if ( $this->has_slides() ) {
-			$this->html_output .= "\r\n" . '	<div class="sp-slides">';
-			$this->html_output .= "\r\n" . '		' . $this->create_slides();
-			$this->html_output .= "\r\n" . '	</div>';
-		}
-
+		$this->html_output .= "\r\n" . '	<div class="sp-slides">';
+		$this->html_output .= "\r\n" . '		' . $slides_html;
+		$this->html_output .= "\r\n" . '	</div>';
 		$this->html_output .= "\r\n" . '</div>';
 		
 		$this->html_output = apply_filters( 'sliderpro_markup', $this->html_output, $this->id );

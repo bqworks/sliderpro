@@ -326,10 +326,15 @@ class BQW_SliderPro {
 		$slider_data = apply_filters( 'sliderpro_data', $slider_data, $slider_data['id'] );
 
 		$slider = new BQW_SP_Slider_Renderer( $slider_data );
+
 		$html_output = $slider->render();
+
+		if ( strpos( $html_output, 'sp-no-slides' ) !== false ) {
+			return $html_output;
+		}
+
 		$js_output = $slider->render_js();
 		$this->js_output .= $js_output;
-
 		$css_dependencies = $slider->get_css_dependencies();
 		$js_dependencies = $slider->get_js_dependencies();
 
