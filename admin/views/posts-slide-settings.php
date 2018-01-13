@@ -5,6 +5,8 @@
 	<td class="setting-cell">
 		<select id="posts-post-types" multiple class="slide-setting" name="posts_post_types">
 			<?php
+				$post_names = $this->get_post_names();
+				
 				foreach ( $post_names as $value ) {
 					$selected = ( isset( $slide_settings['posts_post_types'] ) && in_array( $value['name'], $slide_settings['posts_post_types'] ) ) || ( ! isset( $slide_settings['posts_post_types'] ) && in_array( $value['name'], $slide_default_settings['posts_post_types']['default_value'] ) ) ? ' selected="selected"' : '';
 					echo '<option value="' . $value['name'] . '"' . $selected . '>' . $value['label'] . '</option>';

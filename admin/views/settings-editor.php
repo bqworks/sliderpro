@@ -12,9 +12,9 @@
 					<th class="setting-cell">
 						<select id="content-type" class="slide-setting" name="content_type">
 							<?php
-								foreach ( $slide_default_settings['content_type']['available_values'] as $value_name => $value_label ) {
+								foreach ( $slide_default_settings['content_type']['available_values'] as $value_name => $value ) {
 									$selected = ( $content_type === $value_name ) ? ' selected="selected"' : '';
-									echo '<option value="' . $value_name . '"' . $selected . '>' . $value_label . '</option>';
+									echo '<option value="' . $value_name . '"' . $selected . '>' . $value['label'] . '</option>';
 		                        }
 							?>
 						</select>

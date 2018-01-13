@@ -1076,10 +1076,26 @@ class BQW_SliderPro_Settings {
 					'type' => 'select',
 					'default_value' => 'custom',
 					'available_values' => array(
-						'custom' => __( 'Custom Content', 'sliderpro' ),
-						'posts' => __( 'Content from posts', 'sliderpro' ),
-						'gallery' => __( 'Images from post\'s gallery', 'sliderpro' ),
-						'flickr' => __( 'Flickr images', 'sliderpro' )
+						'custom' => array(
+							'label' => __( 'Custom Content', 'sliderpro' ),
+							'file_name' => 'custom-slide-settings.php',
+							'renderer_class' => 'BQW_SP_Slide_Renderer'
+						),
+						'posts' => array(
+							'label' => __( 'Content from posts', 'sliderpro' ),
+							'file_name' => 'posts-slide-settings.php',
+							'renderer_class' => 'BQW_SP_Posts_Slide_Renderer'
+						),
+						'gallery' => array(
+							'label' => __( 'Images from post\'s gallery', 'sliderpro' ),
+							'file_name' => 'gallery-slide-settings.php',
+							'renderer_class' => 'BQW_SP_Gallery_Slide_Renderer'
+						),
+						'flickr' => array(
+							'label' => __( 'Flickr images', 'sliderpro' ),
+							'file_name' => 'flickr-slide-settings.php',
+							'renderer_class' => 'BQW_SP_Flickr_Slide_Renderer'
+						)
 					),
 					'description' => ''
 				),

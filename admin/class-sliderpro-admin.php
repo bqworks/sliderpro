@@ -1171,9 +1171,6 @@ class BQW_SliderPro_Admin {
 	/**
 	 * Return the setting fields associated with the content type.
 	 *
-	 * If the content type is set to 'posts', the names of the
-	 * registered post types will be loaded.
-	 *
 	 * @since 4.0.0
 	 * 
 	 * @param  string $type           The slide's content type.
@@ -1182,16 +1179,9 @@ class BQW_SliderPro_Admin {
 	public function load_content_type_settings( $type, $slide_settings = NULL ) {
 		$slide_default_settings = BQW_SliderPro_Settings::getSlideSettings();
 
-		if ( $type === 'posts' ) {
-			$post_names = $this->get_post_names();
-
-			include( 'views/posts-slide-settings.php' );
-		} else if ( $type === 'gallery' ) {
-			include( 'views/gallery-slide-settings.php' );
-		} else if ( $type === 'flickr' ) {
-			include( 'views/flickr-slide-settings.php' );
-		} else {
-			include( 'views/custom-slide-settings.php' );
+		if ( array_key_exists( $type, $slide_default_settings['content_type']['available_values'] ) ) {
+			$path = 'views/' . $slide_default_settings['content_type']['available_values'][ $type ]['file_name'];
+			include( $path );
 		}
 	}
 
