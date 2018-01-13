@@ -691,12 +691,15 @@ class BQW_SliderPro {
 
 			if ( ! empty( $element ) ) {
 				foreach ( $element as $key => $value ) {
+
 					// check if the element is a layer or a different type
 					if ( $key === 'layer' ) {
 						$layer = array( 'text' => $value );
 
 						if ( isset( $element['layer_settings'] ) ) {
-							$layer['settings'] = $element['layer_settings'];
+							foreach ( $element['layer_settings'] as $layer_setting => $layer_setting_value ) {
+								$layer[ $layer_setting ] = $layer_setting_value;
+							}
 						}
 
 						if ( ! isset( $slide['layers'] ) ) {
