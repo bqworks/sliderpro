@@ -414,6 +414,7 @@ class BQW_SliderPro_Admin {
 		$load_js_in_all_pages = get_option( 'sliderpro_load_js_in_all_pages', $plugin_settings['load_js_in_all_pages']['default_value'] );
 		$load_unminified_scripts = get_option( 'sliderpro_load_unminified_scripts', $plugin_settings['load_unminified_scripts']['default_value'] );
 		$cache_expiry_interval = get_option( 'sliderpro_cache_expiry_interval', $plugin_settings['cache_expiry_interval']['default_value'] );
+		$max_sliders_on_page = get_option( 'sliderpro_max_sliders_on_page', $plugin_settings['max_sliders_on_page']['default_value'] );
 		$hide_inline_info = get_option( 'sliderpro_hide_inline_info', $plugin_settings['hide_inline_info']['default_value'] );
 		$hide_getting_started_info = get_option( 'sliderpro_hide_getting_started_info', $plugin_settings['hide_getting_started_info']['default_value'] );
 		$access = get_option( 'sliderpro_access', $plugin_settings['access']['default_value'] );
@@ -450,6 +451,11 @@ class BQW_SliderPro_Admin {
 			if ( isset( $_POST['cache_expiry_interval'] ) ) {
 				$cache_expiry_interval = $_POST['cache_expiry_interval'];
 				update_option( 'sliderpro_cache_expiry_interval', $cache_expiry_interval );
+			}
+
+			if ( isset( $_POST['max_sliders_on_page'] ) ) {
+				$max_sliders_on_page = $_POST['max_sliders_on_page'];
+				update_option( 'sliderpro_max_sliders_on_page', $max_sliders_on_page );
 			}
 
 			if ( isset( $_POST['hide_inline_info'] ) ) {

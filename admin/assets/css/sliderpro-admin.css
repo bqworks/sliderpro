@@ -2,6 +2,7 @@
 All sliders page
 ----------------------------------------------------------------------*/
 .new-slider-buttons {
+	float: left;
 	margin-top: 20px;
 }
 
@@ -11,6 +12,24 @@ All sliders page
 
 .sliders-list tr:nth-child(2n+1) {
 	background-color: #F9F9F9;
+}
+
+.sliders-pagination {
+	float: right;
+	margin-top: 20px;
+}
+
+.sliders-pagination-link {
+    border: 1px solid;
+    text-decoration: none;
+    padding: 5px;
+    margin-left: 5px;
+    color: #999;
+}
+
+.sliders-pagination .selected-page {
+	color: #0073AA;
+	border: none;
 }
 
 /*----------------------------------------------------------------------
@@ -1736,6 +1755,11 @@ Plugin settings page
 #cache-expiry-interval {
 	width: 50px;
 	margin-right: 10px;
+	text-align: center;
+}
+
+#max-sliders-on-page {
+	width: 50px;
 	text-align: center;
 }
 

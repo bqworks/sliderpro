@@ -59,8 +59,13 @@
 	<?php
 		global $wpdb;
 		$prefix = $wpdb->prefix;
+		$max_sliders_on_page = get_option( 'sliderpro_max_sliders_on_page', 100 );
+		$total_sliders = $wpdb->get_var( "SELECT COUNT(*) FROM " . $prefix . "slider_pro_sliders" );
+		$total_pages = ceil( $total_sliders / $max_sliders_on_page );
+		$current_page = isset( $_GET['sp_page'] ) ? max( 1, min( $total_pages, intval( $_GET['sp_page'] ) ) ) : 1;
+		$offset_row = ( $current_page - 1 ) * $max_sliders_on_page ;
 
-		$sliders = $wpdb->get_results( "SELECT * FROM " . $prefix . "slider_pro_sliders ORDER BY id" );
+		$sliders = $wpdb->get_results( "SELECT * FROM " . $prefix . "slider_pro_sliders ORDER BY id LIMIT " . $offset_row . ", " . $max_sliders_on_page );
 		
 		if ( count( $sliders ) === 0 ) {
 			echo '<tr class="no-slider-row">' .
@@ -95,6 +100,26 @@
     <div class="new-slider-buttons">    
 		<a class="button-secondary" href="<?php echo admin_url( 'admin.php?page=sliderpro-new' ); ?>"><?php _e( 'Create New Slider', 'sliderpro' ); ?></a>
         <a class="button-secondary import-slider" href=""><?php _e( 'Import Slider', 'sliderpro' ); ?></a>
-    </div>    
-    
+    </div>
+
+	<?php
+		if ( $max_sliders_on_page < $total_sliders ) {
+			echo '<div class="sliders-pagination">';
+
+			for ( $i = $current_page - 2; $i <= $current_page; $i++ ) {
+				if ( $i >= 1 ) {
+					echo '<a class="sliders-pagination-link' . ( $i === $current_page ? ' selected-page' : '' ) . '" href="' . admin_url( 'admin.php?page=sliderpro&sp_page=' ) . $i . '">' . $i . '</a>';
+				}
+			}
+
+			$last_page = min( $total_pages, ( $current_page + 2 ) + max( 0, ( 3 - $current_page ) ) );
+
+			for ( $i = $current_page + 1; $i <= $last_page ; $i++ ) {
+				echo '<a class="sliders-pagination-link" href="' . admin_url( 'admin.php?page=sliderpro&sp_page=' ) . $i . '">' . $i . '</a>';
+			}
+
+			echo '</div>';
+		}
+	?>
+
 </div>

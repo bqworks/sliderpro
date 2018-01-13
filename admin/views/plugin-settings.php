@@ -78,6 +78,17 @@
             </tr>
             <tr>
                 <td>
+                    <label for="max-sliders-on-page"><?php echo $plugin_settings['max_sliders_on_page']['label']; ?></label>
+                </td>
+                <td>
+                    <input type="text" id="max-sliders-on-page" name="max_sliders_on_page" value="<?php echo $max_sliders_on_page; ?>">
+                </td>
+                <td>
+                    <?php echo $plugin_settings['max_sliders_on_page']['description']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label for="hide-inline-info"><?php echo $plugin_settings['hide_inline_info']['label']; ?></label>
                 </td>
                 <td>

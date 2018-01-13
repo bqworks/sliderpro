@@ -1223,6 +1223,11 @@ class BQW_SliderPro_Settings {
 					'default_value' => 24,
 					'description' => __( 'Indicates the time interval after which a slider\'s cache will expire. If the cache of a slider has expired, the slider will be rendered again and cached the next time it is viewed.', 'sliderpro' )
 				),
+				'max_sliders_on_page' => array(
+					'label' => __( 'Max sliders on page', 'sliderpro' ),
+					'default_value' => 100,
+					'description' => __( 'Indicates the total number of sliders visible at once in the <i>All Sliders</i> page. If there are more sliders in the database than the set value, pagination will be available.', 'sliderpro' )
+				),
 				'hide_inline_info' => array(
 					'label' => __( 'Hide inline info', 'sliderpro' ),
 					'default_value' => false,
