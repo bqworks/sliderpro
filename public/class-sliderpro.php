@@ -166,7 +166,6 @@ class BQW_SliderPro {
 			wp_register_script( $this->plugin_slug . '-plugin-script', plugins_url( 'sliderpro/public/assets/js/jquery.sliderPro.min.js' ), array( 'jquery' ), self::VERSION );
 		}
 		
-		wp_register_script( $this->plugin_slug . '-easing-script', plugins_url( 'sliderpro/public/assets/libs/easing/jquery.easing.1.3.min.js' ), array(), self::VERSION );
 		wp_register_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.pack.js' ), array(), self::VERSION );
 	}
 
