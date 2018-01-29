@@ -742,6 +742,13 @@ class BQW_SliderPro_Admin {
 		
 		delete_transient( 'sliderpro_cache_' . $id );
 
+		if ( ( $lightbox_sliders = get_option( 'sliderpro_lightbox_sliders' ) ) !== false ) {
+			if ( isset( $lightbox_sliders[ $id ] ) ) {
+				unset( $lightbox_sliders[ $id ] );
+				update_option( 'sliderpro_lightbox_sliders', $lightbox_sliders );
+			}
+		}
+
 		return $id;
 	}
 
@@ -1420,6 +1427,10 @@ class BQW_SliderPro_Admin {
 		global $wpdb;
 
 		$wpdb->query( "DELETE FROM " . $wpdb->prefix . "options WHERE option_name LIKE '%sliderpro_cache%'" );
+
+		if ( get_option( 'sliderpro_lightbox_sliders' ) !== false ) {
+			update_option( 'sliderpro_lightbox_sliders', array() );
+		}
 
 		echo true;
 

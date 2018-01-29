@@ -44,6 +44,7 @@ function bqw_sliderpro_delete_all_data() {
 	delete_option( 'sliderpro_hide_getting_started_info' );
 	delete_option( 'sliderpro_access' );
 	delete_option( 'sliderpro_version' );
+	delete_option( 'sliderpro_lightbox_sliders' );
 
 	delete_transient( 'sliderpro_post_names' );
 	delete_transient( 'sliderpro_posts_data' );

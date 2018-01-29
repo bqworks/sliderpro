@@ -29,6 +29,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'public/class-heading-layer-renderer
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-image-layer-renderer.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-div-layer-renderer.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-video-layer-renderer.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'public/class-lightbox-slider.php' );
 
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-sliderpro-activation.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-sliderpro-widget.php' );
@@ -42,6 +43,7 @@ register_deactivation_hook( __FILE__, array( 'BQW_SliderPro_Activation', 'deacti
 add_action( 'plugins_loaded', array( 'BQW_SliderPro', 'get_instance' ) );
 add_action( 'plugins_loaded', array( 'BQW_SliderPro_Activation', 'get_instance' ) );
 add_action( 'plugins_loaded', array( 'BQW_Hideable_Gallery', 'get_instance' ) );
+add_action( 'plugins_loaded', array( 'BQW_SP_Lightbox_Slider', 'get_instance' ) );
 
 // register the widget
 add_action( 'widgets_init', 'bqw_sp_register_widget' );
