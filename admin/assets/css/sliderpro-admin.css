@@ -470,12 +470,12 @@ Single slider page
 	position: absolute;
 	right: 8px;
 	top: 8px;
-	font-size: 30px;
+	font-size: 20px;
 	cursor: pointer;
 }
 
 .close-x:before {
-	content: '×';
+	content: '\2715';
 }
 
 .modal-window .heading {
@@ -1417,7 +1417,7 @@ Single slider page
 	display: none;
 	position: absolute;
 	right: 15px;
-	font-size: 15px;
+	font-size: 12px;
 	margin-top: 3px;
 	cursor: pointer;
 }
@@ -1429,7 +1429,7 @@ Single slider page
 
 .remove-breakpoint:before,
 .remove-breakpoint-setting:before {
-	content: '×';
+	content: '\2715';
 }
 
 .breakpoint-settings td {
