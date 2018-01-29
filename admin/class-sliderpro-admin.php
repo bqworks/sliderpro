@@ -674,7 +674,7 @@ class BQW_SliderPro_Admin {
 				
 			$wpdb->query( $wpdb->prepare( "DELETE FROM " . $wpdb->prefix . "slider_pro_slides WHERE slider_id = %d", $id ) );
 
-			$wpdb->query( $wpdb->prepare( "DELETE FROM " . $wpdb->prefix . "slider_pro_slides WHERE slider_id = %d", $id ) );
+			$wpdb->query( $wpdb->prepare( "DELETE FROM " . $wpdb->prefix . "slider_pro_layers WHERE slider_id = %d", $id ) );
 		}
 
 		foreach ( $slides_data as $slide_data ) {
@@ -903,7 +903,7 @@ class BQW_SliderPro_Admin {
 		global $wpdb;
 
 		$wpdb->query( $wpdb->prepare( "DELETE FROM " . $wpdb->prefix . "slider_pro_slides WHERE slider_id = %d", $id ) );
-
+		$wpdb->query( $wpdb->prepare( "DELETE FROM " . $wpdb->prefix . "slider_pro_layers WHERE slider_id = %d", $id ) );
 		$wpdb->query( $wpdb->prepare( "DELETE FROM " . $wpdb->prefix . "slider_pro_sliders WHERE id = %d", $id ) );
 
 		return $id;
