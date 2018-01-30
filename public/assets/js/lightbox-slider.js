@@ -110,18 +110,9 @@
 			var isPercentageWidth = sliderWidth.toString().indexOf( '%' ) !== -1,
 				isPercentageHeight = sliderHeight.toString().indexOf( '%' ) !== -1;
 
-			// include the thumbnail scrolle's width/height in the width/height of the slider
-			if ( isThumbnailScroller === true ) {
-				if ( thumbnailScrollerOrientation === 'vertical' && isPercentageWidth === false ) {
-					sliderWidth = parseInt( sliderWidth, 10 ) + parseInt( sliderSettings[ 'thumbnailWidth' ], 10 );
-				} else if ( thumbnailScrollerOrientation === 'horizontal' && isPercentageHeight === false ) {
-					sliderHeight = parseInt( sliderHeight, 10 ) + parseInt( sliderSettings[ 'thumbnailHeight' ], 10 );
-				}
-			}
-
-			// include the height of the buttons in the height of the slider
-			if ( isButtons === true && isPercentageHeight === false ) {
-				sliderHeight = parseInt( sliderHeight, 10 ) + slider.find( '.sp-buttons' ).outerHeight();
+			// include the thumbnail scrolle's width in the width of the slider
+			if ( isThumbnailScroller === true && thumbnailScrollerOrientation === 'vertical' && isPercentageWidth === false ) {
+				sliderWidth = parseInt( sliderWidth, 10 ) + parseInt( sliderSettings[ 'thumbnailWidth' ], 10 );
 			}
 
 			// resize the lightbox container when the window is resized
@@ -143,8 +134,6 @@
 
 				if ( isPercentageHeight === true ) {
 					lightboxContainer.css( 'height', $( window ).height() * ( parseInt( sliderHeight, 10 ) / 100 ) - verticalPadding );
-				} else {
-					lightboxContainer.css( 'height', sliderHeight );
 				}
 			});
 
