@@ -504,12 +504,22 @@
     <i>On all pages</i>
     if you load the slider in other pages.
   </p>
+
   <h3 id="previewing-the-slider">3.4. Previewing the slider</h3>
   <p>
     The sliders can be previewed directly in the admin area, and you don't have to create or update the slider before previewing the edits you make to the slides or to the general settings.
   </p>
 
-  <h3 id="cache">3.5. Cache</h3>
+  <h3 id="lightbox-slider">3.5. Lightbox slider</h3>
+  <p>
+    The plugin offers you the possibility to open any slider inside a lightbox window, as the one in which sliders are previewed in the admin area. To create a lightbox slider, you will use the <code>[sliderpro_lightbox]</code> shortcode instead of <code>[sliderpro]</code>:
+    <pre>[sliderpro_lightbox id="3"]</pre>
+    The location in which you insert this shortcode in the page is not important, because the slider will not be rendered in that location; it's only an indication for the plugin that a slider will be opened in that page. In order to indicate the actual location, the element (link, image etc.) that will open the lightbox slider, you need to add the <code>sliderpro-lightbox-ID</code> class to that element, replacing "ID" with the ID of the slider:
+    <pre>&lt;p&gt;The following &lt;a href="#" class="sliderpro-lightbox-3"&gt;link&lt;/a&gt; will open the lightbox.&lt;/p&gt;
+    </pre>
+  </p>
+
+  <h3 id="cache">3.6. Cache</h3>
   <p>
     All sliders are automatically cached the first time when they're viewed by a visitor, so next time when someone visits the page, the slider will be served from the cache. This mechanism saves processing time and is especially useful when loading content from posts or external services.
   </p>
@@ -1812,7 +1822,10 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
             <a href="#previewing-the-slider">3.4. Previewing the slider</a>
           </li>
           <li>
-            <a href="#cache">3.5. Cache</a>
+            <a href="#lightbox-slider">3.5. Lightbox slider</a>
+          </li>
+          <li>
+            <a href="#cache">3.6. Cache</a>
           </li>
         </ul>
       </li>
