@@ -1108,6 +1108,18 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
   }
   </pre>
 
+  <h4 id="sliderpro_breakpoint_settings">sliderpro_breakpoint_settings</h4>
+  <p>It allows you to add/remove settings for the Breakpoints.</p>
+  <pre>
+  add_filter( 'sliderpro_breakpoint_settings', 'add_breakpoint_settings' );
+
+  function add_breakpoint_settings( $settings ) {
+    $settings[] = 'auto_slide_size';
+
+    return $settings;
+  }
+  </pre>
+
   <h4 id="sliderpro_posts_query_args">sliderpro_posts_query_args</h4>
   <p>
     It allows you to modify the parameters passed to the
