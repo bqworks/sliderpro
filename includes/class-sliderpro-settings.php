@@ -845,7 +845,7 @@ class BQW_SliderPro_Settings {
 	 * @return array The array of breakpoint settings.
 	 */
 	public static function getBreakpointSettings() {
-		return self::$breakpoint_settings;
+		return apply_filters( 'sliderpro_breakpoint_settings', self::$breakpoint_settings );
 	}
 
 	/**
