@@ -1254,6 +1254,11 @@ class BQW_SliderPro_Settings {
 					'default_value' => false,
 					'description' => __( 'Indicates whether the <i>Getting Started</i> information will be displayed in the <i>All Sliders</i> page, above the list of sliders. This setting will be disabled if the <i>Close</i> button is clicked in the information box.', 'sliderpro' )
 				),
+				'hide_image_size_warning' => array(
+					'label' => __( 'Hide image size warning', 'sliderpro' ),
+					'default_value' => false,
+					'description' => __( 'Indicates whether a warning will be displayed if the size of the slide images is smaller than the size of the slides.', 'sliderpro' )
+				),
 				'access' => array(
 					'label' => __( 'Access', 'sliderpro' ),
 					'default_value' => 'manage_options',

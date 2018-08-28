@@ -81,6 +81,7 @@ class BQW_SliderPro_Admin {
 		add_action( 'wp_ajax_sliderpro_get_taxonomies', array( $this, 'ajax_get_taxonomies' ) );
 		add_action( 'wp_ajax_sliderpro_clear_all_cache', array( $this, 'ajax_clear_all_cache' ) );
 		add_action( 'wp_ajax_sliderpro_close_getting_started', array( $this, 'ajax_close_getting_started' ) );
+		add_action( 'wp_ajax_sliderpro_close_image_size_warning', array( $this, 'ajax_close_image_size_warning' ) );
 	}
 
 	/**
@@ -417,6 +418,7 @@ class BQW_SliderPro_Admin {
 		$max_sliders_on_page = get_option( 'sliderpro_max_sliders_on_page', $plugin_settings['max_sliders_on_page']['default_value'] );
 		$hide_inline_info = get_option( 'sliderpro_hide_inline_info', $plugin_settings['hide_inline_info']['default_value'] );
 		$hide_getting_started_info = get_option( 'sliderpro_hide_getting_started_info', $plugin_settings['hide_getting_started_info']['default_value'] );
+		$hide_image_size_warning = get_option( 'sliderpro_hide_image_size_warning', $plugin_settings['hide_image_size_warning']['default_value'] );
 		$access = get_option( 'sliderpro_access', $plugin_settings['access']['default_value'] );
 
 		if ( isset( $_POST['plugin_settings_update'] ) ) {
@@ -472,6 +474,14 @@ class BQW_SliderPro_Admin {
 			} else {
 				$hide_getting_started_info = false;
 				update_option( 'sliderpro_hide_getting_started_info', false );
+			}
+
+			if ( isset( $_POST['hide_image_size_warning'] ) ) {
+				$hide_image_size_warning = true;
+				update_option( 'sliderpro_hide_image_size_warning', true );
+			} else {
+				$hide_image_size_warning = false;
+				update_option( 'sliderpro_hide_image_size_warning', false );
 			}
 
 			if ( isset( $_POST['access'] ) ) {
@@ -1444,6 +1454,17 @@ class BQW_SliderPro_Admin {
 	 */
 	public function ajax_close_getting_started() {
 		update_option( 'sliderpro_hide_getting_started_info', true );
+
+		die();
+	}
+
+	/**
+	 * AJAX call for closing the image size warning box.
+	 *
+	 * @since 4.6.0
+	 */
+	public function ajax_close_image_size_warning() {
+		update_option( 'sliderpro_hide_image_size_warning', true );
 
 		die();
 	}

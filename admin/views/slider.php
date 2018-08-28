@@ -9,6 +9,18 @@
                     	<input name="name" id="title" type="text" value="<?php echo esc_attr( $slider_name ); ?>" />
                     </div>
 					
+                    <?php
+                        if ( get_option( 'sliderpro_hide_image_size_warning' ) != true ) {
+                    ?>
+                            <div class="image-size-warning">
+                                <p><?php _e( 'Some of the main slide images are smaller than the size of the slide (determined by the <i>Width</i> and <i>Height</i> options), so they might appear blurred when viewed in the slider.', 'sliderpro' ); ?></p>
+                                <p><?php _e( 'When you select images to insert them into the slider, you can set their size from the right column of the Media Library window, as you can see in <a href="https://www.youtube.com/watch?v=Hd54x3GMFlA" target="_blank">this video</a> at 0:05.', 'sliderpro' ); ?></p>
+                                <a href="#" class="image-size-warning-close"><?php _e( 'Don\'t show this again.', 'sliderpro' ); ?></a>
+                            </div>
+                    <?php
+                        }
+                    ?>
+
 					<div class="slides-container">
                     	<?php
                     		if ( isset( $slides ) ) {
