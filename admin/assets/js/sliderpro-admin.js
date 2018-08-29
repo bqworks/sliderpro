@@ -2602,81 +2602,54 @@
 		 * @since 4.0.0
 		 */
 		initViewport: function() {
-			var viewportWidth = $( '.sidebar-settings' ).find( '.setting[name="width"]' ).val(),
+			var $viewport = this.$editor.find( '.layer-viewport' ),
+				$viewportLayers = $( '<div class="slider-pro viewport-layers"></div>' ).appendTo( $viewport ),
+				viewportWidth = $( '.sidebar-settings' ).find( '.setting[name="width"]' ).val(),
 				viewportHeight = $( '.sidebar-settings' ).find( '.setting[name="height"]' ).val(),
 				customClass = $( '.sidebar-settings' ).find( '.setting[name="custom_class"]' ).val(),
-				mainImageData = this.currentSlide.getData( 'mainImage' ),
-				$viewport = this.$editor.find( '.layer-viewport' ),
-				$viewportLayers = $( '<div class="slider-pro viewport-layers"></div>' ).appendTo( $viewport );
+				mainImageSource = this.currentSlide.getData( 'mainImage' )['main_image_source'];
 
-			if ( viewportWidth.indexOf( '%' ) !== -1 ) {
-				viewportWidth = $( window ).width() - 200;
+			if ( isNaN( viewportWidth ) ) {
+				viewportWidth = $( window ).width() * ( parseInt( viewportWidth, 10 ) / 100 );
 			} else {
 				viewportWidth = parseInt( viewportWidth, 10 );
 			}
 
-			if ( viewportHeight.indexOf( '%' ) !== -1 ) {
-				viewportHeight = $( window ).height() - 200;
+			if ( isNaN( viewportHeight ) ) {
+				viewportHeight = $( window ).height() * ( parseInt( viewportHeight, 10 ) / 100 );
 			} else {
 				viewportHeight = parseInt( viewportHeight, 10 );
 			}
 
 			$viewport.css({ 'width': viewportWidth, 'height': viewportHeight });
+			$viewportLayers.css({ 'width': viewportWidth,'height': viewportHeight });
 
 			if ( customClass !== '' ) {
 				$viewportLayers.addClass( customClass );
 			}
 
-			if ( typeof mainImageData.main_image_source !== 'undefined' &&
-				mainImageData.main_image_source !== '' &&
-				mainImageData.main_image_source.indexOf( '[' ) === -1 ) {
-				
-				var $viewportImage = $( '<img class="viewport-image" src="' + mainImageData.main_image_source + '" />' ).prependTo( $viewport );
+			if ( typeof mainImageSource !== 'undefined' && mainImageSource !== '' && mainImageSource.indexOf( '[' ) === -1 ) {
+				var scaleMode = $( '.sidebar-settings' ).find( '.setting[name="image_scale_mode"]' ).val(),
+					centerImage = $( '.sidebar-settings' ).find( '.setting[name="center_image"]' ).is( ':checked' );
+					backgroundImage = {
+						'background-image': 'url(' + mainImageSource + ')',
+						'background-repeat': 'no-repeat'
+					};
 
-				// set the size of the layer's container after the image has
-				// loaded and its size can be retrieved
-				var checkImageLoaded = setInterval( function() {
-					if ( $viewportImage[0].complete === true ) {
-						clearInterval( checkImageLoaded );
+				if ( scaleMode === 'cover' ) {
+					backgroundImage['background-size'] = 'cover';
+				} else if ( scaleMode === 'contain' ) {
+					backgroundImage['background-size'] = 'contain';
+				} else if ( scaleMode === 'exact' ) {
+					backgroundImage['background-size'] = '100% 100%';
+				}
 
-						var imageWidth = $viewportImage.width(),
-							imageHeight = $viewportImage.height(),
-							scaleMode = $( '.sidebar-settings' ).find( '.setting[name="image_scale_mode"]' ).val(),
-							centerImage = $( '.sidebar-settings' ).find( '.setting[name="center_image"]' ).is( ':checked' );
+				if ( centerImage === true ) {
+					backgroundImage['background-position'] = 'center center';
+				}
 
-						if ( scaleMode === 'cover' ) {
-							if ( $viewportImage.width() / $viewportImage.height() <= viewportWidth / viewportHeight ) {
-								$viewportImage.css({ width: '100%', height: 'auto' });
-							} else {
-								$viewportImage.css({ width: 'auto', height: '100%' });
-							}
-						} else if ( scaleMode === 'contain' ) {
-							if ( $viewportImage.width() / $viewportImage.height() >= viewportWidth / viewportHeight ) {
-								$viewportImage.css({ width: '100%', height: 'auto' });
-							} else {
-								$viewportImage.css({ width: 'auto', height: '100%' });
-							}
-						} else if ( scaleMode === 'exact' ) {
-							$viewportImage.css({ width: '100%', height: '100%' });
-						}
-
-						if ( centerImage === true ) {
-							$viewportImage.css({ 'marginLeft': ( viewportWidth - $viewportImage.width() ) * 0.5, 'marginTop': ( viewportHeight - $viewportImage.height() ) * 0.5 });
-						}
-
-						$viewport.css({ 'width': viewportWidth, 'height': viewportHeight });
-
-						$viewportLayers.css( {
-							'width': viewportWidth,
-							'height': viewportHeight,
-							'left': $viewportImage.position().left,
-							'top': $viewportImage.position().top
-						});
-					}
-				}, 10 );
+				$viewportLayers.css( backgroundImage );
 			}
-
-			$( '.layers-editor-info' ).css( 'maxWidth', $viewport.width() );
 		},
 
 		/**

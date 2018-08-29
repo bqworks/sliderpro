@@ -893,10 +893,12 @@ Single slider page
 /* Layers editor
 --------------------------------------------------*/
 .layers-editor .modal-window {
-	min-width: 670px;
+	min-width: 730px;
+	max-width: 95%;
+	box-sizing: border-box;
 }
 
-@media (max-width: 670px) {
+@media (max-width: 730px) {
 	.layers-editor:before {
 		display: none;
 	}
@@ -1188,8 +1190,8 @@ Single slider page
 -----------------*/
 .layer-viewport {
 	position: relative;
-	width: 100%;
-	overflow: hidden;
+	max-width: 100%;
+	overflow: auto;
 	background-image:
 	    -moz-linear-gradient(45deg, #EEE 25%, transparent 25%,transparent 75%, #EEE 75%, #EEE 100%),
 	    -moz-linear-gradient(45deg, #EEE 25%, transparent 25%,transparent 75%, #EEE 75%, #EEE 100%);
@@ -1573,7 +1575,6 @@ Single slider page
 
 .layers-editor-info {
 	margin-top: 30px;
-	min-width: 670px;
 }
 
 .no-layers-info {
