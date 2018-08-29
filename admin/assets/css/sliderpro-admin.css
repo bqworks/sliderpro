@@ -404,6 +404,10 @@ Single slider page
 	width: 100px;
 }
 
+.sidebar-settings #thumbnail_image_size {
+	width: 130px;
+}
+
 .appearance-slide select {
 	min-width: 100px;
 }
