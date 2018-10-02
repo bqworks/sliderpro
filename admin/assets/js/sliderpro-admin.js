@@ -78,13 +78,7 @@
 
 			if ( parseInt( sp_js_vars.id, 10 ) !== -1 ) {
 				this.loadSliderData( function() {
-					var slideImages = [];
-
-					$.each( that.slides, function( index, slide ) {
-						slideImages.push( slide.getData( 'mainImage' ) );
-					});
-
-					that.checkSlideImageSize( slideImages );
+					that.checkSlideImageSize();
 				});
 			}
 
@@ -92,13 +86,7 @@
 				event.preventDefault();
 				that.saveSlider();
 
-				var slideImages = [];
-
-				$.each( that.slides, function( index, slide ) {
-					slideImages.push( slide.getData( 'mainImage' ) );
-				});
-
-				that.checkSlideImageSize( slideImages );
+				that.checkSlideImageSize();
 			});
 
 			$( '.preview-slider' ).on( 'click', function( event ) {
@@ -948,7 +936,7 @@
 							that.initSlide( slide, { mainImage: images[ index ], thumbnail: {}, caption: '', layers: {}, html: '', settings: {} } );
 						});
 
-						SliderProAdmin.checkSlideImageSize( images );
+						SliderProAdmin.checkSlideImageSize();
 					}
 				});
 			});
@@ -1274,7 +1262,9 @@
 				sliderWidth = $( '.sidebar-settings' ).find( '.setting[name="width"]' ).val(),
 				sliderHeight = $( '.sidebar-settings' ).find( '.setting[name="height"]' ).val();
 
-			$.each( images, function( index, image ) {
+			$.each( this.slides, function( index, slide ) {
+				var image = slide.getData( 'mainImage' );
+
 				if ( parseInt( image[ 'main_image_width' ], 10 ) === 0 || parseInt( image[ 'main_image_height' ], 10 ) === 0 ) {
 					return;
 				}
@@ -1517,7 +1507,7 @@
 						that.setData( 'mainImage', { main_image_id: image.id, main_image_source: image.url, main_image_alt: image.alt, main_image_title: image.title, main_image_width: image.width, main_image_height: image.height } );
 						that.updateSlidePreview();
 
-						SliderProAdmin.checkSlideImageSize([{ main_image_width: image.width, main_image_height: image.height }]);
+						SliderProAdmin.checkSlideImageSize();
 					});
 				}
 			});
@@ -1857,7 +1847,7 @@
 				that.save();
 				that.close();
 
-				SliderProAdmin.checkSlideImageSize([ that.currentSlide.getData( 'mainImage' ) ]);
+				SliderProAdmin.checkSlideImageSize();
 			});
 
 			this.$editor.find( '.image-loader, .additional-image-loader' ).on( 'click', function( event ) {
