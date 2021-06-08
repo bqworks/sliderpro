@@ -60,7 +60,7 @@
 				<div class="info-content">
 					<div class="no-layers-info">
 						<p><?php _e( 'To add a new layer, hover on the plus sign above and select a layer type.', 'sliderpro' ); ?></p>
-						<p><a href="https://www.youtube.com/watch?v=3jS0k7ArKOw&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
+						<p><a href="http://bqworks.net/slider-pro/screencasts/#adding-layers" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
 					</div>
 
         			<div class="has-layers-info">
@@ -68,7 +68,7 @@
 		                <p><?php _e( 'The <i>Position</i> setting allows you to set the reference point for the layer\'s horizontal and vertical position. The <i>Horizontal</i> and <i>Vertical</i> settings can be set to fixed or percentage values. The <i>Width</i> and <i>Height</i> settings can be set to fixed or percentage values, or to <i>auto</i>.', 'sliderpro' ); ?></p>
 						<p><?php _e( 'To style the layer, you can select one or more of the <i>Preset Styles</i>, or assign it a <i>Custom Class</i> and add some', 'sliderpro' ); ?> <a target="_blank" href="<?php echo admin_url( 'admin.php?page=sliderpro-custom' ); ?>"><?php _e( 'custom CSS', 'sliderpro' ); ?></a> <?php _e( 'for it.', 'sliderpro' ); ?></p>
 						<p><?php _e( '<strong>Note:</strong> The style of <i>Paragraph</i>, <i>Heading</i> or <i>Image</i> layers might be affected by the theme\'s CSS code when you publish the slider in a page. More details in the', 'sliderpro' ); ?> <a target="_blank" href="<?php echo admin_url( 'admin.php?page=sliderpro-documentation' ); ?>"><?php _e( 'Troubleshooting chapter', 'sliderpro' ); ?></a>.</p>
-						<p><a href="https://www.youtube.com/watch?v=3jS0k7ArKOw&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
+						<p><a href="http://bqworks.net/slider-pro/screencasts/#adding-layers" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
 						
 						<?php
 							if ( $content_type === 'posts' || $content_type === 'gallery' || $content_type === 'flickr' ) {

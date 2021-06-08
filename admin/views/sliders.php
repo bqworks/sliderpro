@@ -7,24 +7,21 @@
 		if ( $hide_info != true ) {
 	?>
 	    <div class="inline-info getting-started-info">
-			<h3><?php _e( '1. Getting started', 'sliderpro' ); ?></h3>
+	    	<h3><?php _e( 'Getting started', 'sliderpro' ); ?></h3>
 			<p><?php _e( 'If you want to reproduce one of the examples showcased online, you can easily import those examples into your own Slider Pro installation.', 'sliderpro' ); ?></p>
 			<p><?php _e( 'The examples can be found in the <i>examples</i> folder, which is included in the plugin\'s folder, and can be imported using the <i>Import Slider</i> button below.', 'sliderpro' ); ?></p>
 			<p><?php _e( 'For quick usage instructions, please see the video tutorials below. For more detailed instructions, please see the', 'sliderpro' ); ?> <a href="<?php echo admin_url('admin.php?page=sliderpro-documentation'); ?>"><?php _e( 'Documentation', 'sliderpro' ); ?></a> <?php _e( 'page.', 'sliderpro' ); ?></p>
 			<ul class="video-tutorials-list">
-				<li><a href="https://www.youtube.com/watch?v=Hd54x3GMFlA&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( '1. Create and publish sliders', 'sliderpro' ); ?></a></li>
-				<li><a href="https://www.youtube.com/watch?v=LARRTKJrz8U&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( '2. Create sliders from posts', 'sliderpro' ); ?></a></li>
-				<li><a href="https://www.youtube.com/watch?v=Bj8xSH-sScY&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( '3. Create sliders from galleries', 'sliderpro' ); ?></a></li>
-				<li><a href="https://www.youtube.com/watch?v=LVvn-hv0A88&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( '4. Adding thumbnails', 'sliderpro' ); ?></a></li>
-				<li><a href="https://www.youtube.com/watch?v=3jS0k7ArKOw&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( '5. Adding layers', 'sliderpro' ); ?></a></li>
-				<li><a href="https://www.youtube.com/watch?v=y_XeEjplSdo&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( '6. Adding custom CSS', 'sliderpro' ); ?></a></li>
-				<li><a href="https://www.youtube.com/watch?v=LKcpUz6K70w&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( '7. Working with breakpoints', 'sliderpro' ); ?></a></li>
-				<li><a href="https://www.youtube.com/watch?v=CoBpGNGj3G8&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( '8. Import and Export sliders', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#simple-slider" target="_blank"><?php _e( '1. Create and publish sliders', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#slider-from-posts" target="_blank"><?php _e( '2. Create sliders from posts', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#slider-from-gallery" target="_blank"><?php _e( '3. Create sliders from galleries', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#adding-thumbnails" target="_blank"><?php _e( '4. Adding thumbnails', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#adding-layers" target="_blank"><?php _e( '5. Adding layers', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#custom-css" target="_blank"><?php _e( '6. Adding custom CSS', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#working-with-breakpoints" target="_blank"><?php _e( '7. Working with breakpoints', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#import-export" target="_blank"><?php _e( '8. Import and Export sliders', 'sliderpro' ); ?></a></li>
 			</ul>
 
-			<h3><?php _e( '2. Support', 'sliderpro' ); ?></h3>
-			<p><?php _e( 'When you need support, please contact us at our support center:', 'sliderpro' ); ?> <a href="http://support.bqworks.net">support.bqworks.net</a>.</p>
-			
 			<a href="#" class="getting-started-close">Close</a>
 		</div>
 	<?php

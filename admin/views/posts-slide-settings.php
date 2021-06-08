@@ -131,7 +131,7 @@
                 	<p><?php _e( 'The list of taxonomies will be refreshed every time the list of post types is updated.', 'sliderpro' ); ?></p>
                 	<p><?php _e( 'The <i>Match</i> parameter indicates whether, in order to be fetched, a post needs to have all the selected taxonomy terms, or at least one will be sufficient. The <i>With selected</i> parameter indicates whether posts that include the selected taxonomy terms will be loaded, or if posts that don\'t include them will be loaded.', 'sliderpro' ); ?></p>
                 	<p><?php _e( 'The images and their data can be fetched through <i>dynamic tags</i>, which are enumerated in the Main Image, Layers and HTML editors.', 'sliderpro' ); ?></p>
-                	<p><a href="https://www.youtube.com/watch?v=LARRTKJrz8U&list=PLh-6IaZNuPo4MHvfzrTovXRuU7WKXkfWh" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
+                	<p><a href="http://bqworks.net/slider-pro/screencasts/#slider-from-posts" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
             	</div>
             </div>
         <?php
