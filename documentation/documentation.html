@@ -16,15 +16,9 @@
   </h1>
   <p> <em><strong>Version 4.6</strong></em> 
   </p>
-  <p>Hi, and thank you for purchasing Slider Pro!</p>
+  <p>Hi!</p>
   <p>
     The plugin's admin interface contains inline information, which most of the time should be sufficient for understanding how to use the plugin. However, many details are not covered there, but you can find them covered in this guide.
-  </p>
-  <p class="note">
-    If you have a question or technical problem that is not covered by this guide, please contact us through the
-    <a href="http://support.bqworks.com/home"> <u>Support Center</u>
-    </a>
-    .
   </p>
   <p>
     Because an image is worth a thousand words, you might find these video tutorials useful:
@@ -59,56 +53,14 @@
     </li>
   </ul>
 
-  <h2 id="installation">1. Installation</h2>
-  <p>
-    The plugin can be installed from the WordPress dashboard, just like any other plugin.
-  </p>
-  <p>
-    Go to <i>Plugins -> Add New -> Upload -> Browse</i>
-    and select the zip package you downloaded from CodeCanyon, and then click <i>Install Now</i>
-    .
-  </p>
-  <p>
-    After the plugin is installed and activated, you will see the
-    <i>Slider Pro</i>
-    menu in the admin sidebar.
-  </p>
-
-  <h2 id="updating">2. Updating</h2>
-  <p>
-    The plugin provides automatic updates, but in order to benefit from them you need to provide the purchase code you received from CodeCanyon.
-  </p>
-  <p>
-    In order to find your purchase code, go to
-    <a href="http://codecanyon.net/downloads/">http://codecanyon.net/downloads/</a>
-    and find Slider Pro in your list of purchases. Then, click on the
-    <i>Download</i> button
-    and select
-    <i>License certificate & purchase code</i>
-    .
-  </p>
-  <a href="assets/images/find-purchase-code.png">
-    <img src="assets/images/find-purchase-code.png"></a>
-  <p>
-    After you have the purchase code, enter it in the
-    <i>Slider Pro -> Plugin Settings</i>
-    page, in the
-    <i>Purchase Code</i>
-    field and click the
-    <i>Verify Purchase Code</i>
-    button.
-  </p>
-  <a href="assets/images/verify-purchase-code.png">
-    <img src="assets/images/verify-purchase-code.png"></a>
-
-  <h2 id="creating-and-publishing-sliders">3. Creating and publishing sliders</h2>
+  <h2 id="creating-and-publishing-sliders">1. Creating and publishing sliders</h2>
   <p>
     Creating sliders is simple and intuitive. Also, the admin area contains inline information that describe the settings and possibilities that the
     <i>Slider Pro</i>
     plugin offers. In this chapter  we'll take a quick look at the various content types that the slider supports and then we'll take a look at how to publish the slider in your posts and pages.
   </p>
 
-  <h3 id="slides">3.1. Slides</h3>
+  <h3 id="slides">1.1. Slides</h3>
   <p>
     You can manually specify the images and text in a slider, or you can let the slider to automatically load content (e.g., featured image, post title, excerpt, etc.) from any post type. Two other possibilities provided by the slider is to load photos from Flickr or to load images from a post's
     <i>[gallery]</i>
@@ -458,7 +410,7 @@
     </tr>
   </table>
 
-  <h3 id="general-settings">3.2. General settings</h3>
+  <h3 id="general-settings">1.2. General settings</h3>
   <p>
     The slider's general settings can be found in the sidebar of the slider's admin interface. The description of each setting can be seen if you hover the setting's label.
   </p>
@@ -475,7 +427,7 @@
   <a href="assets/images/breakpoints.png">
     <img src="assets/images/breakpoints.png"></a>
 
-  <h3 id="publishing-the-slider">3.3. Publishing the slider</h3>
+  <h3 id="publishing-the-slider">1.3. Publishing the slider</h3>
   <p>
     The slider can be published in posts and pages, in widgets, and also in PHP code.
   </p>
@@ -505,12 +457,12 @@
     if you load the slider in other pages.
   </p>
 
-  <h3 id="previewing-the-slider">3.4. Previewing the slider</h3>
+  <h3 id="previewing-the-slider">1.4. Previewing the slider</h3>
   <p>
     The sliders can be previewed directly in the admin area, and you don't have to create or update the slider before previewing the edits you make to the slides or to the general settings.
   </p>
 
-  <h3 id="lightbox-slider">3.5. Lightbox slider</h3>
+  <h3 id="lightbox-slider">1.5. Lightbox slider</h3>
   <p>
     The plugin offers you the possibility to open any slider inside a lightbox window, as the one in which sliders are previewed in the admin area. To create a lightbox slider, you will use the <code>[sliderpro_lightbox]</code> shortcode instead of <code>[sliderpro]</code>:
     <pre>[sliderpro_lightbox id="3"]</pre>
@@ -519,7 +471,7 @@
     </pre>
   </p>
 
-  <h3 id="cache">3.6. Cache</h3>
+  <h3 id="cache">1.6. Cache</h3>
   <p>
     All sliders are automatically cached the first time when they're viewed by a visitor, so next time when someone visits the page, the slider will be served from the cache. This mechanism saves processing time and is especially useful when loading content from posts or external services.
   </p>
@@ -539,14 +491,14 @@
   </p>
   <pre>[sliderpro id="3" allow_cache="false"]</pre>
 
-  <h2 id="custom-css-and-javascript">4. Custom CSS and JavaScript</h2>
+  <h2 id="custom-css-and-javascript">2. Custom CSS and JavaScript</h2>
   <p>
     Sometimes you want to change the look of the slider or add new functionality, and for this you can use custom CSS and/or custom JavaScript. All your custom code needs to be added in the
     <i>Slider Pro -> Custom CSS & JS</i>
     page.
   </p>
 
-  <h3 id="custom-css">4.1. Custom CSS</h3>
+  <h3 id="custom-css">2.1. Custom CSS</h3>
   <p>
     Before adding any custom CSS, it's recommended to give the slider that you want to target a custom class. This can be set in the
     <i>Custom Class</i>
@@ -577,7 +529,7 @@
     if you want to target all your slider instances.
   </p>
 
-  <h3 id="custom-javascript">4.2. Custom JavaScript</h3>
+  <h3 id="custom-javascript">2.2. Custom JavaScript</h3>
   <p>
     Just like with custom CSS, you need to assign a custom class to the slider and then use it in your custom code to target that specific slider.
   </p>
@@ -587,7 +539,7 @@
     The next chapter offers a presentation of the slider's JavaScript API, which allows you to programatically control the slider. Using this API requires some programming knowledge and familiarity with jQuery.
   </p>
 
-  <h3 id="javascript-api">4.3 JavaScript API</h3>
+  <h3 id="javascript-api">2.3 JavaScript API</h3>
 
   <h4 id="methods">Methods</h4>
   <p>
@@ -780,7 +732,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
     </tr>
   </table>
 
-  <h3 id="loading-custom-code-in-files">4.4. Loading custom code in files</h3>
+  <h3 id="loading-custom-code-in-files">2.4. Loading custom code in files</h3>
   <p>
     By default, the code will be loaded inline, not in a
     <i>.css</i>
@@ -809,7 +761,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
     folder in order to avoid the removal of the code when the plugin is updated.
   </p>
 
-  <h2 id="import-and-export-sliders">5. Import and export sliders</h2>
+  <h2 id="import-and-export-sliders">3. Import and export sliders</h2>
 
   <p>
     You can move sliders between
@@ -837,7 +789,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
     installation to see how certain featured are used.
   </p>
 
-  <h2 id="advanced-shortcode-use">6. Advanced shortcode use</h2>
+  <h2 id="advanced-shortcode-use">4. Advanced shortcode use</h2>
 
   <p>
     Not only you can insert sliders into pages using shortcodes, but you can also override settings, add or modify slides. It's even possible to create a slider using only shortcodes, without setting it up in the admin area.
@@ -1034,7 +986,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
     </tbody>
   </table>
 
-  <h2 id="action-and-filter-hooks">7. Action and filter hooks</h2>
+  <h2 id="action-and-filter-hooks">5. Action and filter hooks</h2>
 
   <p>
     Actions allow you to detect when certain actions are performed, while hooks allow to modify the output of the slider.
@@ -1043,7 +995,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
     The information in this chapter is for developers that are familiar with PHP and the WordPress API.
   </p>
 
-  <h3 id="actions">7.1. Actions</h3>
+  <h3 id="actions">5.1. Actions</h3>
 
   <h4 id="">sliderpro_enqueue_scripts</h4>
   <p>
@@ -1069,7 +1021,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
   }
   </pre>
 
-  <h3 id="filters">7.2. Filters</h3>
+  <h3 id="filters">5.2. Filters</h3>
   <p class="note"><strong>Note:</strong> The sliders are cached by default, so applying filters will not have an immediate effect, until the cache is cleared. However, you can disable the caching while testing in order to see your changes immediately. To do this, you need to add the allow_cache="false" attribute to the shortcode: [sliderpro id="3" allow_cache="false"].</p>
   
   <h4 id="sliderpro_default_settings">sliderpro_default_settings</h4>
@@ -1573,7 +1525,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
   }
   </pre>
 
-  <h2 id="deep-linking">8. Deep Linking</h2>
+  <h2 id="deep-linking">6. Deep Linking</h2>
   <p>
     Deep linking provides the possibility to link to a specific slide in the slider. For this, you need to append a hashtag to the original URL of the page. The hashtag will contain the
     <i>id</i>
@@ -1600,7 +1552,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
     </p>
   </p>
 
-  <h2 id="translating-the-plugin">9. Translating the plugin</h2>
+  <h2 id="translating-the-plugin">7. Translating the plugin</h2>
 
   <p>
     There are several tools for translating the plugin's admin text, but I will show you how to do this using
@@ -1620,7 +1572,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
   <a href="assets/images/translation-poedit.png">
     <img src="assets/images/translation-poedit.png"></a>
 
-  <h2 id="adding-videos">10. Adding videos</h2>
+  <h2 id="adding-videos">8. Adding videos</h2>
 
   <p>
     The slider has built-in support for YouTube and Vimeo videos. Other formats, like HTML5 video, VideoJS and SublimeVideo are also supported by adding the correct HTML markup inside a DIV layer. However, for YouTube and Vimeo videos there is a UI that allows you to easily publish such videos.
@@ -1648,19 +1600,14 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
   <a href="assets/images/video-sidebar-panel.png">
     <img src="assets/images/video-sidebar-panel.png"></a>
 
-  <h2 id="troubleshooting">11. Troubleshooting</h2>
-
-  <p class="note">
-    If something doesn't work as expected, the first thing you need is a little patience and the assurance that you have my free assistance for resolving the problem. Please see if the indications below help, and if they don't please kindly email me and I'll gladly help you. You can reach me at the support center: <u><a href="http://support.bqworks.com">support.bqworks.com</a></u> 
-    .
-  </p>
+  <h2 id="troubleshooting">9. Troubleshooting</h2>
 
   <h3>1. The slider doesn't show up on the page</h3>
   <h4>a) JavaScript errors</h4>
   <p>
     First, it's important to check if you have any JavaScript errors on the page that contains the slider. JavaScript errors thrown by other scripts can break all the JavaScript functionality that follows on that page, including the slider. I would like to note that
     <i>Slider Pro</i>
-    follows WordPress development best practices and is actively maintained to make sure it's bug free and works seamlessly. However, when something else (another plugin or theme) breaks in the site, it can affect the slider as well, as mentioned before. Most of the times it's possible to check where the problem comes from, and I will show you 2 methods. If you find the instructions below too complicated, please contact me instead.
+    follows WordPress development best practices and is actively maintained to make sure it's bug free and works seamlessly. However, when something else (another plugin or theme) breaks in the site, it can affect the slider as well, as mentioned before. Most of the times it's possible to check where the problem comes from, and I will show you 2 methods.
   </p>
 
   <h5>FIRST METHOD</h5>
@@ -1671,7 +1618,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
   <p>
     On the left side you will see the error message and on the right side you will see the name/path of the script that contains the error (if the full path of the script is not displayed please hover the text, and the full path should appear). By looking at the path of the script you can identify the theme or plugin that causes the error. If the error comes from another theme or plugin, and not
     <i>Slider Pro</i>
-    , it's best to contact the developer of that theme/plugin, so he can fix the error. If you have difficulties interpreting the data from Console, please try the second method or contact me via the support center and I will be happy to assist you.
+    , it's best to contact the developer of that theme/plugin, so he can fix the error. If you have difficulties interpreting the data from Console, please try the second method.
   </p>
 
   <h5>SECOND METHOD</h5>
@@ -1710,19 +1657,10 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
 &lt;/body&gt;
 </pre>
 
-  <p>
-    If that wasn't the problem either, please contact me via the support center at
-    <a href="http://support.bqworks.com">support.bqworks.com</a>
-    , and I will gladly help you.
-  </p>
-
   <h3>2. The admin area doesn't work</h3>
   <p>
     This is most likely caused by JavaScript errors. Please try the debugging methods suggested above for point
-    <i>a)</i>
-    or submit a support request at
-    <a href="http://support.bqworks.com">support.bqworks.com</a>
-    .
+    <i>a)</i>.
   </p>
 
   <h3>
@@ -1748,7 +1686,7 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
     layers every time it's appropriate and simply use custom CSS to prevent theme influences.
   </p>
 
-  <h2 id="changelog">12. Changelog</h2>
+  <h2 id="changelog">10. Changelog</h2>
 
   <p><strong>v. 4.6.0</strong> (24 October 18)</p>
   <ul>
@@ -1830,82 +1768,76 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
   <div class="main-menu">
     <ul class="menu">
       <li>
-        <a href="#installation">1. Installation</a>
-      </li>
-      <li>
-        <a href="#updating">2. Updating</a>
-      </li>
-      <li>
-        <a href="#creating-and-publishing-sliders">3. Creating and publishing sliders</a>
+        <a href="#creating-and-publishing-sliders">1. Creating and publishing sliders</a>
         <ul class="submenu">
           <li>
-            <a href="#slides">3.1. Slides</a>
+            <a href="#slides">1.1. Slides</a>
           </li>
           <li>
-            <a href="#general-settings">3.2. General settings</a>
+            <a href="#general-settings">1.2. General settings</a>
           </li>
           <li>
-            <a href="#publishing-the-slider">3.3. Publishing the slider</a>
+            <a href="#publishing-the-slider">1.3. Publishing the slider</a>
           </li>
           <li>
-            <a href="#previewing-the-slider">3.4. Previewing the slider</a>
+            <a href="#previewing-the-slider">1.4. Previewing the slider</a>
           </li>
           <li>
-            <a href="#lightbox-slider">3.5. Lightbox slider</a>
+            <a href="#lightbox-slider">1.5. Lightbox slider</a>
           </li>
           <li>
-            <a href="#cache">3.6. Cache</a>
+            <a href="#cache">1.6. Cache</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="#custom-css-and-javascript">4. Custom CSS and JavasSript</a>
+        <a href="#custom-css-and-javascript">2. Custom CSS and JavasSript</a>
         <ul class="submenu">
           <li>
-            <a href="#custom-css">4.1. Custom CSS</a>
+            <a href="#custom-css">2.1. Custom CSS</a>
           </li>
           <li>
-            <a href="#custom-javascript">4.2. Custom JavaScript</a>
+            <a href="#custom-javascript">2.2. Custom JavaScript</a>
           </li>
           <li>
-            <a href="#javascript-api">4.3. JavaScript API</a>
+            <a href="#javascript-api">2.3. JavaScript API</a>
           </li>
           <li>
-            <a href="#loading-custom-code-in-files">4.4. Loading custom code in files</a>
+            <a href="#loading-custom-code-in-files">2.4. Loading custom code in files</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="#import-and-export-sliders">5. Import and export sliders</a>
+        <a href="#import-and-export-sliders">3. Import and export sliders</a>
       </li>
       <li>
-        <a href="#advanced-shortcode-use">6. Advanced shortcode use</a>
+        <a href="#advanced-shortcode-use">4. Advanced shortcode use</a>
       </li>
       <li>
-        <a href="#action-and-filter-hooks">7. Action and filter hooks</a>
+        <a href="#action-and-filter-hooks">5. Action and filter hooks</a>
         <ul class="submenu">
           <li>
-            <a href="#actions">7.1. Actions</a>
+            <a href="#actions">5.1. Actions</a>
           </li>
           <li>
-            <a href="#filters">7.2. Filters</a>
+            <a href="#filters">5.2. Filters</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="#deep-linking">8. Deep Linking</a>
+        <a href="#deep-linking">6. Deep Linking</a>
       </li>
       <li>
-        <a href="#translating-the-plugin">9. Translating the plugin</a>
+        <a href="#translating-the-plugin">7. Translating the plugin</a>
       </li>
       <li>
-        <a href="#adding-videos">10. Adding videos</a>
+        <a href="#adding-videos">8. Adding videos</a>
       </li>
       <li>
-        <a href="#troubleshooting">11. Troubleshooting</a>
+        <a href="#troubleshooting">9. Troubleshooting</a>
       </li>
       <li>
-        <a href="#changelog">12. Changelog</a>
+        <a href="#changelog">10. Changelog</a>
       </li>
     </ul>
   </div>
