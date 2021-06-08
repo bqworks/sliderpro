@@ -217,7 +217,7 @@ class BQW_SliderPro_Activation {
 			update_option( 'sliderpro_version', BQW_SliderPro::VERSION );
 		}
 
-		$wpdb->query( "DELETE FROM " . $prefix . "options WHERE option_name LIKE '%sliderpro_cache%'" );
+		$wpdb->query( "DELETE FROM " . $prefix . "options WHERE option_name LIKE '%sliderpro_cache%' AND NOT option_name = 'sliderpro_cache_expiry_interval'" );
 	}
 	
 	/**
