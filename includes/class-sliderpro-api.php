@@ -13,7 +13,7 @@ class BQW_SliderPro_API {
 	 *
 	 * @var string
 	 */
-	const SLIDER_PRO_API = 'http://api.bqworks.com/slider-pro/';
+	const SLIDER_PRO_API = 'http://api.bqworks.net/slider-pro/';
 
 	/**
 	 * Current class instance.
