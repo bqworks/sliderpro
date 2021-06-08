@@ -4,7 +4,7 @@
 	Plugin Name: Slider Pro
 	Plugin URI:  http://bqworks.net/slider-pro/
 	Description: Elegant and professional sliders.
-	Version:     4.6.0
+	Version:     4.7.0
 	Author:      bqworks
 	Author URI:  http://bqworks.net
 */
@@ -51,8 +51,8 @@ add_action( 'widgets_init', 'bqw_sp_register_widget' );
 if ( is_admin() ) {
 	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-sliderpro-admin.php' );
 	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-sliderpro-updates.php' );
-	require_once( plugin_dir_path( __FILE__ ) . 'includes/class-sliderpro-api.php' );
+	//require_once( plugin_dir_path( __FILE__ ) . 'includes/class-sliderpro-api.php' );
 	add_action( 'plugins_loaded', array( 'BQW_SliderPro_Admin', 'get_instance' ) );
-	add_action( 'plugins_loaded', array( 'BQW_SliderPro_API', 'get_instance' ) );
+	//add_action( 'plugins_loaded', array( 'BQW_SliderPro_API', 'get_instance' ) );
 	add_action( 'admin_init', array( 'BQW_SliderPro_Updates', 'get_instance' ) );
 }
