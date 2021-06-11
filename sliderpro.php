@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Plugin Name: Slider Pro
+	Plugin Name: SliderPro
 	Plugin URI:  http://bqworks.net/slider-pro/
 	Description: Elegant and professional sliders.
 	Version:     4.7.0
