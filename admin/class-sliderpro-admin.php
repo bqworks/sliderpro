@@ -117,12 +117,12 @@ class BQW_SliderPro_Admin {
 			if ( get_option( 'sliderpro_load_unminified_scripts' ) == true ) {
 				wp_enqueue_style( $this->plugin_slug . '-admin-style', plugins_url( 'sliderpro/admin/assets/css/sliderpro-admin.css' ), array(), BQW_SliderPro::VERSION );
 				wp_enqueue_style( $this->plugin_slug . '-plugin-style', plugins_url( 'sliderpro/public/assets/css/slider-pro.css' ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.css' ), array(), BQW_SliderPro::VERSION );
 			} else {
 				wp_enqueue_style( $this->plugin_slug . '-admin-style', plugins_url( 'sliderpro/admin/assets/css/sliderpro-admin.min.css' ), array(), BQW_SliderPro::VERSION );
 				wp_enqueue_style( $this->plugin_slug . '-plugin-style', plugins_url( 'sliderpro/public/assets/css/slider-pro.min.css' ), array(), BQW_SliderPro::VERSION );
-			}
-
-			wp_enqueue_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.css' ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.min.css' ), array(), BQW_SliderPro::VERSION );
+			}			
 
 			if ( get_option( 'sliderpro_is_custom_css') == true ) {
 				if ( get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {
@@ -169,13 +169,13 @@ class BQW_SliderPro_Admin {
 			if ( get_option( 'sliderpro_load_unminified_scripts' ) == true ) {
 				wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'sliderpro/admin/assets/js/sliderpro-admin.js' ), array( 'jquery' ), BQW_SliderPro::VERSION );
 				wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'sliderpro/public/assets/js/jquery.sliderPro.js' ), array( 'jquery' ), BQW_SliderPro::VERSION );
+				wp_enqueue_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.js' ), array(), BQW_SliderPro::VERSION );
 			} else {
 				wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'sliderpro/admin/assets/js/sliderpro-admin.min.js' ), array( 'jquery' ), BQW_SliderPro::VERSION );
 				wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'sliderpro/public/assets/js/jquery.sliderPro.min.js' ), array( 'jquery' ), BQW_SliderPro::VERSION );
+				wp_enqueue_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.min.js' ), array(), BQW_SliderPro::VERSION );
 			}
-
-			wp_enqueue_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.pack.js' ), array(), BQW_SliderPro::VERSION );
-
+			
 			if ( get_option( 'sliderpro_is_custom_js' ) == true && get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {
 				global $blog_id;
 				$file_suffix = '';

@@ -147,11 +147,12 @@ class BQW_SliderPro {
 	public function register_styles() {
 		if ( get_option( 'sliderpro_load_unminified_scripts' ) == true ) {
 			wp_register_style( $this->plugin_slug . '-plugin-style', plugins_url( 'sliderpro/public/assets/css/slider-pro.css' ), array(), self::VERSION );
+			wp_register_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.css' ), array(), self::VERSION );
 		} else {
 			wp_register_style( $this->plugin_slug . '-plugin-style', plugins_url( 'sliderpro/public/assets/css/slider-pro.min.css' ), array(), self::VERSION );
+			wp_register_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.min.css' ), array(), self::VERSION );
 		}
-
-		wp_register_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.css' ), array(), self::VERSION );
+		
 		wp_register_style( $this->plugin_slug . '-lightbox-slider-style', plugins_url( 'sliderpro/public/assets/css/lightbox-slider.css' ), array(), self::VERSION );
 	}
 
@@ -164,12 +165,12 @@ class BQW_SliderPro {
 		if ( get_option( 'sliderpro_load_unminified_scripts' ) == true ) {
 			wp_register_script( $this->plugin_slug . '-plugin-script', plugins_url( 'sliderpro/public/assets/js/jquery.sliderPro.js' ), array( 'jquery' ), self::VERSION );
 			wp_register_script( $this->plugin_slug . '-lightbox-slider-script', plugins_url( 'sliderpro/public/assets/js/lightbox-slider.js' ), array(), self::VERSION );
+			wp_register_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.js' ), array(), self::VERSION );
 		} else {
 			wp_register_script( $this->plugin_slug . '-plugin-script', plugins_url( 'sliderpro/public/assets/js/jquery.sliderPro.min.js' ), array( 'jquery' ), self::VERSION );
 			wp_register_script( $this->plugin_slug . '-lightbox-slider-script', plugins_url( 'sliderpro/public/assets/js/lightbox-slider.min.js' ), array(), self::VERSION );
+			wp_register_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.min.js' ), array(), self::VERSION );
 		}
-		
-		wp_register_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.pack.js' ), array(), self::VERSION );
 	}
 
 	/**
