@@ -1215,15 +1215,6 @@ class BQW_SliderPro_Settings {
 					),
 					'description' => __( 'The plugin can detect the presence of the slider in a post, page or widget, and will automatically load the necessary stylesheets. However, when the slider is loaded in PHP code, like in the theme\'s header or another template file, you need to manually specify where the stylesheets should load. If you load the slider only on the homepage, select <i>On homepage</i>, or if you load it in the header or another section that is visible on multiple pages, select <i>On all pages</i>.' , 'sliderpro' )
 				),
-				'load_custom_css_js' => array(
-					'label' => __( 'Load custom CSS and JavaScript', 'sliderpro' ),
-					'default_value' => 'inline',
-					'available_values' => array(
-						'inline' => __( 'Inline', 'sliderpro' ),
-						'in_files' => __( 'In files', 'sliderpro' )
-					),
-					'description' => __( 'By default, custom CSS and JavaScript code added to the slider will be loaded inline. However, if you want to add large amounts of custom CSS or JavaScript, it\'s better to have the code loaded in files, rather than inline. If you chose to load the custom code in files, after selecting this option, you need to re-save the custom CSS and/or JavaScript and the plugin will automatically create the <i>sliderpro-custom</i> folder inside <i>wp-plugins</i> and then <i>custom.css</i> and <i>custom.js</i> inside <i>sliderpro-custom</i>. You might also be prompted to provide credentials if the files can\'t be created due to folder permission issues.' , 'sliderpro' )
-				),
 				'load_js_in_all_pages' => array(
 					'label' => __( 'Load JS files on all pages', 'sliderpro' ),
 					'default_value' => false,

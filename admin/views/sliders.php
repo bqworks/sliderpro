@@ -17,17 +17,45 @@
 				<li><a href="http://bqworks.net/slider-pro/screencasts/#slider-from-gallery" target="_blank"><?php _e( '3. Create sliders from galleries', 'sliderpro' ); ?></a></li>
 				<li><a href="http://bqworks.net/slider-pro/screencasts/#adding-thumbnails" target="_blank"><?php _e( '4. Adding thumbnails', 'sliderpro' ); ?></a></li>
 				<li><a href="http://bqworks.net/slider-pro/screencasts/#adding-layers" target="_blank"><?php _e( '5. Adding layers', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#custom-css" target="_blank"><?php _e( '6. Adding custom CSS', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#working-with-breakpoints" target="_blank"><?php _e( '7. Working with breakpoints', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#import-export" target="_blank"><?php _e( '8. Import and Export sliders', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#working-with-breakpoints" target="_blank"><?php _e( '6. Working with breakpoints', 'sliderpro' ); ?></a></li>
+				<li><a href="http://bqworks.net/slider-pro/screencasts/#import-export" target="_blank"><?php _e( '7. Import and Export sliders', 'sliderpro' ); ?></a></li>
 			</ul>
 
 			<a href="#" class="getting-started-close">Close</a>
 		</div>
 	<?php
 		}
-	?>
 
+		if ( ( get_option( 'sliderpro_is_custom_css') == true || get_option( 'sliderpro_is_custom_js') == true ) && get_option( 'sliderpro_hide_custom_css_js_warning' ) != true ) {
+	?>
+		<div class="custom-css-js-warning">
+			<h3><?php _e( 'Custom CSS & JS', 'sliderpro' ); ?></h3>
+			<p><?php _e( 'Your sliders contain custom CSS and/or JavaScript. Please move this code in the Wordpress\' CSS editor, in Customize, or a different place. Your current code will still work for now, but you won\'t be able to edit it. You can see your custom CSS/JS below.', 'sliderpro' )?></p>
+			<?php
+			if ( get_option( 'sliderpro_is_custom_css') == true ) {
+			?>
+			<div class="custom-css-js-warning-code">
+				<h4> <?php _e( 'Custom CSS', 'sliderpro' ); ?></h4>
+				<textarea><?php echo stripslashes( get_option( 'sliderpro_custom_css' ) ); ?></textarea>
+			</div>
+			<?php
+			}
+
+			if ( get_option( 'sliderpro_is_custom_js') == true ) {
+			?>
+			<div class="custom-css-js-warning-code">
+				<h4><?php _e( 'Custom JS', 'sliderpro' ); ?></h4>
+				<textarea><?php echo stripslashes( get_option( 'sliderpro_custom_js' ) ); ?></textarea>
+			</div>
+			<?php
+			}
+			?>
+			<a href="#" class="custom-css-js-warning-close"><?php _e( 'Don\'t show this again.', 'sliderpro' ); ?></a>
+		</div>
+	<?php
+		}
+	?>
+	
 	<table class="widefat sliders-list">
 	<thead>
 	<tr>

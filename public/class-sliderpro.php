@@ -410,16 +410,7 @@ class BQW_SliderPro {
 			wp_enqueue_style( $this->plugin_slug . '-plugin-style' );
 
 			if ( get_option( 'sliderpro_is_custom_css') == true ) {
-				if ( get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {
-					$custom_css_path = plugins_url( 'sliderpro-custom/custom.css' );
-					$custom_css_dir_path = WP_PLUGIN_DIR . '/sliderpro-custom/custom.css';
-
-					if ( file_exists( $custom_css_dir_path ) ) {
-						wp_enqueue_style( $this->plugin_slug . '-plugin-custom-style', $custom_css_path, array(), self::VERSION );
-					}
-				} else {
-					wp_add_inline_style( $this->plugin_slug . '-plugin-style', stripslashes( get_option( 'sliderpro_custom_css' ) ) );
-				}
+				wp_add_inline_style( $this->plugin_slug . '-plugin-style', stripslashes( get_option( 'sliderpro_custom_css' ) ) );
 			}
 
 			do_action( 'sliderpro_enqueue_styles' );
@@ -439,16 +430,6 @@ class BQW_SliderPro {
 			return;
 		} else if ( empty( $this->scripts_to_load ) && $load_js_in_all_pages == true ) {
 			$this->add_script_to_load( $this->plugin_slug . '-plugin-script' );
-		}
-
-		if ( get_option( 'sliderpro_is_custom_js' ) == true && get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {
-			$custom_js_path = plugins_url( 'sliderpro-custom/custom.js' );
-			$custom_js_dir_path = WP_PLUGIN_DIR . '/sliderpro-custom/custom.js';
-
-			if ( file_exists( $custom_js_dir_path ) ) {
-				wp_register_script( $this->plugin_slug . '-plugin-custom-script', $custom_js_path, array(), self::VERSION );
-				$this->add_script_to_load( $this->plugin_slug . '-plugin-custom-script' );
-			}
 		}
 
 		foreach ( $this->scripts_to_load as $key => $value ) {
@@ -478,7 +459,7 @@ class BQW_SliderPro {
 					"\r\n" . '	jQuery( document ).ready(function( $ ) {' .
 					$this->js_output;
 
-		if ( get_option( 'sliderpro_is_custom_js' ) == true && get_option( 'sliderpro_load_custom_css_js' ) !== 'in_files' ) {
+		if ( get_option( 'sliderpro_is_custom_js' ) ) {
 			$custom_js = "\r\n" . '	' . stripslashes( get_option( 'sliderpro_custom_js' ) );
 
 			$inline_js .= $custom_js;

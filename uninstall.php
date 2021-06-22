@@ -39,6 +39,8 @@ function bqw_sliderpro_delete_all_data() {
 	delete_option( 'sliderpro_load_unminified_scripts' );
 	delete_option( 'sliderpro_hide_inline_info' );
 	delete_option( 'sliderpro_hide_getting_started_info' );
+	delete_option( 'sliderpro_hide_custom_css_js_warning' );
+	delete_option( 'sliderpro_hide_image_size_warning' );
 	delete_option( 'sliderpro_cache_expiry_interval' );
 	delete_option( 'sliderpro_access' );
 	delete_option( 'sliderpro_version' );

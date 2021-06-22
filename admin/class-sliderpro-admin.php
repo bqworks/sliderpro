@@ -82,6 +82,7 @@ class BQW_SliderPro_Admin {
 		add_action( 'wp_ajax_sliderpro_clear_all_cache', array( $this, 'ajax_clear_all_cache' ) );
 		add_action( 'wp_ajax_sliderpro_close_getting_started', array( $this, 'ajax_close_getting_started' ) );
 		add_action( 'wp_ajax_sliderpro_close_image_size_warning', array( $this, 'ajax_close_image_size_warning' ) );
+		add_action( 'wp_ajax_sliderpro_close_custom_css_js_warning', array( $this, 'ajax_close_custom_css_js_warning' ) );
 	}
 
 	/**
@@ -125,23 +126,7 @@ class BQW_SliderPro_Admin {
 			}			
 
 			if ( get_option( 'sliderpro_is_custom_css') == true ) {
-				if ( get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {
-					global $blog_id;
-					$file_suffix = '';
-
-					if ( ! is_main_site( $blog_id ) ) {
-						$file_suffix = '-' . $blog_id;
-					}
-
-					$custom_css_path = plugins_url( 'sliderpro-custom/custom' . $file_suffix . '.css' );
-					$custom_css_dir_path = WP_PLUGIN_DIR . '/sliderpro-custom/custom' . $file_suffix . '.css';
-
-					if ( file_exists( $custom_css_dir_path ) ) {
-						wp_enqueue_style( $this->plugin_slug . '-plugin-custom-style', $custom_css_path, array(), BQW_SliderPro::VERSION );
-					}
-				} else {
-					wp_add_inline_style( $this->plugin_slug . '-plugin-style', stripslashes( get_option( 'sliderpro_custom_css' ) ) );
-				}
+				wp_add_inline_style( $this->plugin_slug . '-plugin-style', stripslashes( get_option( 'sliderpro_custom_css' ) ) );
 			}
 		}
 	}
@@ -174,22 +159,6 @@ class BQW_SliderPro_Admin {
 				wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'admin/assets/js/sliderpro-admin.min.js', dirname( __FILE__ ) ), array( 'jquery' ), BQW_SliderPro::VERSION );
 				wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'public/assets/js/jquery.sliderPro.min.js', dirname( __FILE__ ) ), array( 'jquery' ), BQW_SliderPro::VERSION );
 				wp_enqueue_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'public/assets/libs/fancybox/jquery.fancybox.min.js', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
-			}
-			
-			if ( get_option( 'sliderpro_is_custom_js' ) == true && get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {
-				global $blog_id;
-				$file_suffix = '';
-
-				if ( ! is_main_site( $blog_id ) ) {
-					$file_suffix = '-' . $blog_id;
-				}
-
-				$custom_js_path = plugins_url( 'sliderpro-custom/custom' . $file_suffix . '.js' );
-				$custom_js_dir_path = WP_PLUGIN_DIR . '/sliderpro-custom/custom' . $file_suffix . '.js';
-
-				if ( file_exists( $custom_js_dir_path ) ) {
-					wp_enqueue_script( $this->plugin_slug . '-plugin-custom-script', $custom_js_path, array(), BQW_SliderPro::VERSION );
-				}
 			}
 
 			$id = isset( $_GET['id'] ) ? $_GET['id'] : -1;
@@ -260,17 +229,6 @@ class BQW_SliderPro_Admin {
 				$access,
 				$this->plugin_slug . '-new',
 				array( $this, 'render_new_slider_page' )
-			);
-		}
-
-		if ( ! in_array( $this->plugin_slug . '-custom', $restricted_pages ) ) {
-			$this->plugin_screen_hook_suffixes[] = add_submenu_page(
-				$this->plugin_slug,
-				__( 'Custom CSS and JavaScript', $this->plugin_slug ),
-				__( 'Custom CSS & JS', $this->plugin_slug ),
-				$access,
-				$this->plugin_slug . '-custom',
-				array( $this, 'render_custom_css_js_page' )
 			);
 		}
 
@@ -353,51 +311,6 @@ class BQW_SliderPro_Admin {
 	}
 
 	/**
-	 * Renders the custom CSS and JavaScript page.
-	 *
-	 * It also checks if new data was posted, and saves
-	 * it in the options table.
-	 * 
-	 * @since 4.0.0
-	 */
-	public function render_custom_css_js_page() {
-		$custom_css = get_option( 'sliderpro_custom_css', '' );
-		$custom_js = get_option( 'sliderpro_custom_js', '' );
-
-		if ( isset( $_POST['custom_css_update'] ) || isset( $_POST['custom_js_update'] ) ) {
-			check_admin_referer( 'custom-css-js-update', 'custom-css-js-nonce' );
-
-			if ( isset( $_POST['custom_css'] ) ) {
-				$custom_css = $_POST['custom_css'];
-				update_option( 'sliderpro_custom_css', $custom_css );
-
-				if ( $custom_css !== '' ) {
-					update_option( 'sliderpro_is_custom_css', true );
-				} else {
-					update_option( 'sliderpro_is_custom_css', false );
-				}
-			}
-
-			if ( isset( $_POST['custom_js'] ) ) {
-				$custom_js = $_POST['custom_js'];
-				update_option( 'sliderpro_custom_js', $custom_js );
-
-				if ( $custom_js !== '' ) {
-					update_option( 'sliderpro_is_custom_js', true );
-				} else {
-					update_option( 'sliderpro_is_custom_js', false );
-				}
-			}
-
-			if ( get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {
-				$this->save_custom_css_js_in_files( $custom_css, $custom_js );
-			}
-		}
-
-		include_once( 'views/custom-css-js.php' );
-	}
-
-	/**
 	 * Renders the plugin settings page.
 	 *
 	 * It also checks if new data was posted, and saves
@@ -408,7 +321,6 @@ class BQW_SliderPro_Admin {
 	public function render_plugin_settings_page() {
 		$plugin_settings = BQW_SliderPro_Settings::getPluginSettings();
 		$load_stylesheets = get_option( 'sliderpro_load_stylesheets', $plugin_settings['load_stylesheets']['default_value'] );
-		$load_custom_css_js = get_option( 'sliderpro_load_custom_css_js', $plugin_settings['load_custom_css_js']['default_value'] );
 		$load_js_in_all_pages = get_option( 'sliderpro_load_js_in_all_pages', $plugin_settings['load_js_in_all_pages']['default_value'] );
 		$load_unminified_scripts = get_option( 'sliderpro_load_unminified_scripts', $plugin_settings['load_unminified_scripts']['default_value'] );
 		$cache_expiry_interval = get_option( 'sliderpro_cache_expiry_interval', $plugin_settings['cache_expiry_interval']['default_value'] );
@@ -424,11 +336,6 @@ class BQW_SliderPro_Admin {
 			if ( isset( $_POST['load_stylesheets'] ) ) {
 				$load_stylesheets = $_POST['load_stylesheets'];
 				update_option( 'sliderpro_load_stylesheets', $load_stylesheets );
-			}
-
-			if ( isset( $_POST['load_custom_css_js'] ) ) {
-				$load_custom_css_js = $_POST['load_custom_css_js'];
-				update_option( 'sliderpro_load_custom_css_js', $load_custom_css_js );
 			}
 
 			if ( isset( $_POST['load_js_in_all_pages'] ) ) {
@@ -497,49 +404,6 @@ class BQW_SliderPro_Admin {
 	 */
 	public function render_documentation_page() {
 		echo '<iframe class="sliderpro-documentation" src="' . plugins_url( 'documentation/documentation.html', dirname( __FILE__ ) ) . '" width="100%" height="100%"></iframe>';
-	}
-
-	/**
-	 * Add the custom CSS and JS in files, using the WP Filesystem API.
-	 *
-	 * @since 4.0.0
-	 * 
-	 * @param  string $custom_css The custom CSS.
-	 * @param  string $custom_js  The custom JavaScript.
-	 */
-	private function save_custom_css_js_in_files ( $custom_css, $custom_js ) {
-		$url = wp_nonce_url( 'admin.php?page=sliderpro-custom', 'custom-css-js-update', 'custom-css-js-nonce' );
-		$context = WP_PLUGIN_DIR;
-
-		// get the credentials and if there aren't any credentials stored,
-		// display a form for the user to provide the credentials
-		if ( ( $credentials = request_filesystem_credentials( $url, '', false, $context, null ) ) === false  ) {			
-			return;
-		}
-
-		// check the credentials if they are valid
-		// if they aren't, display the form again
-		if ( ! WP_Filesystem( $credentials, $context ) ) {
-			request_filesystem_credentials( $url, '', true, $context, null );
-			return;
-		}
-
-		global $wp_filesystem;
-
-		// create the 'sliderpro-custom' folder if it doesn't exist
-		if ( ! $wp_filesystem->exists( $context . '/sliderpro-custom' ) ) {
-			$wp_filesystem->mkdir( $context . '/sliderpro-custom' );
-		}
-
-		global $blog_id;
-		$file_suffix = '';
-
-		if ( ! is_main_site( $blog_id ) ) {
-			$file_suffix = '-' . $blog_id;
-		}
-
-		$wp_filesystem->put_contents( $context . '/sliderpro-custom/custom' . $file_suffix . '.css', stripslashes( $custom_css ), FS_CHMOD_FILE );
-		$wp_filesystem->put_contents( $context . '/sliderpro-custom/custom' . $file_suffix . '.js', stripslashes( $custom_js ), FS_CHMOD_FILE );
 	}
 
 	/**
@@ -1421,6 +1285,17 @@ class BQW_SliderPro_Admin {
 	 */
 	public function ajax_close_getting_started() {
 		update_option( 'sliderpro_hide_getting_started_info', true );
+
+		die();
+	}
+
+	/**
+	 * AJAX call for closing the Custom CSS & JS warning box.
+	 *
+	 * @since 4.7.0
+	 */
+	public function ajax_close_custom_css_js_warning() {
+		update_option( 'sliderpro_hide_custom_css_js_warning', true );
 
 		die();
 	}

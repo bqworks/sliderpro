@@ -257,6 +257,18 @@
 					data: { action: 'sliderpro_close_getting_started' }
 				});
 			});
+
+			$( '.custom-css-js-warning-close' ).click(function( event ) {
+				event.preventDefault();
+
+				$( '.custom-css-js-warning' ).hide();
+
+				$.ajax({
+					url: sp_js_vars.ajaxurl,
+					type: 'post',
+					data: { action: 'sliderpro_close_custom_css_js_warning' }
+				});
+			});
 		},
 
 		/**
@@ -1679,7 +1691,16 @@
 				if ( typeof mainImageSource !== 'undefined' && mainImageSource !== '' ) {
 					$( '<img src="' + mainImageSource + '" />' ).appendTo( slidePreview );
 					this.resizeImage();
-				} else {
+				} else if ( this.data.layers.length !== 0 ) {
+					$.each( this.data.layers, function( index, layer ) {
+						if ( layer.type === 'video' && layer.video_poster !== '' ) {
+							$( '<img src="' + layer.video_poster + '" />' ).appendTo( slidePreview );
+							return false;
+						}
+					});
+				}
+
+				if ( slidePreview.find( 'img' ).length === 0 ) {
 					$( '<p class="no-image">' + sp_js_vars.no_image + '</p>' ).appendTo( slidePreview );
 				}
 
@@ -2834,6 +2855,8 @@
 			});
 
 			this.currentSlide.setData( 'layers', data );
+
+			this.currentSlide.updateSlidePreview();
 		},
 
 		/**
