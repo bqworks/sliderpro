@@ -30,7 +30,7 @@ class BQW_SP_Video_Layer_Renderer extends BQW_SP_Layer_Renderer {
 		$video_poster = isset( $this->data['video_poster'] ) && $this->data['video_poster'] !== '' ? $this->data['video_poster'] : '';
 		$video_retina_poster = isset( $this->data['video_retina_poster'] ) && $this->data['video_retina_poster'] !== '' ? ' data-retina="' . esc_attr( $this->data['video_retina_poster'] ) . '"' : '';
 
-		$poster_src = $this->lazy_loading === true ? ' src="' . plugins_url( 'sliderpro/public/assets/css/images/blank.gif' ) . '" data-src="' . esc_attr( $video_poster ) . '"' : ' src="' . esc_attr( $video_poster ) . '"';
+		$poster_src = $this->lazy_loading === true ? ' src="' . plugins_url( 'public/assets/css/images/blank.gif', dirname( __FILE__ ) ) . '" data-src="' . esc_attr( $video_poster ) . '"' : ' src="' . esc_attr( $video_poster ) . '"';
 
 		$video_html = '';
 

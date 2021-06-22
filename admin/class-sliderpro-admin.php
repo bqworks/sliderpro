@@ -115,13 +115,13 @@ class BQW_SliderPro_Admin {
 
 		if ( in_array( $screen->id, $this->plugin_screen_hook_suffixes ) ) {
 			if ( get_option( 'sliderpro_load_unminified_scripts' ) == true ) {
-				wp_enqueue_style( $this->plugin_slug . '-admin-style', plugins_url( 'sliderpro/admin/assets/css/sliderpro-admin.css' ), array(), BQW_SliderPro::VERSION );
-				wp_enqueue_style( $this->plugin_slug . '-plugin-style', plugins_url( 'sliderpro/public/assets/css/slider-pro.css' ), array(), BQW_SliderPro::VERSION );
-				wp_enqueue_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.css' ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_style( $this->plugin_slug . '-admin-style', plugins_url( 'admin/assets/css/sliderpro-admin.css', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_style( $this->plugin_slug . '-plugin-style', plugins_url( 'public/assets/css/slider-pro.css', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'public/assets/libs/fancybox/jquery.fancybox.css', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
 			} else {
-				wp_enqueue_style( $this->plugin_slug . '-admin-style', plugins_url( 'sliderpro/admin/assets/css/sliderpro-admin.min.css' ), array(), BQW_SliderPro::VERSION );
-				wp_enqueue_style( $this->plugin_slug . '-plugin-style', plugins_url( 'sliderpro/public/assets/css/slider-pro.min.css' ), array(), BQW_SliderPro::VERSION );
-				wp_enqueue_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.min.css' ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_style( $this->plugin_slug . '-admin-style', plugins_url( 'admin/assets/css/sliderpro-admin.min.css', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_style( $this->plugin_slug . '-plugin-style', plugins_url( 'public/assets/css/slider-pro.min.css', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_style( $this->plugin_slug . '-lightbox-style', plugins_url( 'public/assets/libs/fancybox/jquery.fancybox.min.css', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
 			}			
 
 			if ( get_option( 'sliderpro_is_custom_css') == true ) {
@@ -167,13 +167,13 @@ class BQW_SliderPro_Admin {
 			}
 			
 			if ( get_option( 'sliderpro_load_unminified_scripts' ) == true ) {
-				wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'sliderpro/admin/assets/js/sliderpro-admin.js' ), array( 'jquery' ), BQW_SliderPro::VERSION );
-				wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'sliderpro/public/assets/js/jquery.sliderPro.js' ), array( 'jquery' ), BQW_SliderPro::VERSION );
-				wp_enqueue_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.js' ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'admin/assets/js/sliderpro-admin.js', dirname( __FILE__ ) ), array( 'jquery' ), BQW_SliderPro::VERSION );
+				wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'public/assets/js/jquery.sliderPro.js', dirname( __FILE__ ) ), array( 'jquery' ), BQW_SliderPro::VERSION );
+				wp_enqueue_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'public/assets/libs/fancybox/jquery.fancybox.js', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
 			} else {
-				wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'sliderpro/admin/assets/js/sliderpro-admin.min.js' ), array( 'jquery' ), BQW_SliderPro::VERSION );
-				wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'sliderpro/public/assets/js/jquery.sliderPro.min.js' ), array( 'jquery' ), BQW_SliderPro::VERSION );
-				wp_enqueue_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'sliderpro/public/assets/libs/fancybox/jquery.fancybox.min.js' ), array(), BQW_SliderPro::VERSION );
+				wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'admin/assets/js/sliderpro-admin.min.js', dirname( __FILE__ ) ), array( 'jquery' ), BQW_SliderPro::VERSION );
+				wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'public/assets/js/jquery.sliderPro.min.js', dirname( __FILE__ ) ), array( 'jquery' ), BQW_SliderPro::VERSION );
+				wp_enqueue_script( $this->plugin_slug . '-lightbox-script', plugins_url( 'public/assets/libs/fancybox/jquery.fancybox.min.js', dirname( __FILE__ ) ), array(), BQW_SliderPro::VERSION );
 			}
 			
 			if ( get_option( 'sliderpro_is_custom_js' ) == true && get_option( 'sliderpro_load_custom_css_js' ) === 'in_files' ) {
@@ -197,7 +197,7 @@ class BQW_SliderPro_Admin {
 			wp_localize_script( $this->plugin_slug . '-admin-script', 'sp_js_vars', array(
 				'admin' => admin_url( 'admin.php' ),
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'plugin' => plugins_url( 'sliderpro' ),
+				'plugin' => plugins_url( '', dirname( __FILE__ ) ),
 				'page' => isset( $_GET['page'] ) && ( $_GET['page'] === 'sliderpro-new' || ( isset( $_GET['id'] ) && isset( $_GET['action'] ) && $_GET['action'] === 'edit' ) ) ? 'single' : 'all',
 				'id' => $id,
 				'lad_nonce' => wp_create_nonce( 'load-slider-data' . $id ),
@@ -238,7 +238,7 @@ class BQW_SliderPro_Admin {
 			$access,
 			$this->plugin_slug,
 			array( $this, 'render_slider_page' ),
-			plugins_url( '/sliderpro/admin/assets/css/images/sp-icon.png' )
+			plugins_url( 'admin/assets/css/images/sp-icon.png', dirname( __FILE__ ) )
 		);
 
 		if ( ! in_array( $this->plugin_slug, $restricted_pages ) ) {
@@ -496,7 +496,7 @@ class BQW_SliderPro_Admin {
 	 * @since 4.0.0
 	 */
 	public function render_documentation_page() {
-		echo '<iframe class="sliderpro-documentation" src="' . plugins_url( 'sliderpro/documentation/documentation.html' ) . '" width="100%" height="100%"></iframe>';
+		echo '<iframe class="sliderpro-documentation" src="' . plugins_url( 'documentation/documentation.html', dirname( __FILE__ ) ) . '" width="100%" height="100%"></iframe>';
 	}
 
 	/**

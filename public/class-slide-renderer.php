@@ -201,7 +201,7 @@ class BQW_SP_Slide_Renderer {
 	 * @return string HTML markup
 	 */
 	protected function create_main_image() {
-		$main_image_source = $this->lazy_loading === true ? ' src="' . plugins_url( 'sliderpro/public/assets/css/images/blank.gif' ) . '" data-src="' . esc_attr( $this->data['main_image_source'] ) . '"' : ' src="' . esc_attr( $this->data['main_image_source'] ) . '"';
+		$main_image_source = $this->lazy_loading === true ? ' src="' . plugins_url( 'public/assets/css/images/blank.gif', dirname( __FILE__ ) ) . '" data-src="' . esc_attr( $this->data['main_image_source'] ) . '"' : ' src="' . esc_attr( $this->data['main_image_source'] ) . '"';
 		$main_image_alt = isset( $this->data['main_image_alt'] ) && $this->data['main_image_alt'] !== '' ? ' alt="' . esc_attr( $this->data['main_image_alt'] ) . '"' : '';
 		$main_image_title = isset( $this->data['main_image_title'] ) && $this->data['main_image_title'] !== '' && $this->hide_image_title === false ? ' title="' . esc_attr( $this->data['main_image_title'] ) . '"' : '';
 		$main_image_retina_source = isset( $this->data['main_image_retina_source'] ) && $this->data['main_image_retina_source'] !== '' ? ' data-retina="' . esc_attr( $this->data['main_image_retina_source'] ) . '"' : '';
@@ -330,7 +330,7 @@ class BQW_SP_Slide_Renderer {
 			}
 		}
 
-		$thumbnail_source = $this->lazy_loading === true ? ' src="' . plugins_url( 'sliderpro/public/assets/css/images/blank.gif' ) . '" data-src="' . esc_attr( $thumbnail_source ) . '"' : ' src="' . esc_attr( $thumbnail_source ) . '"';
+		$thumbnail_source = $this->lazy_loading === true ? ' src="' . plugins_url( 'public/assets/css/images/blank.gif', dirname( __FILE__ ) ) . '" data-src="' . esc_attr( $thumbnail_source ) . '"' : ' src="' . esc_attr( $thumbnail_source ) . '"';
 		$thumbnail_alt = isset( $this->data['thumbnail_alt'] ) && $this->data['thumbnail_alt'] !== '' ? ' alt="' . esc_attr( $this->data['thumbnail_alt'] ) . '"' : '';
 		$thumbnail_title = isset( $this->data['thumbnail_title'] ) && $this->data['thumbnail_title'] !== '' && $this->hide_image_title === false ? ' title="' . esc_attr( $this->data['thumbnail_title'] ) . '"' : '';
 		$thumbnail_retina_source = isset( $this->data['thumbnail_retina_source'] ) && $this->data['thumbnail_retina_source'] !== '' ? ' data-retina="' . esc_attr( $this->data['thumbnail_retina_source'] ) . '"' : '';
