@@ -30,6 +30,7 @@ All sliders page
 .sliders-pagination .selected-page {
 	color: #0073AA;
 	border: none;
+	pointer-events: none;
 }
 
 .inline-info {
