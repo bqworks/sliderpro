@@ -585,9 +585,9 @@
 
 						if ( $settingField.attr( 'type' ) === 'checkbox' ) {
 							if ( value === true ) {
-								$settingField.attr( 'checked', 'checked' );
+								$settingField.prop( 'checked', true );
 							} else if ( value === false ) {
-								$settingField.removeAttr( 'checked' );
+								$settingField.prop( 'checked', false );
 							}
 						} else {
 							$settingField.val( value );
@@ -4343,9 +4343,9 @@
 
 			this.$multiCheckContent.find( '.single-check' ).on( 'change.multiCheck', function() {
 				if ( $( this ).is( ':checked' ) ) {
-					$( this ).data( 'option' ).attr( 'selected', 'selected' );
+					$( this ).data( 'option' ).prop( 'selected', true );
 				} else {
-					$( this ).data( 'option' ).removeAttr( 'selected' );
+					$( this ).data( 'option' ).prop( 'selected', false );
 				}
 
 				that.$select.trigger( 'change' );
