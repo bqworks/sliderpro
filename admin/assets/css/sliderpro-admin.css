@@ -526,31 +526,21 @@ Single slider page
 }
 
 .modal-window-container {
-	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	margin-top: 32px;
 	z-index: 10000;
-	text-align: center;
-}
-
-.modal-window-container:before {
-	content: '';
-	display: inline-block;
-	height: 100%;
-	vertical-align: middle;
-	margin-right: -0.25em;
 }
 
 .modal-window {
 	position: relative;
-	display: inline-block;
-	vertical-align: middle;
 	padding: 30px;
 	background-color: #FFF;
-	text-align: left;
 }
 
 .close-x {
