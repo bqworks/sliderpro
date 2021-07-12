@@ -28,8 +28,9 @@ All sliders page
 }
 
 .sliders-pagination .selected-page {
-	color: #0073AA;
-	border: none;
+	color: #FFF;
+	background-color: #0073AA;
+	border-color: #0073AA;
 	pointer-events: none;
 }
 
