@@ -64,12 +64,18 @@ When you select an image from the Media Library, in the right columns, under 'AT
 
 == Screenshots ==
 
-1. The list with all the created sliders.
-2. The user interface for creating and editing a slider.
-3. The preview window in the admin area.
+1. Slider with text thumbnails and animated layers.
+2. Slider with carousel layout and captions.
+3. Slider with image thumbnails.
+4. Slider with mixed content.
+5. Slider with right-side thumbnails.
+6. The admin interface for creating and editing a slider.
+7. The preview window in the admin area.
+8. The layer editor in the admin area.
+9. The main image editor in the admin area.
+10. Adding dynamic tags for sliders generated from posts.
 
 == Changelog ==
 
 = 4.7.0 =
 * initial release on WordPress.org
-* fix styling for sidebar panels
