@@ -946,9 +946,9 @@ class BQW_SliderPro_Admin {
 		$layer_default_settings = BQW_SliderPro_Settings::getLayerSettings();
 		$layer = array();
 		$layer_id = intval( $_POST['id'] );
-		$layer_type = isset( $_POST['type'] ) && in_array( $_POST['type'], $layer_default_settings['type']['available_values'] ) ? $layer_type : $layer_default_settings['type']['default_value'];
+		$layer_type = isset( $_POST['type'] ) && array_key_exists( $_POST['type'], $layer_default_settings['type']['available_values'] ) ? $_POST['type'] : $layer_default_settings['type']['default_value'];
 		$layer_settings;
-
+		
 		if ( isset( $_POST['settings'] ) ) {
 			$layer_settings = BQW_SliderPro_Validation::validate_layer_settings( json_decode( stripslashes( $_POST['settings'] ), true ) );
 		}
