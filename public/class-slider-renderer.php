@@ -140,7 +140,7 @@ class BQW_SP_Slider_Renderer {
 			$height .= 'px';
 		}
 
-		$this->html_output .= "\r\n" . '<div id="' . $this->idAttribute . '" class="' . $classes . '" style="width: ' . $width . '; height: ' . $height . ';">';
+		$this->html_output .= "\r\n" . '<div id="' . esc_attr( $this->idAttribute ) . '" class="' . esc_attr( $classes ) . '" style="width: ' . floatval( $width ) . '; height: ' . floatval( $height ) . ';">';
 		$this->html_output .= "\r\n" . '	<div class="sp-slides">';
 		$this->html_output .= "\r\n" . '		' . $slides_html;
 		$this->html_output .= "\r\n" . '	</div>';
@@ -244,8 +244,10 @@ class BQW_SP_Slider_Renderer {
 
 				if ( is_bool( $setting_value ) ) {
 					$setting_value = $setting_value === true ? 'true' : 'false';
-				} else if ( is_numeric( $setting_value ) === false ) {
-					$setting_value = "'" . $setting_value . "'";
+				} else if ( is_numeric( $setting_value ) ) {
+					$setting_value = floatval( $setting_value );
+				} else {
+					$setting_value = json_encode( $setting_value );
 				}
 
 				$settings_js .= "\r\n" . '			' . $setting['js_name'] . ': ' . $setting_value;
@@ -278,8 +280,10 @@ class BQW_SP_Slider_Renderer {
 
 						if ( is_bool( $value ) ) {
 							$value = $value === true ? 'true' : 'false';
-						} else if ( is_numeric( $value ) === false ) {
-							$value = "'" . $value . "'";
+						} else if ( is_numeric( $value ) ) {
+							$value = floatval( $value );
+						} else {
+							$value = json_encode( $value );
 						}
 
 						$breakpoint_setting_js .= "\r\n" . '					' . $this->default_settings[ $name ]['js_name'] . ': ' . $value;
@@ -318,8 +322,10 @@ class BQW_SP_Slider_Renderer {
 
 					if ( is_bool( $lightbox_option_value ) ) {
 						$lightbox_option_value = $lightbox_option_value === true ? 'true' : 'false';
-					} else if ( is_numeric( $lightbox_option_value ) === false ) {
-						$lightbox_option_value = "'" . $lightbox_option_value . "'";
+					} else if ( is_numeric( $lightbox_option_value ) ) {
+						$lightbox_option_value = floatval( $lightbox_option_value );
+					} else {
+						$lightbox_option_value = json_encode( $lightbox_option_value );
 					}
 
 					$lightbox_options_string .= ', ' . $key . ': ' . $lightbox_option_value;

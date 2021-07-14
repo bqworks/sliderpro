@@ -87,7 +87,7 @@
                                 echo '<select id="slider-setting-presets" name="slider-setting-presets" class="slider-setting-presets">';
 
                                 foreach ( $presets as $preset_name => $preset_settings ) {
-                                    echo '<option value="' . $preset_name . '"' . '>' . $preset_name . '</option>';
+                                    echo '<option value="' . esc_attr( $preset_name ) . '"' . '>' . esc_html( $preset_name ) . '</option>';
                                 }
 
                                 echo '</select>';

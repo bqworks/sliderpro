@@ -7,7 +7,7 @@
 			<div class="image-loader">
 				<?php
 					if ( isset( $data['thumbnail_source'] ) && $data['thumbnail_source'] !== '' ) {
-						echo '<img src="' . $data['thumbnail_source'] . '" />';
+						echo '<img src="' . esc_url( $data['thumbnail_source'] ) . '" />';
 					} else {
 						echo '<p class="no-image">' . __( 'Click to add image', 'sliderpro' ) . '</p>';
 					}

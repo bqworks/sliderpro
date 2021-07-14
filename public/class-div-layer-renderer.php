@@ -26,7 +26,7 @@ class BQW_SP_Div_Layer_Renderer extends BQW_SP_Layer_Renderer {
 		$content = isset( $this->data['text'] ) ? $this->data['text'] : '';
 		$content = apply_filters( 'sliderpro_layer_content', $content );
 
-		$html_output = "\r\n" . '			' . '<div class="' .  $this->get_classes() . '"' . $this->get_attributes() . '>' . $content . '</div>';
+		$html_output = "\r\n" . '			' . '<div class="' .  esc_attr( $this->get_classes() ) . '"' . $this->get_attributes() . '>' . wp_kses_post( $content ) . '</div>';
 
 		$html_output = do_shortcode( $html_output );
 		$html_output = apply_filters( 'sliderpro_layer_markup', $html_output, $this->slider_id, $this->slide_index );

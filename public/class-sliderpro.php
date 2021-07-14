@@ -298,7 +298,7 @@ class BQW_SliderPro {
 			}
 		}
 
-		return $slider;
+		return BQW_SliderPro_Validation::validate_slider_data( $slider );
 	}
 
 	/**
@@ -513,7 +513,7 @@ class BQW_SliderPro {
 		}
 
 		// get the id specified in the shortcode
-		$id = isset( $atts['id'] ) ? $atts['id'] : -1;
+		$id = isset( $atts['id'] ) ? intval( $atts['id'] ) : -1;
 
 		// check whether cache is allowed
 		$allow_cache = ( isset( $atts['allow_cache'] ) && $atts['allow_cache'] === 'false' ) ? false : true;

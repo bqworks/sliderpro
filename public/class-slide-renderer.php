@@ -129,7 +129,7 @@ class BQW_SP_Slide_Renderer {
 		$classes = 'sp-slide';
 		$classes = apply_filters( 'sliderpro_slide_classes' , $classes, $this->slider_id, $this->slide_index );
 
-		$this->html_output = "\r\n" . '		<div class="' . $classes . '">';
+		$this->html_output = "\r\n" . '		<div class="' . esc_attr( $classes ) . '">';
 
 		if ( $this->has_main_image() ) {
 			$this->html_output .= "\r\n" . '			' . ( $this->has_main_image_link() ? $this->add_link_to_main_image( $this->create_main_image() ) : $this->create_main_image() );
@@ -151,7 +151,7 @@ class BQW_SP_Slide_Renderer {
 			$classes = "sp-thumbnail";
 			$classes = apply_filters( 'sliderpro_thumbnail_classes', $classes, $this->slider_id, $this->slide_index );
 
-			$this->html_output .= "\r\n" . '			' . '<div class="' . $classes . '">' . $thumbnail_content . "\r\n" . '			' . '</div>';
+			$this->html_output .= "\r\n" . '			' . '<div class="' . esc_attr( $classes ) . '">' . $thumbnail_content . "\r\n" . '			' . '</div>';
 		} else {
 			$this->html_output .= "\r\n" . '			' . $thumbnail_image;
 		}
@@ -160,11 +160,11 @@ class BQW_SP_Slide_Renderer {
 			$classes = "sp-caption";
 			$classes = apply_filters( 'sliderpro_caption_classes', $classes, $this->slider_id, $this->slide_index );
 			
-			$this->html_output .= "\r\n" . '			<div class="' . $classes . '">' . $this->create_caption() . '</div>';
+			$this->html_output .= "\r\n" . '			<div class="' . esc_attr( $classes ) . '">' . wp_kses_post( $this->create_caption() ) . '</div>';
 		}
 
 		if ( $this->has_html() ) {
-			$this->html_output .= "\r\n" . '			' . $this->create_html();
+			$this->html_output .= "\r\n" . '			' . wp_kses_post( $this->create_html() );
 		}
 
 		if ( $this->has_layers() ) {
@@ -223,7 +223,7 @@ class BQW_SP_Slide_Renderer {
 		$classes = "sp-image";
 
 		$classes = apply_filters( 'sliderpro_main_image_classes', $classes, $this->slider_id, $this->slide_index );
-		$main_image = '<img class="' . $classes . '"' . $main_image_source . $main_image_retina_source . $main_image_small_source . $main_image_medium_source . $main_image_large_source . $main_image_retina_small_source . $main_image_retina_medium_source . $main_image_retina_large_source . $main_image_alt . $main_image_title . $main_image_width . $main_image_height . ' />';
+		$main_image = '<img class="' . esc_attr( $classes ) . '"' . $main_image_source . $main_image_retina_source . $main_image_small_source . $main_image_medium_source . $main_image_large_source . $main_image_retina_small_source . $main_image_retina_medium_source . $main_image_retina_large_source . $main_image_alt . $main_image_title . $main_image_width . $main_image_height . ' />';
 
 		return $main_image;
 	}
@@ -270,7 +270,7 @@ class BQW_SP_Slide_Renderer {
 
 		$main_image_link_title = isset( $this->data['main_image_link_title'] ) && $this->data['main_image_link_title'] !== '' ? ' title="' . esc_attr( $this->data['main_image_link_title'] ) . '"' : '';
 		$main_image_link = 
-			'<a class="' . $classes . '" href="' . $main_image_link_href . '"' . $main_image_link_title . ' target="' . $this->link_target . '">' . 
+			'<a class="' . esc_attr( $classes ) . '" href="' . esc_url( $main_image_link_href ) . '"' . $main_image_link_title . ' target="' . esc_attr( $this->link_target ) . '">' . 
 				"\r\n" . '				' . $image . 
 			"\r\n" . '			' . '</a>';
 		
@@ -341,7 +341,7 @@ class BQW_SP_Slide_Renderer {
 			$classes = "sp-thumbnail";
 			$classes = apply_filters( 'sliderpro_thumbnail_classes', $classes, $this->slider_id, $this->slide_index );
 
-			$thumbnail_image = '<img class="' . $classes . '"' . $thumbnail_source . $thumbnail_retina_source . $thumbnail_alt . $thumbnail_title . ' />';
+			$thumbnail_image = '<img class="' . esc_attr( $classes ) . '"' . $thumbnail_source . $thumbnail_retina_source . $thumbnail_alt . $thumbnail_title . ' />';
 		}
 
 		return $thumbnail_image;
@@ -384,7 +384,7 @@ class BQW_SP_Slide_Renderer {
 
 		$thumbnail_link_title = isset( $this->data['thumbnail_link_title'] ) && $this->data['thumbnail_link_title'] !== '' ? ' title="' . esc_attr( $this->data['thumbnail_link_title'] ) . '"' : '';
 		$thumbnail_link = 
-			'<a class="' . $classes . '" href="' . $thumbnail_link_href . '"' . $thumbnail_link_title . '>' . 
+			'<a class="' . esc_attr( $classes ) . '" href="' . esc_attr( $thumbnail_link_href ) . '"' . $thumbnail_link_title . '>' . 
 				"\r\n" . '				' . $image . 
 			"\r\n" . '			' . '</a>';
 		

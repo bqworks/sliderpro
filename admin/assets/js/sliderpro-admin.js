@@ -4219,8 +4219,8 @@
 				previewHeight = '100%';
 			}
 
-			var isPercentageWidth = previewWidth.indexOf( '%' ) !== -1,
-				isPercentageHeight = previewHeight.indexOf( '%' ) !== -1;
+			var isPercentageWidth = previewWidth.toString().indexOf( '%' ) !== -1,
+				isPercentageHeight = previewHeight.toString().indexOf( '%' ) !== -1;
 
 			if ( isPercentageWidth === false && isThumbnailScroller === true && thumbnailScrollerOrientation === 'vertical' ) {
 				previewWidth = parseInt( previewWidth, 10 ) + parseInt( this.sliderData[ 'settings' ][ 'thumbnail_width' ], 10 );

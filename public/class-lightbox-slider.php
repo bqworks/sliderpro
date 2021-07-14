@@ -101,7 +101,7 @@ class BQW_SP_Lightbox_Slider {
 	 * @since 4.5.0
 	 */
 	public function ajax_load_lightbox_slider() {
-		$id = $_GET['id'];
+		$id = isset( $_GET['id'] ) ? intval( $_GET['id'] ) : -1;
 
 		$lightbox_sliders = get_option( 'sliderpro_lightbox_sliders' );
 		$slider = $lightbox_sliders[ $id ];

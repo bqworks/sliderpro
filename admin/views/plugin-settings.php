@@ -50,7 +50,7 @@
                     <label for="cache-expiry-interval"><?php echo $plugin_settings['cache_expiry_interval']['label']; ?></label>
                 </td>
                 <td>
-                    <input type="text" id="cache-expiry-interval" name="cache_expiry_interval" value="<?php echo $cache_expiry_interval; ?>"><span>hours</span>
+                    <input type="text" id="cache-expiry-interval" name="cache_expiry_interval" value="<?php echo esc_attr( $cache_expiry_interval ); ?>"><span>hours</span>
                 </td>
                 <td>
                     <?php echo $plugin_settings['cache_expiry_interval']['description']; ?>
@@ -63,7 +63,7 @@
                     <label for="max-sliders-on-page"><?php echo $plugin_settings['max_sliders_on_page']['label']; ?></label>
                 </td>
                 <td>
-                    <input type="text" id="max-sliders-on-page" name="max_sliders_on_page" value="<?php echo $max_sliders_on_page; ?>">
+                    <input type="text" id="max-sliders-on-page" name="max_sliders_on_page" value="<?php echo esc_attr( $max_sliders_on_page ); ?>">
                 </td>
                 <td>
                     <?php echo $plugin_settings['max_sliders_on_page']['description']; ?>

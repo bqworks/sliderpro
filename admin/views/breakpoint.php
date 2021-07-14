@@ -6,7 +6,7 @@
 					<label><?php _e( 'Window width:', 'sliderpro' ); ?></label>
 				</th>
 				<th>
-					<input type="text" name="breakpoint_width" value="<?php echo isset( $breakpoint_settings['breakpoint_width'] ) ? esc_attr( $breakpoint_settings['breakpoint_width'] ) : ( isset( $width ) ? $width : '' ); ?>" />
+					<input type="text" name="breakpoint_width" value="<?php echo isset( $breakpoint_settings['breakpoint_width'] ) ? esc_attr( $breakpoint_settings['breakpoint_width'] ) : ( isset( $width ) ? esc_attr( $width ) : '' ); ?>" />
 
 					<span class="remove-breakpoint"></span>
 				</th>

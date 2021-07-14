@@ -34,6 +34,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'public/class-lightbox-slider.php' )
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-sliderpro-activation.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-sliderpro-widget.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-sliderpro-settings.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'includes/class-sliderpro-validation.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-flickr.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-hideable-gallery.php' );
 

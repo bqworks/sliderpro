@@ -32,7 +32,7 @@ class BQW_SP_Image_Layer_Renderer extends BQW_SP_Layer_Renderer {
 
 		$image_src = ' src="' . esc_attr( $image_source ) . '"';
 
-		$image_content = '<img class="' .  $this->get_classes() . '"' . $this->get_attributes() . $image_src . $image_alt . $image_retina . ' />';
+		$image_content = '<img class="' .  esc_attr( $this->get_classes() ) . '"' . $this->get_attributes() . $image_src . $image_alt . $image_retina . ' />';
 
 		$image_link = $this->data['image_link'];
 
