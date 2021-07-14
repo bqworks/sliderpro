@@ -80,8 +80,10 @@ class BQW_SliderPro_Validation {
 			}
 		}
 
-		$slider_settings['breakpoints'] = self::validate_slider_breakpoint_settings( $data['breakpoints'] );
-
+		if ( isset( $data['breakpoints'] ) ) {
+			$slider_settings['breakpoints'] = self::validate_slider_breakpoint_settings( $data['breakpoints'] );
+		}
+		
 		return $slider_settings;
 	}
 
