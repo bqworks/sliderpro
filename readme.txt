@@ -11,7 +11,9 @@ Fully responsive and touch-enabled slider plugin for WordPress.
 
 == Description ==
 
-Slider Pro is a fully responsive and touch-enabled WordPress slider plugin that allows you to create professional and elegant sliders. This slider plugin was built with user experience in mind, providing a clean and intuitive user interface in the admin area and a smooth navigation experience for the end-users.
+[Slider Pro](http://bqworks.net/slider-pro/) is a fully responsive and touch-enabled WordPress slider plugin that allows you to create professional and elegant sliders. This slider plugin was built with user experience in mind, providing a clean and intuitive user interface in the admin area and a smooth navigation experience for the end-users.
+
+See a few examples on the [slider's presentation page](http://bqworks.net/slider-pro/).
 
 Features:
 
