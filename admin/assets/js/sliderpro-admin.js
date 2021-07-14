@@ -504,8 +504,6 @@
 				).appendTo( 'body' );
 			}
 
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
-
 			dialog.find( '.dialog-ok' ).on( 'click', function( event ) {
 				event.preventDefault();
 
@@ -644,8 +642,6 @@
 				'	</div>' +
 				'</div>'
 			).appendTo( 'body' );
-
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
 
 			dialog.find( '.dialog-ok' ).one( 'click', function( event ) {
 				event.preventDefault();
@@ -865,8 +861,6 @@
 					'		</div>' +
 					'	</div>' +
 					'</div>').appendTo( 'body' );
-
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
 
 			dialog.find( '.dialog-ok' ).one( 'click', function( event ) {
 				event.preventDefault();
@@ -1859,8 +1853,6 @@
 		init: function() {
 			var that = this;
 
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
-
 			this.$editor = $( '.main-image-editor' );
 
 			this.$editor.find( '.close-x' ).on( 'click', function( event ) {
@@ -1884,6 +1876,28 @@
 			this.$editor.find( 'input[name="main_image_source"]' ).on( 'input', function( event ) {
 				that.needsPreviewUpdate = true;
 			});
+
+			this.$editor.find( '.show-additional-images, .hide-additional-images' ).on( 'click', function( event ) {
+				setTimeout(function() {
+					$( window ).trigger( 'resize' );
+				}, 1);
+			});
+
+			$( window ).on( 'resize.mainImageEditor', function() {
+				if ( that.$editor.find( '.modal-window' ).outerWidth() >= $( window ).width() ) {
+					that.$editor.addClass( 'modal-window-left' );
+				} else {
+					that.$editor.removeClass( 'modal-window-left' );
+				}
+
+				if ( that.$editor.find( '.modal-window' ).outerHeight() >= $( window ).height() ) {
+					that.$editor.addClass( 'modal-window-top' );
+				} else {
+					that.$editor.removeClass( 'modal-window-top' );
+				}
+			});
+
+			$( window ).trigger( 'resize' );
 		},
 
 		/**
@@ -1998,6 +2012,7 @@
 			this.$editor.find( '.additional-image-loader' ).off( 'click' );
 			this.$editor.find( '.clear-fieldset' ).off( 'click' );
 			this.$editor.find( 'input[name="main_image_source"]' ).off( 'input' );
+			$( window ).off( 'resize.mainImageEditor' );
 
 			$( 'body' ).find( '.modal-overlay, .modal-window-container' ).remove();
 		}
@@ -2077,8 +2092,6 @@
 		init: function() {
 			var that = this;
 
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
-
 			this.$editor = $( '.thumbnail-editor' );
 
 			this.$editor.find( '.close-x' ).on( 'click', function( event ) {
@@ -2096,6 +2109,22 @@
 				event.preventDefault();
 				that.clearFieldset( event );
 			});
+
+			$( window ).on( 'resize.thumbnailEditor', function() {
+				if ( that.$editor.find( '.modal-window' ).outerWidth() >= $( window ).width() ) {
+					that.$editor.addClass( 'modal-window-left' );
+				} else {
+					that.$editor.removeClass( 'modal-window-left' );
+				}
+
+				if ( that.$editor.find( '.modal-window' ).outerHeight() >= $( window ).height() ) {
+					that.$editor.addClass( 'modal-window-top' );
+				} else {
+					that.$editor.removeClass( 'modal-window-top' );
+				}
+			});
+
+			$( window ).trigger( 'resize.thumbnailEditor' );
 		},
 
 		/**
@@ -2198,6 +2227,7 @@
 			this.$editor.find( '.additional-image-loader' ).off( 'click' );
 			this.$editor.find( '.clear-fieldset' ).off( 'click' );
 			this.$editor.find( 'input[name="thumbnail_source"]' ).off( 'input' );
+			$( window ).off( 'resize.thumbnailEditor' );
 
 			$( 'body' ).find( '.modal-overlay, .modal-window-container' ).remove();
 		}
@@ -2267,8 +2297,6 @@
 		 */
 		init: function() {
 			var that = this;
-
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
 
 			this.$editor = $( '.caption-editor' );
 
@@ -2366,8 +2394,6 @@
 		 */
 		init: function() {
 			var that = this;
-
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
 
 			this.$editor = $( '.html-editor' );
 
@@ -2509,8 +2535,6 @@
 		init: function() {
 			var that = this;
 
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
-
 			this.counter = 0;
 
 			this.$editor = $( '.layers-editor' );
@@ -2519,6 +2543,20 @@
 				event.preventDefault();
 				that.save();
 				that.close();
+			});
+
+			$( window ).on( 'resize.layersEditor', function() {
+				if ( that.$editor.find( '.modal-window' ).outerWidth() >= $( window ).width() ) {
+					that.$editor.addClass( 'modal-window-left' );
+				} else {
+					that.$editor.removeClass( 'modal-window-left' );
+				}
+
+				if ( that.$editor.find( '.modal-window' ).outerHeight() >= $( window ).height() ) {
+					that.$editor.addClass( 'modal-window-top' );
+				} else {
+					that.$editor.removeClass( 'modal-window-top' );
+				}
 			});
 
 			this.$editor.find( '.add-layer-group' ).on( 'click', function( event ) {
@@ -2533,7 +2571,7 @@
 				if ( typeof $( event.target ).attr( 'data-type' ) !== 'undefined' ) {
 					type = $( event.target ).attr( 'data-type' );
 				}
-				
+
 				that.addNewLayer( type );
 			});
 
@@ -2598,6 +2636,8 @@
 			if ( this.layers.length !== 0 ) {
 				this.layers[ 0 ].triggerSelect();
 			}
+
+			$( window ).trigger( 'resize.layersEditor' );
 		},
 
 		/**
@@ -2747,6 +2787,8 @@
 					$( '<li class="list-layer" data-id="' + that.counter + '" data-position="' + that.layers.length + '">Layer ' + that.counter + '</li>' ).prependTo( that.$editor.find( '.list-layers' ) );
 
 					that.createLayer( { id: that.counter, type: type, createMode: 'new' } );
+
+					$( window ).trigger( 'resize.layersEditor' );
 				}
 			});
 		},
@@ -2835,6 +2877,8 @@
 					layerData.id = that.counter;
 					layerData.createMode = 'duplicate';
 					that.createLayer( layerData );
+
+					$( window ).trigger( 'resize.layersEditor' );
 				}
 			});
 		},
@@ -2871,6 +2915,7 @@
 			this.$editor.find( '.add-layer-group' ).off( 'click' );
 			this.$editor.find( '.delete-layer' ).off( 'click' );
 			this.$editor.find( '.duplicate-layer' ).off( 'click' );
+			$( window ).off( 'resize.layersEditor' );
 
 			$( '.list-layers' ).lightSortable( 'destroy' );
 
@@ -3870,8 +3915,6 @@
 		init: function() {
 			var that = this;
 
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
-
 			this.$editor = $( '.settings-editor' );
 			
 			this.$editor.find( '.close, .close-x' ).on( 'click', function( event ) {
@@ -4164,6 +4207,10 @@
 					that.slider = that.previewWindow.find( '.slider-pro' );
 					that.previewWindow.css( 'visibility', '' );
 					spinner.css( { 'display': '', 'visibility': '' } );
+					
+					setTimeout( function() {
+						$( window ).trigger( 'resize' );
+					}, 100 );
 				}
 			});
 		},
@@ -4179,8 +4226,6 @@
 		 */
 		init: function() {
 			var that = this;
-
-			$( '.modal-window-container' ).css( 'top', $( window ).scrollTop() );
 
 			this.previewWindow = $( '.preview-window .modal-window' );
 
@@ -4237,6 +4282,18 @@
 
 				if ( isPercentageHeight === true ) {
 					that.previewWindow.css( 'height', $( window ).height() * ( parseInt( previewHeight, 10 ) / 100 ) );
+				}
+
+				if ( that.previewWindow.outerWidth() >= $( window ).width() ) {
+					that.previewWindow.parent().addClass( 'modal-window-left' );
+				} else {
+					that.previewWindow.parent().removeClass( 'modal-window-left' );
+				}
+
+				if ( that.previewWindow.outerHeight() >= $( window ).height() - 40 ) {
+					that.previewWindow.parent().addClass( 'modal-window-top' );
+				} else {
+					that.previewWindow.parent().removeClass( 'modal-window-top' );
 				}
 			});
 

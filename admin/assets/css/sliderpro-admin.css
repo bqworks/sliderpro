@@ -522,13 +522,13 @@ Single slider page
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.7);
 	z-index: 1000;
-	text-align: center;
 }
 
 .modal-window-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow-y: auto;
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -541,6 +541,18 @@ Single slider page
 	position: relative;
 	padding: 30px;
 	background-color: #FFF;
+}
+
+.modal-window-top {
+	align-items: flex-start;
+}
+
+.modal-window-left {
+	justify-content: flex-start;
+}
+
+.modal-window-top .modal-window {
+	margin-top: 50px;
 }
 
 .close-x {
@@ -711,6 +723,7 @@ Single slider page
 
 .main-image-editor table {
 	margin-left: 190px;
+	display: block;
 }
 
 .main-image-editor.dynamic table {
@@ -720,6 +733,7 @@ Single slider page
 .main-image-editor .field {
 	margin-left: 10px;
 	width: 363px;
+	min-height: 28px;
 	font-size: 12px;
 	border: none;
 	border-bottom: 1px dashed #CCC;
@@ -784,11 +798,11 @@ Single slider page
 }
 
 .additional-images {
-	display: none;
+	display: none !important;
 }
 
 .show-hide-additional-images:checked ~ .additional-images {
-	display: table;
+	display: block !important;
 }
 
 /* Thumbnail editor
@@ -907,6 +921,7 @@ Single slider page
 
 .thumbnail-editor table {
 	margin-left: 190px;
+	display: block;
 }
 
 .thumbnail-editor.dynamic table {
@@ -916,6 +931,7 @@ Single slider page
 .thumbnail-editor .field:not(textarea) {
 	margin-left: 10px;
 	width: 363px;
+	min-height: 28px;
 	font-size: 12px;
 	border: none;
 	border-bottom: 1px dashed #CCC;
