@@ -918,7 +918,7 @@ class BQW_SliderPro_Settings {
 				),
 				'display' => array(
 					'label' => __( 'Display', 'sliderpro' ),
-					'type' => 'radio',
+					'type' => 'select',
 					'default_value' => 'animated',
 					'available_values' => array(
 						'animated' => __( 'Animated', 'sliderpro' ),
