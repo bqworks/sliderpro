@@ -528,7 +528,7 @@ Single slider page
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	overflow-y: auto;
+	overflow: auto;
 	position: fixed;
 	width: 100%;
 	height: 100%;
