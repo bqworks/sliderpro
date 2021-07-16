@@ -270,7 +270,7 @@ class BQW_SP_Slide_Renderer {
 
 		$main_image_link_title = isset( $this->data['main_image_link_title'] ) && $this->data['main_image_link_title'] !== '' ? ' title="' . esc_attr( $this->data['main_image_link_title'] ) . '"' : '';
 		$main_image_link = 
-			'<a class="' . esc_attr( $classes ) . '" href="' . esc_url( $main_image_link_href ) . '"' . $main_image_link_title . ' target="' . esc_attr( $this->link_target ) . '">' . 
+			'<a class="' . esc_attr( $classes ) . '" href="' . esc_attr( $main_image_link_href ) . '"' . $main_image_link_title . ' target="' . esc_attr( $this->link_target ) . '">' . 
 				"\r\n" . '				' . $image . 
 			"\r\n" . '			' . '</a>';
 		
