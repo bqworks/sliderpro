@@ -1,9 +1,9 @@
 === SliderPro ===
 Contributors: bqworks
-Tags: slider, images, responsive slider, touch slider, slider plugin
+Tags: slider, images, image slider, content slider, responsive slider, touch slider, slider plugin, carousel slider
 Requires at least: 3.6
 Tested up to: 5.7
-Stable tag: 4.7.2
+Stable tag: 4.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,3 +84,10 @@ When you select an image from the Media Library, in the right columns, under 'AT
 
 = 4.7.1 =
 * fix modal windows' display
+
+= 4.7.2 =
+* improve modal windows' display
+* fixed some bugs
+
+= 4.7.3 =
+* fixed dynamic URL bug
