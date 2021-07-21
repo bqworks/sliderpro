@@ -2,8 +2,8 @@
 Contributors: bqworks
 Tags: image slider, content slider, responsive slider, touch slider, carousel slider
 Requires at least: 3.6
-Tested up to: 5.7
-Stable tag: 4.7.4
+Tested up to: 5.8
+Stable tag: 4.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,3 +94,6 @@ When you select an image from the Media Library, in the right columns, under 'AT
 
 = 4.7.4 =
 * fixed layers' display option bug
+
+= 4.7.5 =
+* allow more HTML tags inside the slider
