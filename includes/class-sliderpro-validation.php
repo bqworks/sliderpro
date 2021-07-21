@@ -137,6 +137,7 @@ class BQW_SliderPro_Validation {
 	 */
 	public static function validate_slider_slides( $slides_data ) {
 		$slides = array();
+		global $allowedposttags;
 		
 		foreach ( $slides_data as $slide_data ) {
 			$slide = array();
@@ -151,7 +152,26 @@ class BQW_SliderPro_Validation {
 				} else {
 
 					// for other slide fields, like html, caption, image sources etc.
-					$slide[ $name ] = wp_kses_post( $value );
+					$allowed_html = array_merge(
+						$allowedposttags,
+						array(
+							'iframe' => array(
+								'src' => true,
+								'width' => true,
+								'height' => true,
+								'allow' => true,
+								'allowfullscreen' => true,
+								'class' => true,
+								'id' => true
+							),
+							'source' => array(
+								'src' => true,
+								'type' => true
+							)
+						)
+					);
+
+					$slide[ $name ] = wp_kses( $value, $allowed_html );
 				}
 			}
 
@@ -210,6 +230,7 @@ class BQW_SliderPro_Validation {
 	 */
 	public static function validate_slide_layers( $layers_data ) {
 		$layers = array();
+		global $allowedposttags;
 
 		foreach ( $layers_data as $layer_data ) {
 			$layer = array();
@@ -222,7 +243,26 @@ class BQW_SliderPro_Validation {
 				} else {
 
 					// for other layer fields, like name, text, image source etc.
-					$layer[ $name ] = wp_kses_post( $value );
+					$allowed_html = array_merge(
+						$allowedposttags,
+						array(
+							'iframe' => array(
+								'src' => true,
+								'width' => true,
+								'height' => true,
+								'allow' => true,
+								'allowfullscreen' => true,
+								'class' => true,
+								'id' => true
+							),
+							'source' => array(
+								'src' => true,
+								'type' => true
+							)
+						)
+					);
+
+					$layer[ $name ] = wp_kses( $value, $allowed_html );
 				}
 			}
 

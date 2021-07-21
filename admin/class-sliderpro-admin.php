@@ -908,8 +908,28 @@ class BQW_SliderPro_Admin {
 	 */
 	public function ajax_load_html_editor() {
 		$slide_default_settings = BQW_SliderPro_Settings::getSlideSettings();
+		global $allowedposttags;
 
-		$html_content = wp_kses_post( $_POST['data'] );
+		$allowed_html = array_merge(
+			$allowedposttags,
+			array(
+				'iframe' => array(
+					'src' => true,
+					'width' => true,
+					'height' => true,
+					'allow' => true,
+					'allowfullscreen' => true,
+					'class' => true,
+					'id' => true
+				),
+				'source' => array(
+					'src' => true,
+					'type' => true
+				)
+			)
+		);
+
+		$html_content = wp_kses( $_POST['data'], $allowed_html );
 		$content_type = isset( $_POST['content_type'] ) && array_key_exists( $_POST['content_type'], $slide_default_settings['content_type']['available_values'] ) ? $_POST['content_type'] : $slide_default_settings['content_type']['default_value'];
 
 		include( 'views/html-editor.php' );
@@ -948,13 +968,33 @@ class BQW_SliderPro_Admin {
 		$layer_id = intval( $_POST['id'] );
 		$layer_type = isset( $_POST['type'] ) && array_key_exists( $_POST['type'], $layer_default_settings['type']['available_values'] ) ? $_POST['type'] : $layer_default_settings['type']['default_value'];
 		$layer_settings;
+		global $allowedposttags;
 		
 		if ( isset( $_POST['settings'] ) ) {
 			$layer_settings = BQW_SliderPro_Validation::validate_layer_settings( json_decode( stripslashes( $_POST['settings'] ), true ) );
 		}
 
 		if ( isset( $_POST['text'] ) ) {
-			$layer['text'] = wp_kses_post( $_POST['text'] );
+			$allowed_html = array_merge(
+				$allowedposttags,
+				array(
+					'iframe' => array(
+						'src' => true,
+						'width' => true,
+						'height' => true,
+						'allow' => true,
+						'allowfullscreen' => true,
+						'class' => true,
+						'id' => true
+					),
+					'source' => array(
+						'src' => true,
+						'type' => true
+					)
+				)
+			);
+			
+			$layer['text'] = wp_kses( $_POST['text'], $allowed_html );
 		}
 
 		if ( isset( $_POST['heading_type'] ) ) {

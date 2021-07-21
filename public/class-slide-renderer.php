@@ -126,6 +126,27 @@ class BQW_SP_Slide_Renderer {
 	  * @return string the HTML markup of the slide.
 	 */
 	public function render() {
+		global $allowedposttags;
+
+		$allowed_html = array_merge(
+			$allowedposttags,
+			array(
+				'iframe' => array(
+					'src' => true,
+					'width' => true,
+					'height' => true,
+					'allow' => true,
+					'allowfullscreen' => true,
+					'class' => true,
+					'id' => true
+				),
+				'source' => array(
+					'src' => true,
+					'type' => true
+				)
+			)
+		);
+
 		$classes = 'sp-slide';
 		$classes = apply_filters( 'sliderpro_slide_classes' , $classes, $this->slider_id, $this->slide_index );
 
@@ -151,7 +172,7 @@ class BQW_SP_Slide_Renderer {
 			$classes = "sp-thumbnail";
 			$classes = apply_filters( 'sliderpro_thumbnail_classes', $classes, $this->slider_id, $this->slide_index );
 
-			$this->html_output .= "\r\n" . '			' . '<div class="' . esc_attr( $classes ) . '">' . $thumbnail_content . "\r\n" . '			' . '</div>';
+			$this->html_output .= "\r\n" . '			' . '<div class="' . esc_attr( $classes ) . '">' . wp_kses( $thumbnail_content, $allowed_html ) . "\r\n" . '			' . '</div>';
 		} else {
 			$this->html_output .= "\r\n" . '			' . $thumbnail_image;
 		}
@@ -160,11 +181,11 @@ class BQW_SP_Slide_Renderer {
 			$classes = "sp-caption";
 			$classes = apply_filters( 'sliderpro_caption_classes', $classes, $this->slider_id, $this->slide_index );
 			
-			$this->html_output .= "\r\n" . '			<div class="' . esc_attr( $classes ) . '">' . wp_kses_post( $this->create_caption() ) . '</div>';
+			$this->html_output .= "\r\n" . '			<div class="' . esc_attr( $classes ) . '">' . wp_kses( $this->create_caption(), $allowed_html ) . '</div>';
 		}
 
 		if ( $this->has_html() ) {
-			$this->html_output .= "\r\n" . '			' . wp_kses_post( $this->create_html() );
+			$this->html_output .= "\r\n" . '			' . wp_kses( $this->create_html(), $allowed_html );
 		}
 
 		if ( $this->has_layers() ) {
