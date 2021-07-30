@@ -118,7 +118,7 @@ class BQW_SliderPro_Settings {
 				'width' => array(
 					'js_name' => 'width',
 					'label' => __( 'Width', 'sliderpro' ),
-					'type' => 'number',
+					'type' => 'mixed',
 					'default_value' => 500,
 					'description' => __( 'Sets the width of the slide. Can be set to a fixed value, like 900 (indicating 900 pixels), or to a percentage value, like \'100%\'.', 'sliderpro' )
 				),
@@ -126,7 +126,7 @@ class BQW_SliderPro_Settings {
 				'height' => array(
 					'js_name' => 'height',
 					'label' => __( 'Height', 'sliderpro' ),
-					'type' => 'number',
+					'type' => 'mixed',
 					'default_value' => 300,
 					'description' => __( 'Sets the height of the slide. Can be set to a fixed value, like 900 (indicating 900 pixels), or to a percentage value, like \'100%\'.', 'sliderpro' )
 				),
