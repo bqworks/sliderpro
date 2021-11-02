@@ -140,7 +140,7 @@ class BQW_SP_Slider_Renderer {
 			$height .= 'px';
 		}
 
-		$this->html_output .= "\r\n" . '<div id="' . esc_attr( $this->idAttribute ) . '" class="' . esc_attr( $classes ) . '" style="width: ' . floatval( $width ) . '; height: ' . floatval( $height ) . ';">';
+		$this->html_output .= "\r\n" . '<div id="' . esc_attr( $this->idAttribute ) . '" class="' . esc_attr( $classes ) . '" style="width: ' . $width . '; height: ' . $height . ';">';
 		$this->html_output .= "\r\n" . '	<div class="sp-slides">';
 		$this->html_output .= "\r\n" . '		' . $slides_html;
 		$this->html_output .= "\r\n" . '	</div>';
