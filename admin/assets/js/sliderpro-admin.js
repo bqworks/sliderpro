@@ -261,12 +261,40 @@
 			$( '.custom-css-js-warning-close' ).click(function( event ) {
 				event.preventDefault();
 
-				$( '.custom-css-js-warning' ).hide();
+				var dialog = $(
+					'<div class="modal-overlay"></div>' +
+					'<div class="modal-window-container">' +
+					'	<div class="modal-window delete-slider-dialog">' +
+					'		<p class="dialog-question">' + sp_js_vars.remove_custom_css_js_warning + '</p>' +
+					'		<div class="dialog-buttons">' +
+					'			<a class="button dialog-ok" href="#">' + sp_js_vars.yes + '</a>' +
+					'			<a class="button dialog-cancel" href="#">' + sp_js_vars.cancel + '</a>' +
+					'		</div>' +
+					'	</div>' +
+					'</div>'
+				).appendTo( 'body' );
 
-				$.ajax({
-					url: sp_js_vars.ajaxurl,
-					type: 'post',
-					data: { action: 'sliderpro_close_custom_css_js_warning' }
+				dialog.find( '.dialog-ok' ).one( 'click', function( event ) {
+					event.preventDefault();
+
+					$( '.custom-css-js-warning' ).hide();
+
+					$.ajax({
+						url: sp_js_vars.ajaxurl,
+						type: 'post',
+						data: { action: 'sliderpro_close_custom_css_js_warning' }
+					});
+
+					dialog.remove();
+				});
+
+				dialog.find( '.dialog-cancel' ).one( 'click', function( event ) {
+					event.preventDefault();
+					dialog.remove();
+				});
+
+				dialog.find( '.modal-overlay' ).one( 'click', function( event ) {
+					dialog.remove();
 				});
 			});
 		},

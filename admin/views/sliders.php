@@ -50,7 +50,7 @@
 			<?php
 			}
 			?>
-			<a href="#" class="custom-css-js-warning-close"><?php _e( 'Don\'t show this again.', 'sliderpro' ); ?></a>
+			<a href="#" class="custom-css-js-warning-close"><?php _e( 'Delete the custom CSS & JS, and remove this note.', 'sliderpro' ); ?></a>
 		</div>
 	<?php
 		}

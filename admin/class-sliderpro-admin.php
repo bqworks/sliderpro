@@ -172,6 +172,7 @@ class BQW_SliderPro_Admin {
 				'lad_nonce' => wp_create_nonce( 'load-slider-data' . $id ),
 				'sa_nonce' => wp_create_nonce( 'save-slider' . $id ),
 				'no_image' => __( 'Click to add image', 'sliderpro' ),
+				'remove_custom_css_js_warning' => __( 'Are you sure you want to remove the existing custom CSS and/or JavaScript? <br/> Only do this after you\'ve copied the existing code in another place.', 'sliderpro' ),
 				'posts_slides' => __( 'Posts slides', 'sliderpro' ),
 				'gallery_slides' => __( 'Gallery slides', 'sliderpro' ),
 				'flickr_slides' => __( 'Flickr slides', 'sliderpro' ),
@@ -1339,6 +1340,11 @@ class BQW_SliderPro_Admin {
 	 */
 	public function ajax_close_custom_css_js_warning() {
 		update_option( 'sliderpro_hide_custom_css_js_warning', true );
+
+		delete_option( 'sliderpro_custom_css' );
+		delete_option( 'sliderpro_custom_js' );
+		delete_option( 'sliderpro_is_custom_css' );
+		delete_option( 'sliderpro_is_custom_js' );
 
 		die();
 	}
