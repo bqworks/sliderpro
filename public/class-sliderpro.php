@@ -413,7 +413,7 @@ class BQW_SliderPro {
 				wp_add_inline_style( $this->plugin_slug . '-plugin-style', stripslashes( get_option( 'sliderpro_custom_css' ) ) );
 			}
 
-			do_action( 'sliderpro_enqueue_styles' );
+			do_action( 'sliderpro_enqueue_styles', $this->plugin_slug . '-plugin-style' );
 		}
 	}
 
