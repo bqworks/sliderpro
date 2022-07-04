@@ -14,7 +14,7 @@
                     ?>
                             <div class="image-size-warning">
                                 <p><?php _e( 'Some of the main slide images are smaller than the size of the slide (determined by the <i>Width</i> and <i>Height</i> options), so they might appear blurred when viewed in the slider.', 'sliderpro' ); ?></p>
-                                <p><?php _e( 'When you select images to insert them into the slider, you can set their size from the right column of the Media Library window, as you can see in <a href="http://bqworks.net/slider-pro/screencasts/#simple-slider" target="_blank">this video</a> at 0:05.', 'sliderpro' ); ?></p>
+                                <p><?php _e( 'When you select images to insert them into the slider, you can set their size from the right column of the Media Library window, as you can see in <a href="https://bqworks.net/slider-pro/screencasts/#simple-slider" target="_blank">this video</a> at 0:05.', 'sliderpro' ); ?></p>
                                 <a href="#" class="image-size-warning-close"><?php _e( 'Don\'t show this again.', 'sliderpro' ); ?></a>
                             </div>
                     <?php
@@ -230,7 +230,7 @@
                                     <div class="info-content">
                                         <p><?php _e( 'Breakpoints allow you to modify the look of the slider for different window sizes.', 'sliderpro' ); ?></p>
                                         <p><?php _e( 'Each breakpoint allows you to set the width of the window for which the breakpoint will apply, and then add several settings which will override the global settings.', 'sliderpro' ); ?></p>
-                                        <p><a href="http://bqworks.net/slider-pro/screencasts/#working-with-breakpoints" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
+                                        <p><a href="https://bqworks.net/slider-pro/screencasts/#working-with-breakpoints" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
                                     </div>
                                 </div>
                             <?php

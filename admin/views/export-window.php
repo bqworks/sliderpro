@@ -17,7 +17,7 @@
                     
                     <div class="info-content">
                         <p><?php _e( 'The text above represents the data of the slider. Please copy the text and then paste it in the import slider window, by clicking on the <i>Import Slider</i> button in the <i>Slider Pro</i> installation where you want to import the slider.', 'sliderpro' ); ?></p>
-                        <p><a href="http://bqworks.net/slider-pro/screencasts/#import-export" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
+                        <p><a href="https://bqworks.net/slider-pro/screencasts/#import-export" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
                     </div>
                 </div>
         <?php

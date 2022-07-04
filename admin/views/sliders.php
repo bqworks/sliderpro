@@ -12,13 +12,13 @@
 			<p><?php _e( 'The examples can be found in the <i>examples</i> folder, which is included in the plugin\'s folder, and can be imported using the <i>Import Slider</i> button below.', 'sliderpro' ); ?></p>
 			<p><?php _e( 'For quick usage instructions, please see the video tutorials below. For more detailed instructions, please see the', 'sliderpro' ); ?> <a href="<?php echo admin_url('admin.php?page=sliderpro-documentation'); ?>"><?php _e( 'Documentation', 'sliderpro' ); ?></a> <?php _e( 'page.', 'sliderpro' ); ?></p>
 			<ul class="video-tutorials-list">
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#simple-slider" target="_blank"><?php _e( '1. Create and publish sliders', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#slider-from-posts" target="_blank"><?php _e( '2. Create sliders from posts', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#slider-from-gallery" target="_blank"><?php _e( '3. Create sliders from galleries', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#adding-thumbnails" target="_blank"><?php _e( '4. Adding thumbnails', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#adding-layers" target="_blank"><?php _e( '5. Adding layers', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#working-with-breakpoints" target="_blank"><?php _e( '6. Working with breakpoints', 'sliderpro' ); ?></a></li>
-				<li><a href="http://bqworks.net/slider-pro/screencasts/#import-export" target="_blank"><?php _e( '7. Import and Export sliders', 'sliderpro' ); ?></a></li>
+				<li><a href="https://bqworks.net/slider-pro/screencasts/#simple-slider" target="_blank"><?php _e( '1. Create and publish sliders', 'sliderpro' ); ?></a></li>
+				<li><a href="https://bqworks.net/slider-pro/screencasts/#slider-from-posts" target="_blank"><?php _e( '2. Create sliders from posts', 'sliderpro' ); ?></a></li>
+				<li><a href="https://bqworks.net/slider-pro/screencasts/#slider-from-gallery" target="_blank"><?php _e( '3. Create sliders from galleries', 'sliderpro' ); ?></a></li>
+				<li><a href="https://bqworks.net/slider-pro/screencasts/#adding-thumbnails" target="_blank"><?php _e( '4. Adding thumbnails', 'sliderpro' ); ?></a></li>
+				<li><a href="https://bqworks.net/slider-pro/screencasts/#adding-layers" target="_blank"><?php _e( '5. Adding layers', 'sliderpro' ); ?></a></li>
+				<li><a href="https://bqworks.net/slider-pro/screencasts/#working-with-breakpoints" target="_blank"><?php _e( '6. Working with breakpoints', 'sliderpro' ); ?></a></li>
+				<li><a href="https://bqworks.net/slider-pro/screencasts/#import-export" target="_blank"><?php _e( '7. Import and Export sliders', 'sliderpro' ); ?></a></li>
 			</ul>
 
 			<a href="#" class="getting-started-close">Close</a>
