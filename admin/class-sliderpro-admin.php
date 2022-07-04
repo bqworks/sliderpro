@@ -254,6 +254,8 @@ class BQW_SliderPro_Admin {
 				array( $this, 'render_documentation_page' )
 			);
 		}
+
+		do_action('sliderpro_admin_menu');
 	}
 
 	/**
