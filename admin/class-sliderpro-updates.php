@@ -92,6 +92,10 @@ class BQW_SliderPro_Updates {
 	 * @since 4.0.0
 	 */
 	private function single_update() {
+		if ( version_compare( $this->db_version, '4.8.0', '<' ) ) {
+			delete_option( 'sliderpro_hide_getting_started_info' );
+		}
+
 		update_option( 'sliderpro_version', BQW_SliderPro::VERSION );
 	}
 }

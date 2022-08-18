@@ -22,7 +22,7 @@ class BQW_SliderPro_Admin {
 	 * 
 	 * @var array
 	 */
-	protected $plugin_screen_hook_suffixes = null;
+	protected $plugin_screen_hook_suffixes = array();
 
 	/**
 	 * Current class instance of the public Slider Pro class.
@@ -34,13 +34,13 @@ class BQW_SliderPro_Admin {
 	protected $plugin = null;
 
 	/**
-	 * Plugin class.
+	 * Plugin slug.
 	 * 
 	 * @since 4.0.0
 	 * 
-	 * @var object
+	 * @var string
 	 */
-	protected $plugin_slug = null;
+	protected $plugin_slug = '';
 
 	/**
 	 * Initialize the admin by registering the required actions.
@@ -98,6 +98,24 @@ class BQW_SliderPro_Admin {
 		}
 
 		return self::$instance;
+	}
+
+	/**
+	 * Returns the hook suffixes for the plugin's admin pages.
+	 *
+	 * @since 4.8.0
+	 */
+	public function get_plugin_screen_hook_suffixes() {
+		return $this->plugin_screen_hook_suffixes;
+	}
+
+	/**
+	 * Adds to the list of screen hook suffixes.
+	 *
+	 * @since 4.8.0
+	 */
+	public function add_plugin_screen_hook_suffix( $screen_hook_suffix ) {
+		return $this->plugin_screen_hook_suffixes[] = $screen_hook_suffix;
 	}
 
 	/**
@@ -254,7 +272,7 @@ class BQW_SliderPro_Admin {
 				array( $this, 'render_documentation_page' )
 			);
 		}
-
+		
 		do_action('sliderpro_admin_menu');
 	}
 
@@ -1313,7 +1331,7 @@ class BQW_SliderPro_Admin {
 
 		global $wpdb;
 
-		$wpdb->query( "DELETE FROM " . $wpdb->prefix . "options WHERE option_name LIKE '%sliderpro_cache%' AND NOT option_name = 'sliderpro_cache_expiry_interval'" );
+		$wpdb->query( "DELETE FROM " . $wpdb->prefix . "options WHERE option_name LIKE '%sliderpro_cache_%' AND NOT option_name = 'sliderpro_cache_expiry_interval'" );
 
 		if ( get_option( 'sliderpro_lightbox_sliders' ) !== false ) {
 			update_option( 'sliderpro_lightbox_sliders', array() );

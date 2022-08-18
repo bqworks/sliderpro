@@ -1,9 +1,9 @@
 === SliderPro ===
 Contributors: bqworks
 Tags: image slider, content slider, responsive slider, touch slider, carousel slider
-Requires at least: 3.6
+Requires at least: 4.0
 Tested up to: 6.0
-Stable tag: 4.7.8
+Stable tag: 4.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,30 +79,33 @@ When you select an image from the Media Library, in the right columns, under 'AT
 
 == Changelog ==
 
-= 4.7.0 =
-* initial release on WordPress.org
+= 4.8.0 =
+* added the add-on installation interface
 
-= 4.7.1 =
-* fix modal windows' display
+= 4.7.8 =
+* allow the possibility to remove existing custom CSS and/or JavaScript
+
+= 4.7.7 =
+* fixed the inline CSS width and height of the slider
+
+= 4.7.6 =
+* fixed type of Width and Height from 'number' to 'mixed' to address validation issue
+
+= 4.7.5 =
+* allow more HTML tags inside the slider
+
+= 4.7.4 =
+* fixed layers' display option bug
+
+= 4.7.3 =
+* fixed dynamic URL bug
 
 = 4.7.2 =
 * improve modal windows' display
 * fixed some bugs
 
-= 4.7.3 =
-* fixed dynamic URL bug
+= 4.7.1 =
+* fix modal windows' display
 
-= 4.7.4 =
-* fixed layers' display option bug
-
-= 4.7.5 =
-* allow more HTML tags inside the slider
-
-= 4.7.6 =
-* fixed type of Width and Height from 'number' to 'mixed' to address validation issue
-
-= 4.7.7 =
-* fixed the inline CSS width and height of the slider
-
-= 4.7.8 =
-* allow the possibility to remove existing custom CSS and/or JavaScript
+= 4.7.0 =
+* initial release on WordPress.org

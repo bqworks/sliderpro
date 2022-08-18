@@ -47,6 +47,10 @@ All sliders page
 	box-sizing: border-box;
 }
 
+.inline-info-section {
+	margin-bottom: 25px;
+}
+
 .getting-started-info {
 	position: relative;
 	margin-top: 10px;
@@ -74,7 +78,7 @@ All sliders page
 
 .custom-css-js-warning {
 	padding: 1px 10px 10px;
-	margin: 10px 0;
+	margin: 20px 0;
 	background-color: #FFF;
 	color: #333;
 	border-left: 4px solid #FFE000;
@@ -521,7 +525,32 @@ Single slider page
 	height: 100%;
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.7);
-	z-index: 1000;
+	z-index: 10000;
+}
+
+.modal-overlay-spinner {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	margin: auto;
+	border: 5px solid #333;
+	border-radius: 50%;
+	border-bottom-color: #111;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 .modal-window-container {
@@ -534,13 +563,14 @@ Single slider page
 	height: 100%;
 	top: 0;
 	left: 0;
-	z-index: 10000;
+	z-index: 20000;
 }
 
 .modal-window {
 	position: relative;
 	padding: 30px;
 	background-color: #FFF;
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .modal-window-top {
@@ -557,14 +587,16 @@ Single slider page
 
 .close-x {
 	position: absolute;
-	right: 8px;
-	top: 8px;
-	font-size: 20px;
+	right: -24px;
+	top: 4px;
 	cursor: pointer;
 }
 
 .close-x:before {
 	content: '\2715';
+	font-size: 20px;
+	color: #FFF;
+	font-weight: bold;
 }
 
 .modal-window .heading {
@@ -1198,10 +1230,6 @@ Single slider page
 
 .layer-setting-fields tr:last-child td {
     padding-bottom: 0;
-}
-
-.layer-settings-tab:checked ~ .layer-setting-fields {
-    display: block;
 }
 
 .layer-settings-tab:checked ~ .layer-setting-fields {

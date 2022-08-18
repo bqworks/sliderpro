@@ -45,10 +45,12 @@ function bqw_sliderpro_delete_all_data() {
 	delete_option( 'sliderpro_access' );
 	delete_option( 'sliderpro_version' );
 	delete_option( 'sliderpro_lightbox_sliders' );
+	delete_option( 'sliderpro_add_ons' );
 
 	delete_transient( 'sliderpro_post_names' );
 	delete_transient( 'sliderpro_posts_data' );
 	delete_transient( 'sliderpro_update_notification_message' );
+	delete_transient( 'sliderpro_add_ons_cached_data' );
 	
-	$wpdb->query( "DELETE FROM " . $prefix . "options WHERE option_name LIKE '%sliderpro_cache%'" );
+	$wpdb->query( "DELETE FROM " . $prefix . "options WHERE option_name LIKE '%sliderpro_cache_%'" );
 }
