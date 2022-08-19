@@ -1470,9 +1470,22 @@ $( '.my-slider' ).on( 'gotoSlide', function( event ) {
 
   function restricted_pages( $restricted_pages ) {
     $restricted_pages[] = 'sliderpro-settings';
-    $restricted_pages[] = 'sliderpro-custom';
 
     return $restricted_pages;
+  }
+  </pre>
+
+  <h4 id="sliderpro_allowed_html">sliderpro_allowed_html</h4>
+  <p>
+    It allows you to filter what HTML tags and attributes are allowed in the HTML/text areas.
+  </p>
+  <pre>
+  add_filter( 'sliderpro_allowed_html', 'filter_allowed_html' );
+
+  function filter_allowed_html( $allowed_html ) {
+    $allowed_html[] = 'iframe' => array( 'src' => true, 'width' => true, 'height' => true );
+
+    return $allowed_html;
   }
   </pre>
 

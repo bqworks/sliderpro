@@ -147,6 +147,8 @@ class BQW_SP_Slide_Renderer {
 			)
 		);
 
+		$allowed_html = apply_filters( 'sliderpro_allowed_html', $allowed_html );
+
 		$classes = 'sp-slide';
 		$classes = apply_filters( 'sliderpro_slide_classes' , $classes, $this->slider_id, $this->slide_index );
 

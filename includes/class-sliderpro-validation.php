@@ -171,6 +171,8 @@ class BQW_SliderPro_Validation {
 						)
 					);
 
+					$allowed_html = apply_filters( 'sliderpro_allowed_html', $allowed_html );
+
 					$slide[ $name ] = wp_kses( $value, $allowed_html );
 				}
 			}
@@ -261,6 +263,8 @@ class BQW_SliderPro_Validation {
 							)
 						)
 					);
+
+					$allowed_html = apply_filters( 'sliderpro_allowed_html', $allowed_html );
 
 					$layer[ $name ] = wp_kses( $value, $allowed_html );
 				}

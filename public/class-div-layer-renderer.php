@@ -46,6 +46,8 @@ class BQW_SP_Div_Layer_Renderer extends BQW_SP_Layer_Renderer {
 				)
 			)
 		);
+
+		$allowed_html = apply_filters( 'sliderpro_allowed_html', $allowed_html );
 		
 		$html_output = "\r\n" . '			' . '<div class="' .  esc_attr( $this->get_classes() ) . '"' . $this->get_attributes() . '>' . wp_kses( $content, $allowed_html ) . '</div>';
 
