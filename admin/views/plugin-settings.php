@@ -20,7 +20,7 @@
                     </select>
                  </td>
                 <td>
-                    <?php echo $plugin_settings['load_stylesheets']['description']; ?>
+                    <p><?php echo $plugin_settings['load_stylesheets']['description']; ?></p>
                 </td>
             </tr>
             <tr>
@@ -31,7 +31,7 @@
                     <input type="checkbox" id="load-js-in-all-pages" name="load_js_in_all_pages" <?php echo $load_js_in_all_pages == true ? 'checked="checked"' : ''; ?>>
                 </td>
                 <td>
-                    <?php echo $plugin_settings['load_js_in_all_pages']['description']; ?>
+                    <p><?php echo $plugin_settings['load_js_in_all_pages']['description']; ?></p>
                 </td>
             </tr>
             <tr>
@@ -42,7 +42,7 @@
                     <input type="checkbox" id="load-unminified-scripts" name="load_unminified_scripts" <?php echo $load_unminified_scripts == true ? 'checked="checked"' : ''; ?>>
                 </td>
                 <td>
-                    <?php echo $plugin_settings['load_unminified_scripts']['description']; ?>
+                    <p><?php echo $plugin_settings['load_unminified_scripts']['description']; ?></p>
                 </td>
             </tr>
             <tr>
@@ -53,7 +53,8 @@
                     <input type="text" id="cache-expiry-interval" name="cache_expiry_interval" value="<?php echo esc_attr( $cache_expiry_interval ); ?>"><span>hours</span>
                 </td>
                 <td>
-                    <?php echo $plugin_settings['cache_expiry_interval']['description']; ?>
+                    <p><?php echo $plugin_settings['cache_expiry_interval']['description']; ?></p>
+
                     <a class="button-secondary clear-all-cache" data-nonce="<?php echo wp_create_nonce( 'clear-all-cache' ); ?>"><?php _e( 'Clear all cache now', 'sliderpro' ); ?></a>
                     <span class="spinner clear-cache-spinner"></span>
                 </td>
@@ -66,7 +67,7 @@
                     <input type="text" id="max-sliders-on-page" name="max_sliders_on_page" value="<?php echo esc_attr( $max_sliders_on_page ); ?>">
                 </td>
                 <td>
-                    <?php echo $plugin_settings['max_sliders_on_page']['description']; ?>
+                    <p><?php echo $plugin_settings['max_sliders_on_page']['description']; ?></p>
                 </td>
             </tr>
             <tr>
@@ -77,7 +78,7 @@
                     <input type="checkbox" id="hide-inline-info" name="hide_inline_info" <?php echo $hide_inline_info == true ? 'checked="checked"' : ''; ?>>
                 </td>
                 <td>
-                    <?php echo $plugin_settings['hide_inline_info']['description']; ?>
+                    <p><?php echo $plugin_settings['hide_inline_info']['description']; ?></p>
                 </td>
             </tr>
             <tr>
@@ -88,7 +89,7 @@
                     <input type="checkbox" id="hide-getting-started-info" name="hide_getting_started_info" <?php echo $hide_getting_started_info == true ? 'checked="checked"' : ''; ?>>
                 </td>
                 <td>
-                    <?php echo $plugin_settings['hide_getting_started_info']['description']; ?>
+                    <p><?php echo $plugin_settings['hide_getting_started_info']['description']; ?></p>
                 </td>
             </tr>
             <tr>
@@ -99,7 +100,7 @@
                     <input type="checkbox" id="hide-image-size-warning" name="hide_image_size_warning" <?php echo $hide_image_size_warning == true ? 'checked="checked"' : ''; ?>>
                 </td>
                 <td>
-                    <?php echo $plugin_settings['hide_image_size_warning']['description']; ?>
+                    <p><?php echo $plugin_settings['hide_image_size_warning']['description']; ?></p>
                 </td>
             </tr>
             <tr>
@@ -117,7 +118,7 @@
                     </select>
                  </td>
                 <td>
-                    <?php echo $plugin_settings['access']['description']; ?>
+                    <p><?php echo $plugin_settings['access']['description']; ?></p>
                 </td>
             </tr>
         </table>
