@@ -217,8 +217,7 @@ class BQW_SliderPro_Admin {
 		$plugin_settings = BQW_SliderPro_Settings::getPluginSettings();
 		$access = get_option( 'sliderpro_access', $plugin_settings['access']['default_value'] );
 
-		$restricted_pages = array();
-		$restricted_pages = apply_filters( 'sliderpro_restricted_pages' , $restricted_pages );
+		$restricted_pages = apply_filters( 'sliderpro_restricted_pages' , array() );
 
 		add_menu_page(
 			'Slider Pro',

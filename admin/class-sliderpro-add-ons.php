@@ -136,8 +136,7 @@ class BQW_SliderPro_Add_Ons {
 		$plugin_settings = BQW_SliderPro_Settings::getPluginSettings();
 		$access = get_option( 'sliderpro_access', $plugin_settings['access']['default_value'] );
 
-		$restricted_pages = array();
-		$restricted_pages = apply_filters( 'sliderpro_restricted_pages' , $restricted_pages );
+		$restricted_pages = apply_filters( 'sliderpro_restricted_pages' , array() );
 
 		if ( ! in_array( $this->plugin_slug . '-add-ons', $restricted_pages ) ) {
 			$this->add_ons_screen = add_submenu_page(
