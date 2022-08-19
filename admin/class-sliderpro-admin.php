@@ -350,7 +350,7 @@ class BQW_SliderPro_Admin {
 		$hide_image_size_warning = get_option( 'sliderpro_hide_image_size_warning', $plugin_settings['hide_image_size_warning']['default_value'] );
 		$access = get_option( 'sliderpro_access', $plugin_settings['access']['default_value'] );
 
-		if ( isset( $_POST['plugin_settings_update'] ) ) {
+		if ( isset( $_POST['plugin_settings_update'] ) && current_user_can( 'customize' ) ) {
 			check_admin_referer( 'plugin-settings-update', 'plugin-settings-nonce' );
 
 			if ( isset( $_POST['load_stylesheets'] ) && array_key_exists( $_POST['load_stylesheets'] , $plugin_settings['load_stylesheets']['available_values'] ) ) {
@@ -477,7 +477,7 @@ class BQW_SliderPro_Admin {
 		$slider_data = BQW_SliderPro_Validation::validate_slider_data( $data );
 		$id = $slider_data['id'];
 
-		if ( ! wp_verify_nonce( $nonce, 'save-slider' . $id ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'save-slider' . $id ) || ! current_user_can( 'customize' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
@@ -645,7 +645,7 @@ class BQW_SliderPro_Admin {
 		$name = sanitize_text_field( $_POST['name'] );
 		$settings = BQW_SliderPro_Validation::validate_slider_settings( json_decode( stripslashes( $_POST['settings'] ), true ) );
 
-		if ( ! wp_verify_nonce( $nonce, 'update-presets' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'update-presets' ) || ! current_user_can( 'customize' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
@@ -713,7 +713,7 @@ class BQW_SliderPro_Admin {
 		$nonce = $_POST['nonce'];
 		$original_slider_id = intval( $_POST['id'] );
 
-		if ( ! wp_verify_nonce( $nonce, 'duplicate-slider' . $original_slider_id ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'duplicate-slider' . $original_slider_id ) || ! current_user_can( 'customize' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
@@ -745,7 +745,7 @@ class BQW_SliderPro_Admin {
 		$nonce = $_POST['nonce'];
 		$id = intval( $_POST['id'] );
 
-		if ( ! wp_verify_nonce( $nonce, 'delete-slider' . $id ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'delete-slider' . $id ) || ! current_user_can( 'customize' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
@@ -1328,7 +1328,7 @@ class BQW_SliderPro_Admin {
 	public function ajax_clear_all_cache() {
 		$nonce = $_POST['nonce'];
 
-		if ( ! wp_verify_nonce( $nonce, 'clear-all-cache' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'clear-all-cache' ) || ! current_user_can( 'customize' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
