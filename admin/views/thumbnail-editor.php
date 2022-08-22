@@ -53,7 +53,7 @@
 		
 		<div class="fieldset content">
 			<h3 class="heading"><?php _e( 'Thumbnail Content', 'sliderpro' ); ?></h3>
-			<textarea class="field" name="thumbnail_content"><?php echo isset( $data['thumbnail_content'] ) ? esc_textarea( stripslashes( $data['thumbnail_content'] ) ) : ''; ?></textarea>
+			<textarea class="field thumbnail-html-code" name="thumbnail_content" cols="80" rows="10"><?php echo isset( $data['thumbnail_content'] ) ? esc_textarea( stripslashes( $data['thumbnail_content'] ) ) : ''; ?></textarea>
 		</div>
 
 		<?php
