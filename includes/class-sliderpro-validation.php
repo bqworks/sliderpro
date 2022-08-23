@@ -143,8 +143,8 @@ class BQW_SliderPro_Validation {
 			$slide = array();
 
 			foreach ( $slide_data as $name => $value ) {
-				if ( $name === 'position' ) {
-					$slide['position'] = intval( $value );
+				if ( in_array( $name, array( 'position', 'main_image_id', 'main_image_width', 'main_image_height' ) ) ) {
+					$slide[ $name ] = intval( $value );
 				} else if ( $name === 'settings' ) {
 					$slide['settings'] = self::validate_slide_settings( $value );
 				} else if ( $name === 'layers' ) {
