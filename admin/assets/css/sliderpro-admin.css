@@ -637,6 +637,10 @@ Single slider page
 	min-height: 300px;
 }
 
+.import-window .save {
+	margin-top: 10px;
+}
+
 /* Slide image editor
 --------------------------------------------------*/
 .main-image-editor .modal-window {
