@@ -1450,22 +1450,42 @@
 		 */
 		save: function() {
 			var that = this,
-				sliderDataString = this.importWindow.find( 'textarea' ).val();
+				sliderDataString = this.importWindow.find( 'textarea' ).val(),
+				sliderData;
 				
 			if ( sliderDataString === '' ) {
 				return;
 			}
 
-			var sliderData = $.parseJSON( sliderDataString );
+			if ( sliderDataString.indexOf( '<?xml version' ) !== -1 ) {
+				this.loadLegacyMap( function( map ) {
+					sliderData = that.convertLegacySlider( sliderDataString, map );
+					that.sendData( sliderData );
+				});
+			} else {
+				sliderData = $.parseJSON( sliderDataString );
+				this.sendData( sliderData );
+			}
+		},
+
+		/**
+		 * Sends the slider data to the server to be saved in the database.
+		 *
+		 * @since 4.8.2
+		 * 
+		 * @param {object} sliderData An object containing slider data.
+		 */
+		sendData: function( sliderData ) {
+			var that = this;
+
 			sliderData[ 'id' ] = -1;
 			sliderData[ 'nonce' ] = sp_js_vars.sa_nonce;
 			sliderData[ 'action' ] = 'import';
-			sliderDataString = JSON.stringify( sliderData );
 
 			$.ajax({
 				url: sp_js_vars.ajaxurl,
 				type: 'post',
-				data: { action: 'sliderpro_save_slider', data: sliderDataString },
+				data: { action: 'sliderpro_save_slider', data: JSON.stringify( sliderData ) },
 				complete: function( data ) {
 					if ( $( '.sliders-list .no-slider-row' ).length !== 0 ) {
 						$( '.sliders-list .no-slider-row' ).remove();
@@ -1477,6 +1497,180 @@
 					that.close();
 				}
 			});
+		},
+
+		/**
+		 * Loads a JSON file that contains the map of correspondences between the 
+		 * legacy slider and the new version.
+		 *
+		 * @since 4.8.2
+		 * 
+		 * @param {Function} callback Callback function to be called after the JSON file has loaded.
+		 */
+		loadLegacyMap: function( callback ) {
+			$.ajax({
+				url: sp_js_vars.plugin + '/admin/assets/js/legacy-map.json',
+				type: 'get',
+				dataType: 'json',
+				success: function( data ) {
+					callback( data );
+				}
+			});
+		},
+
+		/**
+		 * Converts a legacy slider from the provided XML string to a compatible slider.
+		 *
+		 * @since 4.8.2
+		 * 
+		 * @param {string} xmlString An XML string containing the exported data from the legacy slider.
+		 * @param {JSON}   map       A JSON object containing the map of correspondences between the 
+		 * 							 legacy slider and the new version.
+		 */
+		convertLegacySlider: function( xmlString, map ) {
+			var legacySliderXML = $.parseXML( xmlString ),
+				newSliderData = {
+					'name': $( legacySliderXML ).find( 'name' ).first().text(),
+					'settings': {},
+					'slides': []
+				},
+				settingsMap = map[ 'settings' ],
+				slideContentMap = map[ 'slideContent' ],
+				slideSettingsMap = map[ 'slideSettings' ],
+				layerSettingsMap = map[ 'layerSettings' ];
+			
+			// Parse the legacy slider settings
+			$( legacySliderXML ).find( 'settings' ).first().children().each( function( index, xmlNode ) {
+				var legacySetting = settingsMap[ xmlNode.nodeName ];
+
+				if ( typeof legacySetting !== 'undefined' ) {
+					var settingName = legacySetting[ 'newName' ],
+						settingType = legacySetting[ 'type' ],
+						settingValue;
+
+					if ( settingType === 'select' ) {
+						settingValue = legacySetting[ 'options' ][ xmlNode.textContent ];
+					} else if ( settingType === 'boolean' ) {
+						settingValue = xmlNode.textContent == '0' ? false : true;
+					} else if ( settingType === 'number' ) {
+						settingValue = parseFloat( xmlNode.textContent );
+					} else if ( settingType === 'string' ) {
+						settingValue = xmlNode.textContent;
+					} else if ( settingType === 'mixed' ) {
+						settingValue = isNaN( xmlNode.textContent ) ? xmlNode.textContent : parseFloat( xmlNode.textContent );
+					}
+
+					newSliderData[ 'settings' ][ settingName ] = settingValue;
+				}
+			});
+
+			// Parse the legacy slides
+			$( legacySliderXML ).find( 'slide' ).each( function( index, slideXmlNode ) {
+				var newSlideData = {
+						settings: {}
+					},
+					layersData = [],
+					layerCounter = 0;
+				
+				// Parse the legacy slide content
+				$( slideXmlNode ).find( 'content' ).first().children().each( function( index, slideContentXmlNode ) {
+					var legacySlideContent = slideContentMap[ slideContentXmlNode.nodeName ];
+
+					if ( typeof legacySlideContent !== 'undefined' ) {
+						var slideContentName = legacySlideContent[ 'newName' ],
+							slideContentType = legacySlideContent[ 'type' ],
+							slideContentValue;
+						
+						if ( slideContentType === 'string' ) {
+							slideContentValue = slideContentXmlNode.textContent;
+						}
+
+						newSlideData[ slideContentName ] = slideContentValue;
+
+					// Parse the legacy layer content
+					} else if ( slideContentXmlNode.nodeName.indexOf( 'layer_' ) !== -1 ) {
+						var layer = {
+							type: 'div',
+							text: slideContentXmlNode.textContent
+						}
+
+						layersData.push( layer );
+					}
+				});
+
+				// Parse the legacy slide settings
+				$( slideXmlNode ).find( 'settings' ).first().children().each( function( index, slideSettingXmlNode ) {
+					var legacySlideSetting = slideSettingsMap[ slideSettingXmlNode.nodeName ];
+
+					if ( typeof legacySlideSetting !== 'undefined' ) {
+						var slideSettingName = legacySlideSetting[ 'newName' ],
+							slideSettingType = legacySlideSetting[ 'type' ],
+							slideSettingValue;
+						
+						if ( slideSettingXmlNode.nodeName === 'dynamic_posts_types' || slideSettingXmlNode.nodeName === 'dynamic_posts_taxonomies' ) {
+							slideSettingValue = slideSettingXmlNode.textContent.split(';');
+						} else if ( slideSettingType === 'select' ) {
+							slideSettingValue = legacySlideSetting[ 'options' ][ slideSettingXmlNode.textContent ];
+						} else if ( slideSettingType === 'boolean' ) {
+							slideSettingValue = slideSettingXmlNode.textContent == '0' ? false : true;
+						} else if ( slideSettingType === 'number' ) {
+							slideSettingValue = parseFloat( slideSettingXmlNode.textContent );
+						} else if ( slideSettingType === 'string' ) {
+							slideSettingValue = slideSettingXmlNode.textContent;
+						} else if ( slideSettingType === 'mixed' ) {
+							slideSettingValue = isNaN( slideSettingXmlNode.textContent ) ? slideSettingXmlNode.textContent : parseFloat( xmlNode.textContent );
+						}
+
+						newSlideData[ 'settings' ][ slideSettingName ] = slideSettingValue;
+
+					// Parse the legacy layer settings
+					} else if ( slideSettingXmlNode.nodeName.indexOf( 'layer_' ) !== -1 ) {
+						var layerSettingsData = {},
+							legacyLayerSettings = slideSettingXmlNode.textContent.split('+');
+
+						legacyLayerSettings.forEach( function( element ) {
+							var legacyLayerSetting = element.split('='),
+								legacyLayerSettingName = legacyLayerSetting[0],
+								legacyLayerSettingValue = legacyLayerSetting[1],
+								layerSetting = layerSettingsMap[ legacyLayerSettingName ];
+
+							if ( typeof layerSetting !== 'undefined' ) {
+								var layerSettingName = layerSetting[ 'newName' ],
+									layerSettingType = layerSetting[ 'type' ],
+									layerSettingValue;
+
+								if ( legacyLayerSettingName === 'layer_preset_styles' ) {
+									layerSettingValue = legacyLayerSettingValue.split(',');
+								} else if ( layerSettingType === 'select' ) {
+									layerSettingValue = layerSetting[ 'options' ][ legacyLayerSettingValue ];
+								} else if ( layerSettingType === 'boolean' ) {
+									layerSettingValue = legacyLayerSettingValue == '0' ? false : true;
+								} else if ( layerSettingType === 'number' ) {
+									layerSettingValue = parseFloat( legacyLayerSettingValue );
+								} else if ( layerSettingType === 'string' ) {
+									layerSettingValue = legacyLayerSettingValue;
+								} else if ( layerSettingType === 'mixed' ) {
+									layerSettingValue = isNaN( legacyLayerSettingValue ) ? legacyLayerSettingValue : parseFloat( legacyLayerSettingValue );
+								}
+
+								layerSettingsData[ layerSettingName ] = layerSettingValue;
+							}
+						});
+
+						layersData[ layerCounter ][ 'settings' ] = layerSettingsData;
+
+						layerCounter++;
+					}
+				});
+
+				if ( layersData.length !== 0 ) {
+					newSlideData[ 'layers' ] = layersData;
+				}
+
+				newSliderData[ 'slides' ].push( newSlideData );
+			});
+
+			return newSliderData;
 		},
 
 		/**
