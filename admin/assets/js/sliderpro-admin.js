@@ -1519,6 +1519,36 @@
 		},
 
 		/**
+		 * Converts HTML encoded characters to tags.
+		 *
+		 * @since 4.8.2
+		 * 
+		 * @param  {string} text Text containing HTML encoded characters.
+		 * @return {string} text Provided text with HTML encoded characters converted to tags.
+		 */
+		decodeHTML: function( text ) {
+			var map = {
+				"&amp;": "&",
+				"&quot;": '"',
+				"&#039": "'",
+				"&lt;": "<",
+				"&gt;": ">"
+			};
+
+			for ( var key in map ) {
+				if ( map.hasOwnProperty( key ) ) {
+					var regexp = new RegExp( key, 'g' );
+					text = text.replace( regexp, map[key] );
+				}
+			}
+
+			// strip slashes
+			text = text.replace( /\\/g, '' );
+
+			return text;
+		},
+
+		/**
 		 * Converts a legacy slider from the provided XML string to a compatible slider.
 		 *
 		 * @since 4.8.2
@@ -1528,7 +1558,8 @@
 		 * 							 legacy slider and the new version.
 		 */
 		convertLegacySlider: function( xmlString, map ) {
-			var legacySliderXML = $.parseXML( xmlString ),
+			var that = this,
+				legacySliderXML = $.parseXML( xmlString ),
 				newSliderData = {
 					'name': $( legacySliderXML ).find( 'name' ).first().text(),
 					'settings': {},
@@ -1582,7 +1613,7 @@
 							slideContentValue;
 						
 						if ( slideContentType === 'string' ) {
-							slideContentValue = slideContentXmlNode.textContent;
+							slideContentValue = that.decodeHTML( slideContentXmlNode.textContent );
 						}
 
 						newSlideData[ slideContentName ] = slideContentValue;
@@ -1590,9 +1621,10 @@
 					// Parse the legacy layer content
 					} else if ( slideContentXmlNode.nodeName.indexOf( 'layer_' ) !== -1 ) {
 						var layer = {
-							type: 'div',
-							text: slideContentXmlNode.textContent
+							type: 'div'
 						}
+
+						layer[ 'text' ] = that.decodeHTML( slideContentXmlNode.textContent );
 
 						layersData.push( layer );
 					}
@@ -1607,8 +1639,8 @@
 							slideSettingType = legacySlideSetting[ 'type' ],
 							slideSettingValue;
 						
-						if ( slideSettingXmlNode.nodeName === 'dynamic_posts_types' || slideSettingXmlNode.nodeName === 'dynamic_posts_taxonomies' ) {
-							slideSettingValue = slideSettingXmlNode.textContent.split(';');
+						if ( slideSettingType === 'stringToArray' ) {
+							slideSettingValue = slideSettingXmlNode.textContent.split( legacySlideSetting[ 'delimiter' ] );
 						} else if ( slideSettingType === 'select' ) {
 							slideSettingValue = legacySlideSetting[ 'options' ][ slideSettingXmlNode.textContent ];
 						} else if ( slideSettingType === 'boolean' ) {
@@ -1626,7 +1658,7 @@
 					// Parse the legacy layer settings
 					} else if ( slideSettingXmlNode.nodeName.indexOf( 'layer_' ) !== -1 ) {
 						var layerSettingsData = {},
-							legacyLayerSettings = slideSettingXmlNode.textContent.split('+');
+							legacyLayerSettings = slideSettingXmlNode.textContent.split( '+' );
 
 						legacyLayerSettings.forEach( function( element ) {
 							var legacyLayerSetting = element.split('='),
@@ -1639,8 +1671,17 @@
 									layerSettingType = layerSetting[ 'type' ],
 									layerSettingValue;
 
-								if ( legacyLayerSettingName === 'layer_preset_styles' ) {
-									layerSettingValue = legacyLayerSettingValue.split(',');
+								if ( layerSettingType === 'stringToArray' ) {
+									if ( legacyLayerSettingName === 'layer_preset_styles' ) {
+										var legacyArray = legacyLayerSettingValue.split( layerSetting[ 'delimiter' ] ),
+											layerSettingValue = [];
+										
+										legacyArray.forEach( function( element ) {
+											if ( typeof layerSetting[ 'options' ][ element ] !== 'undefined' ) {
+												layerSettingValue.push( layerSetting[ 'options' ][ element ] );
+											}
+										});
+									}
 								} else if ( layerSettingType === 'select' ) {
 									layerSettingValue = layerSetting[ 'options' ][ legacyLayerSettingValue ];
 								} else if ( layerSettingType === 'boolean' ) {
@@ -1657,6 +1698,8 @@
 							}
 						});
 
+						layersData[ layerCounter ][ 'position' ] = layerCounter;
+						layersData[ layerCounter ][ 'name' ] = 'Layer ' + layerCounter;
 						layersData[ layerCounter ][ 'settings' ] = layerSettingsData;
 
 						layerCounter++;

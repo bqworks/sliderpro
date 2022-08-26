@@ -8,10 +8,6 @@
             "newName": "height",
             "type": "mixed"
         },
-        "responsive": {
-            "newName": "responsive",
-            "type": "boolean"
-        },
         "aspect_ratio": {
             "newName": "aspect_ratio",
             "type": "number"
@@ -26,10 +22,6 @@
                 "proportionalFit": "cover",
                 "noScale": "none"
             }
-        },
-        "allow_scale_up": {
-            "newName": "allow_scale_up",
-            "type": "boolean"
         },
         "lazy_loading": {
             "newName": "lazy_loading",
@@ -79,7 +71,23 @@
             "newName": "arrows",
             "type": "boolean"
         },
+        "navigation_arrows": {
+            "newName": "arrows",
+            "type": "boolean"
+        },
+        "fade_navigation_arrows": {
+            "newName": "fade_arrows",
+            "type": "boolean"
+        },
+        "slide_arrows_toggle": {
+            "newName": "fade_arrows",
+            "type": "boolean"
+        },
         "slide_buttons": {
+            "newName": "buttons",
+            "type": "boolean"
+        },
+        "navigation_buttons": {
             "newName": "buttons",
             "type": "boolean"
         },
@@ -93,10 +101,6 @@
         },
         "fullscreen_controls_toggle": {
             "newName": "fade_fullscreen",
-            "type": "boolean"
-        },
-        "swipe_touch_drag": {
-            "newName": "touch_swipe",
             "type": "boolean"
         },
         "swipe_threshold": {
@@ -116,19 +120,23 @@
             "type": "number"
         },
         "thumbnail_orientation": {
-            "newName": "thumbnail_position",
+            "newName": "thumbnails_position",
             "type": "select",
             "options": {
                 "horizontal": "bottom",
                 "vertical": "right"
             }
         },
-        "thumbnail_swipe": {
-            "newName": "thumbnail_touch_swipe",
-            "type": "boolean"
-        },
         "thumbnail_arrows": {
             "newName": "thumbnail_arrows",
+            "type": "boolean"
+        },
+        "thumbnail_arrows_toggle": {
+            "newName": "fade_thumbnail_arrows",
+            "type": "boolean"
+        },
+        "fade_thumbnail_arrows": {
+            "newName": "fade_thumbnail_arrows",
             "type": "boolean"
         },
         "video_play_action": {
@@ -202,6 +210,10 @@
             "newName": "main_image_link",
             "type": "string"
         },
+        "link": {
+            "newName": "main_image_link",
+            "type": "string"
+        },
         "slide_link_title": {
             "newName": "main_image_link_title",
             "type": "string"
@@ -214,7 +226,15 @@
             "newName": "thumbnail_source_alt",
             "type": "string"
         },
+        "thumbnail_tooltip": {
+            "newName": "thumbnail_source_alt",
+            "type": "string"
+        },
         "thumbnail_title": {
+            "newName": "thumbnail_source_title",
+            "type": "string"
+        },
+        "thumbnail_caption": {
             "newName": "thumbnail_source_title",
             "type": "string"
         },
@@ -242,15 +262,43 @@
                 "flickr": "flickr"
             }
         },
+        "dynamic_slide": {
+            "newName": "content_type",
+            "type": "select",
+            "options": {
+                "0": "custom",
+                "1": "posts"
+            }
+        },
         "dynamic_posts_types": {
             "newName": "posts_post_types",
-            "type": "array"
+            "type": "stringToArray",
+            "delimiter": ";"
+        },
+        "dynamic_post_types": {
+            "newName": "posts_post_types",
+            "type": "stringToArray",
+            "delimiter": ";"
         },
         "dynamic_posts_taxonomies": {
             "newName": "posts_taxonomies",
-            "type": "array"
+            "type": "stringToArray",
+            "delimiter": ";"
+        },
+        "dynamic_taxonomies": {
+            "newName": "posts_taxonomies",
+            "type": "stringToArray",
+            "delimiter": ";"
         },
         "dynamic_posts_relation": {
+            "newName": "posts_relation",
+            "type": "select",
+            "options": {
+                "or": "OR",
+                "and": "AND"
+            }
+        },
+        "dynamic_relation": {
             "newName": "posts_relation",
             "type": "select",
             "options": {
@@ -270,11 +318,29 @@
             "newName": "posts_order",
             "type": "select",
             "options": {
-                "DESC": "OR",
-                "ASC": "AND"
+                "DESC": "DESC",
+                "ASC": "ASC"
             }
         },
-        "dynamic_posts_order_by": {
+        "dynamic_order": {
+            "newName": "posts_order",
+            "type": "select",
+            "options": {
+                "DESC": "DESC",
+                "ASC": "ASC"
+            }
+        },
+        "dynamic_posts_orderby": {
+            "newName": "posts_order_by",
+            "type": "select",
+            "options": {
+                "date": "date",
+                "comment_count": "comment_count",
+                "title": "title",
+                "rand": "rand"
+            }
+        },
+        "dynamic_orderby": {
             "newName": "posts_order_by",
             "type": "select",
             "options": {
@@ -357,7 +423,13 @@
         },
         "layer_preset_styles": {
             "newName": "preset_styles",
-            "type": "array"
+            "type": "stringToArray",
+            "delimiter": ",",
+            "options": {
+                "black": "sp-black",
+                "white": "sp-white",
+                "rounded": "sp-rounded"
+            }
         },
         "layer_custom_class": {
             "newName": "custom_class",
