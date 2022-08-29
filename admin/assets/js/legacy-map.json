@@ -119,6 +119,13 @@
                 "tooltipAndScroller": true
             }
         },
+        "thumbnails_type": {
+            "newName": "auto_thumbnail_images",
+            "type": "select",
+            "options": {
+                "navigation": true
+            }
+        },
         "thumbnail_width": {
             "newName": "thumbnail_width",
             "type": "number"
