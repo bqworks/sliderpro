@@ -20,7 +20,7 @@
 		            <label for="show-hide-info" class="hide-info"><?php _e( 'Hide info', 'sliderpro' ); ?></label>
 		            
 		            <div class="info-content">
-		                <p><?php _e( 'In the field above you need to copy the new slider\'s data, as it was exported. Then, click the <i>Import</i> button.', 'sliderpro' ); ?></p>
+		                <p><?php _e( 'In the field above you need to insert the new slider\'s data, as it was exported. Then, click the <i>Import</i> button. If you want to import a slider from a plugin version older than 4.0, you need to insert the exported XML content.', 'sliderpro' ); ?></p>
 		            	<p><a href="https://bqworks.net/slider-pro/screencasts/#import-export" target="_blank"><?php _e( 'See the video tutorial', 'sliderpro' ); ?> &rarr;</a></p>
 		            </div>
 		        </div>

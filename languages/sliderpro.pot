@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SliderPro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 11:28+0000\n"
+"POT-Creation-Date: 2022-08-29 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -69,15 +69,15 @@ msgstr ""
 msgid "Activate"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:191
+#: admin/class-sliderpro-add-ons.php:190
 msgid "Activated"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:188
+#: admin/class-sliderpro-add-ons.php:187
 msgid "Activating the add-on..."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:190
+#: admin/class-sliderpro-add-ons.php:189
 msgid "Activating..."
 msgstr ""
 
@@ -93,7 +93,11 @@ msgstr ""
 msgid "Add Layer"
 msgstr ""
 
-#: admin/views/slider.php:2
+#: admin/class-sliderpro-admin.php:257
+msgid "Add New"
+msgstr ""
+
+#: admin/class-sliderpro-admin.php:256 admin/views/slider.php:2
 msgid "Add New Slider"
 msgstr ""
 
@@ -105,19 +109,19 @@ msgstr ""
 msgid "Add Slides"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:624
+#: admin/class-sliderpro-add-ons.php:623
 msgid "Add-on activated successfully."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:664
+#: admin/class-sliderpro-add-ons.php:663
 msgid "Add-on deactivated successfully."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:572
+#: admin/class-sliderpro-add-ons.php:571
 msgid "Add-on installed successfully."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:145 admin/class-sliderpro-add-ons.php:146
+#: admin/class-sliderpro-add-ons.php:144 admin/class-sliderpro-add-ons.php:145
 #: admin/views/add-ons.php:2 admin/views/sliders.php:26
 msgid "Add-ons"
 msgstr ""
@@ -137,6 +141,10 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+#: admin/class-sliderpro-admin.php:246
+msgid "All Sliders"
+msgstr ""
+
 #: includes/class-sliderpro-settings.php:166
 msgid "Allow Scale Up"
 msgstr ""
@@ -149,7 +157,7 @@ msgstr ""
 msgid "Alt:"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:626
+#: admin/class-sliderpro-add-ons.php:625
 msgid "An error occurred during activation."
 msgstr ""
 
@@ -178,23 +186,23 @@ msgstr ""
 msgid "Appearance"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:201
+#: admin/class-sliderpro-admin.php:211
 msgid "Are you sure you want to delete the selected preset?"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:198
+#: admin/class-sliderpro-admin.php:208
 msgid "Are you sure you want to delete this slide?"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:197
+#: admin/class-sliderpro-admin.php:207
 msgid "Are you sure you want to delete this slider?"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:200
+#: admin/class-sliderpro-admin.php:210
 msgid "Are you sure you want to override the selected preset?"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:193
+#: admin/class-sliderpro-admin.php:203
 msgid ""
 "Are you sure you want to remove the existing custom CSS and/or JavaScript? "
 "<br/> Only do this after you've copied the existing code in another place."
@@ -316,7 +324,7 @@ msgstr ""
 msgid "Cache expiry interval"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:203
+#: admin/class-sliderpro-admin.php:213
 msgid "Cancel"
 msgstr ""
 
@@ -354,7 +362,7 @@ msgid ""
 "JavaScript files for the slider. This is useful for debugging purposes."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:186
+#: admin/class-sliderpro-add-ons.php:185
 msgid "Checking the license key..."
 msgstr ""
 
@@ -363,11 +371,11 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: admin/views/plugin-settings.php:57
+#: admin/views/plugin-settings.php:58
 msgid "Clear all cache now"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:192 admin/views/main-image-editor.php:12
+#: admin/class-sliderpro-admin.php:202 admin/views/main-image-editor.php:12
 #: admin/views/slide.php:10 admin/views/thumbnail-editor.php:12
 msgid "Click to add image"
 msgstr ""
@@ -397,13 +405,13 @@ msgstr ""
 msgid "Contributor"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:221
+#: admin/class-sliderpro-add-ons.php:220
 msgid ""
 "Could not retrieve add-ons' information from the server. Please try again "
 "later."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:330
+#: admin/class-sliderpro-add-ons.php:329
 msgid ""
 "Could not retrieve the add-on's information from the server. Please try "
 "again later."
@@ -458,11 +466,11 @@ msgstr ""
 msgid "Deactivate"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:193
+#: admin/class-sliderpro-add-ons.php:192
 msgid "Deactivated"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:192
+#: admin/class-sliderpro-add-ons.php:191
 msgid "Deactivating..."
 msgstr ""
 
@@ -498,6 +506,7 @@ msgstr ""
 msgid "DIV Layer"
 msgstr ""
 
+#: admin/class-sliderpro-admin.php:278 admin/class-sliderpro-admin.php:279
 #: admin/views/sliders.php:14
 msgid "Documentation"
 msgstr ""
@@ -604,7 +613,7 @@ msgstr ""
 msgid "Flickr Slides"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:196
+#: admin/class-sliderpro-admin.php:206
 msgid "Flickr slides"
 msgstr ""
 
@@ -639,7 +648,7 @@ msgstr ""
 msgid "Gallery Slides"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:195
+#: admin/class-sliderpro-admin.php:205
 msgid "Gallery slides"
 msgstr ""
 
@@ -836,6 +845,10 @@ msgstr ""
 msgid "Import Slider"
 msgstr ""
 
+#: admin/class-sliderpro-admin.php:217
+msgid "Importing..."
+msgstr ""
+
 #: admin/views/flickr-slide-settings.php:55
 msgid ""
 "In the <i>ID</i> field you need to enter the id of the set or the id of the "
@@ -852,8 +865,10 @@ msgstr ""
 
 #: admin/views/import-window.php:23
 msgid ""
-"In the field above you need to copy the new slider's data, as it was "
-"exported. Then, click the <i>Import</i> button."
+"In the field above you need to insert the new slider's data, as it was "
+"exported. Then, click the <i>Import</i> button. If you want to import a "
+"slider from a plugin version older than 4.0, you need to insert the exported "
+"XML content."
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:1129
@@ -1067,7 +1082,7 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:187
+#: admin/class-sliderpro-add-ons.php:186
 msgid "Installing the add-on..."
 msgstr ""
 
@@ -1316,6 +1331,7 @@ msgid ""
 "Layers</i> section, as layers are set to be responsive automatically."
 msgstr ""
 
+#: admin/class-sliderpro-admin.php:267 admin/class-sliderpro-admin.php:268
 #: admin/views/plugin-settings.php:2
 msgid "Plugin Settings"
 msgstr ""
@@ -1337,11 +1353,11 @@ msgstr ""
 msgid "Posts Slides"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:194
+#: admin/class-sliderpro-admin.php:204
 msgid "Posts slides"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:199
+#: admin/class-sliderpro-admin.php:209
 msgid "Preset Name:"
 msgstr ""
 
@@ -1427,7 +1443,7 @@ msgstr ""
 msgid "Round Corners"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:204
+#: admin/class-sliderpro-admin.php:214
 msgid "Save"
 msgstr ""
 
@@ -1624,11 +1640,15 @@ msgstr ""
 msgid "Slide Distance"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:206
+#: admin/class-sliderpro-admin.php:216
 msgid "Slider created."
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:205
+#: admin/class-sliderpro-admin.php:245
+msgid "Slider Pro"
+msgstr ""
+
+#: admin/class-sliderpro-admin.php:215
 msgid "Slider updated."
 msgstr ""
 
@@ -1764,15 +1784,15 @@ msgid ""
 "Link</i> field allows you to set a link for this image."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:617
+#: admin/class-sliderpro-add-ons.php:616
 msgid "The add-on is already activated."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:666
+#: admin/class-sliderpro-add-ons.php:665
 msgid "The add-on is already deactivated."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:578
+#: admin/class-sliderpro-add-ons.php:577
 msgid "The add-on is already installed."
 msgstr ""
 
@@ -1849,19 +1869,19 @@ msgid ""
 "are enumerated in the Main Image, Layers and HTML editors."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:401
+#: admin/class-sliderpro-add-ons.php:400
 msgid "The license key is expired."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:411
+#: admin/class-sliderpro-add-ons.php:410
 msgid "The license key is not valid."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:407
+#: admin/class-sliderpro-add-ons.php:406
 msgid "The license key is valid, but already used."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:395
+#: admin/class-sliderpro-add-ons.php:394
 msgid "The license key is valid."
 msgstr ""
 
@@ -1992,19 +2012,19 @@ msgstr ""
 msgid "The username of the image's owner."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:228
+#: admin/class-sliderpro-add-ons.php:227
 msgid ""
 "There was an error retrieving add-ons' information from the server. Please "
 "try again later."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:341
+#: admin/class-sliderpro-add-ons.php:340
 msgid ""
 "There was an error retrieving the add-on's information from the server. "
 "Please try again later."
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:381
+#: admin/class-sliderpro-add-ons.php:380
 msgid "There was an error with the license key verification process."
 msgstr ""
 
@@ -2119,7 +2139,7 @@ msgstr ""
 msgid "Troubleshooting chapter"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:194
+#: admin/class-sliderpro-add-ons.php:193
 msgid "Try again"
 msgstr ""
 
@@ -2127,7 +2147,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:583
+#: admin/class-sliderpro-add-ons.php:582
 msgid "Unable to connect to the filesystem."
 msgstr ""
 
@@ -2148,7 +2168,7 @@ msgstr ""
 msgid "Update Preset"
 msgstr ""
 
-#: admin/class-sliderpro-add-ons.php:189
+#: admin/class-sliderpro-add-ons.php:188
 msgid "Updating..."
 msgstr ""
 
@@ -2239,7 +2259,7 @@ msgstr ""
 msgid "With selected"
 msgstr ""
 
-#: admin/class-sliderpro-admin.php:202
+#: admin/class-sliderpro-admin.php:212
 msgid "Yes"
 msgstr ""
 
@@ -2276,10 +2296,9 @@ msgstr ""
 
 #: admin/views/sliders.php:42
 msgid ""
-"Your sliders contain custom CSS and/or JavaScript. Please move this code in "
-"the Wordpress' CSS editor, in Customize, or a different place. Your current "
-"code will still work for now, but you won't be able to edit it. You can see "
-"your custom CSS/JS below."
+"Your sliders contain custom CSS and/or JavaScript. The built-in CSS & JS "
+"editor was removed, but an add-on was created instead, with new features for "
+"working with custom code."
 msgstr ""
 
 #: includes/class-sliderpro-settings.php:904
