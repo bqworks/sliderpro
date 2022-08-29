@@ -323,8 +323,7 @@ class BQW_SP_Slide_Renderer {
 	 * @return boolean
 	 */
 	protected function has_thumbnail_image() {
-		if ( ( isset( $this->data['thumbnail_source'] ) && $this->data['thumbnail_source'] !== '' ) ||
-			( $this->auto_thumbnail_images === true && isset( $this->data['main_image_id'] ) !== false && $this->data['main_image_id'] !== '' ) ) {
+		if ( ( isset( $this->data['thumbnail_source'] ) && $this->data['thumbnail_source'] !== '' ) || $this->auto_thumbnail_images === true ) {
 			return true;
 		}
 
@@ -344,12 +343,16 @@ class BQW_SP_Slide_Renderer {
 
 		if ( isset( $this->data['thumbnail_source'] ) !== false && $this->data['thumbnail_source'] !== '' ) {
 			$thumbnail_source = $this->data['thumbnail_source'];
-		} else if( ( isset( $this->data['thumbnail_source'] ) === false || $this->data['thumbnail_source'] === '' ) && $this->auto_thumbnail_images === true && ( isset( $this->data['main_image_id'] ) !== false && $this->data['main_image_id'] !== '' ) ) {
-			$image_id = $this->data['main_image_id'];
-			$attachment_image = wp_get_attachment_image_src( $image_id, $this->thumbnail_image_size );
+		} else if ( $this->auto_thumbnail_images === true ) {
+			if ( isset( $this->data['main_image_id'] ) !== false && $this->data['main_image_id'] !== '' && $this->data['main_image_id'] !== 0 ) {
+				$image_id = $this->data['main_image_id'];
+				$attachment_image = wp_get_attachment_image_src( $image_id, $this->thumbnail_image_size );
 
-			if ( $attachment_image !== false ) {
-				$thumbnail_source = $attachment_image[0];
+				if ( $attachment_image !== false ) {
+					$thumbnail_source = $attachment_image[0];
+				}
+			} else if ( isset( $this->data['main_image_source'] ) && $this->data['main_image_source'] !== '' ) {
+				$thumbnail_source = $this->data['main_image_source'];
 			}
 		}
 
