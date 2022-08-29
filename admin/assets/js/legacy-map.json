@@ -111,6 +111,14 @@
             "newName": "fade",
             "type": "boolean"
         },
+        "thumbnail_type": {
+            "newName": "auto_thumbnail_images",
+            "type": "select",
+            "options": {
+                "scroller": true,
+                "tooltipAndScroller": true
+            }
+        },
         "thumbnail_width": {
             "newName": "thumbnail_width",
             "type": "number"
