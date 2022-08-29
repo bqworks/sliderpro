@@ -4565,9 +4565,9 @@
 
 			$( window ).on( 'resize.sliderPro', function() {
 				if ( isPercentageWidth === true ) {
-					that.previewWindow.css( 'width', $( window ).width() * ( parseInt( previewWidth, 10 ) / 100 ) - 100 );
-				} else if ( previewWidth >= $( window ).width() - 100 ) {
-					that.previewWindow.css( 'width', $( window ).width() - 100 );
+					that.previewWindow.css( 'width', $( window ).width() * ( parseInt( previewWidth, 10 ) / 100 ) - 60 );
+				} else if ( previewWidth >= $( window ).width() - 60 ) {
+					that.previewWindow.css( 'width', $( window ).width() - 60 );
 				} else {
 					that.previewWindow.css( 'width', previewWidth );
 				}
