@@ -213,7 +213,8 @@ class BQW_SliderPro_Admin {
 				'cancel' => __( 'Cancel', 'sliderpro' ),
 				'save' => __( 'Save', 'sliderpro' ),
 				'slider_update' => __( 'Slider updated.', 'sliderpro' ),
-				'slider_create' => __( 'Slider created.', 'sliderpro' )
+				'slider_create' => __( 'Slider created.', 'sliderpro' ),
+				'slider_importing' => __( 'Importing...', 'sliderpro' )
 			) );
 		}
 	}

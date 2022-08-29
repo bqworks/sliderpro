@@ -1401,6 +1401,15 @@
 		importWindow: null,
 
 		/**
+		 * Reference to the 'Import' button.
+		 *
+		 * @since 4.8.2
+		 * 
+		 * @type {jQuery Object}
+		 */
+		$importButton: null,
+
+		/**
 		 * Open the modal window.
 		 *
 		 * @since 4.0.0
@@ -1426,15 +1435,26 @@
 		 */
 		init: function() {
 			var that = this;
+				
+			this.$importButton = this.importWindow.find( '.save' );
+
+			this.$importButton.data( 'label', this.$importButton.text() );
+
+			this.$importButton.on( 'click', function( event ) {
+				var sliderDataString = that.importWindow.find( 'textarea' ).val();
+
+				event.preventDefault();
+
+				if ( sliderDataString !== '' ) {
+					that.importWindow.find( '.save' ).addClass( 'disabled' ).text( sp_js_vars.slider_importing );
+					
+					that.save();
+				}
+			});
 
 			this.importWindow.find( '.close-x' ).on( 'click', function( event ) {
 				event.preventDefault();
 				that.close();
-			});
-
-			this.importWindow.find( '.save' ).on( 'click', function( event ) {
-				event.preventDefault();
-				that.save();
 			});
 		},
 
@@ -1452,19 +1472,25 @@
 			var that = this,
 				sliderDataString = this.importWindow.find( 'textarea' ).val(),
 				sliderData;
-				
-			if ( sliderDataString === '' ) {
-				return;
-			}
 
 			if ( sliderDataString.indexOf( '<?xml version' ) !== -1 ) {
 				this.loadLegacyMap( function( map ) {
-					sliderData = that.convertLegacySlider( sliderDataString, map );
-					that.sendData( sliderData );
+					try {
+						sliderData = that.convertLegacySlider( sliderDataString, map );
+						that.sendData( sliderData );
+					} catch ( error ) {
+						that.importWindow.find( 'textarea' ).val( error );
+						that.$importButton.removeClass( 'disabled' ).text( that.$importButton.data( 'label' ) );
+					}
 				});
 			} else {
-				sliderData = $.parseJSON( sliderDataString );
-				this.sendData( sliderData );
+				try {
+					sliderData = $.parseJSON( sliderDataString );
+					this.sendData( sliderData );
+				} catch ( error ) {
+					this.importWindow.find( 'textarea' ).val( error );
+					this.$importButton.removeClass( 'disabled' ).text( this.$importButton.data( 'label' ) );
+				}
 			}
 		},
 
@@ -1558,8 +1584,13 @@
 		 * 							 legacy slider and the new version.
 		 */
 		convertLegacySlider: function( xmlString, map ) {
+			try {
+				var legacySliderXML = $.parseXML( xmlString );
+			} catch ( error ) {
+				throw new Error( error );
+			}
+
 			var that = this,
-				legacySliderXML = $.parseXML( xmlString ),
 				newSliderData = {
 					'name': $( legacySliderXML ).find( 'name' ).first().text(),
 					'settings': {},
