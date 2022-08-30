@@ -1,13 +1,13 @@
 === Slider Pro ===
 Contributors: bqworks
-Tags: image slider, posts slider, content slider, responsive slider, touch slider, carousel slider, thumbnail scroller, lightbox slider, animated layers, full width
+Tags: image slider, post slider, content slider, responsive slider, touch slider, carousel slider, thumbnail scroller, lightbox slider, animated layers, full width
 Requires at least: 4.0
 Tested up to: 6.0
 Stable tag: 4.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Slider Pro is a responsive slider plugin that offers Premium features for FREE, including animated layers, posts content, full width layout and more.
+Slider Pro is a responsive slider plugin that offers Premium features for FREE, including animated layers, post content, full width layout and more.
 
 == Description ==
 
