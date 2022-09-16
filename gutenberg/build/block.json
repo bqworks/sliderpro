@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "bqworks/sliderpro",
+  "version": "0.1.0",
+  "title": "Slider Pro",
+  "category": "widgets",
+  "icon": "slides",
+  "description": "Gutenberg block for Slider Pro.",
+  "attributes": {
+    "selectedSlider": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "customClassName": false
+  },
+  "textdomain": "sliderpro",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css"
+}
