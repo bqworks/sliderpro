@@ -6,8 +6,6 @@ import metadata from './block.json';
 
 registerBlockType( metadata, {
 	icon: sliderIcon,
-
-	edit: edit,
-
-	save: save,
-} );
+	edit,
+	save,
+});

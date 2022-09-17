@@ -5,7 +5,7 @@ export default function save( props ) {
 
 	return (
 		<div { ...useBlockProps.save() }>
-			{ '[sliderpro id="' + attributes.selectedSlider + '"]' }
+			{ attributes.sliderId !== -1 && `[sliderpro id="${ attributes.sliderId }"]` }
 		</div>
 	);
 }

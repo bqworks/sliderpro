@@ -50,7 +50,8 @@ add_action( 'plugins_loaded', array( 'BQW_SP_Lightbox_Slider', 'get_instance' ) 
 add_action( 'widgets_init', 'bqw_sp_register_widget' );
 
 // Gutenberg block
-require_once( plugin_dir_path( __FILE__ ) . 'gutenberg/slider-pro-block.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'gutenberg/class-sliderpro-block.php' );
+add_action( 'plugins_loaded', array( 'BQW_SliderPro_Block', 'get_instance' ) );
 
 if ( is_admin() ) {
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );

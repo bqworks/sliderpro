@@ -35,37 +35,64 @@ function edit(props) {
     attributes,
     setAttributes
   } = props;
-  const [sliders, setSliders] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [sliders, setSliders] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]); // Create a global object to store the slider data, so
+  // that it needs to be fetched only once, when the first
+  // block is added. Additional blocks will use the slider
+  // data stored in the global object.
 
-  const getSlidersData = () => {
-    if (typeof window.sliderpro === 'undefined') {
-      window.sliderpro = {};
-    }
+  if (typeof window.sliderpro === 'undefined') {
+    window.sliderpro = {
+      sliders: [],
+      loadingSlidersData: false
+    };
+  } // Load the slider data and store the slider name and id,
+  // as 'label' and 'value' to be used in the SelectControl.
 
-    if (typeof window.sliderpro.sliders === 'undefined') {
-      window.sliderpro = {
-        loadingSlidersData: true,
-        sliders: []
-      };
-      wp.apiFetch({
-        path: 'sliderpro/v1/get_sliders'
-      }).then(function (data) {
-        let sliders = [{
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('None', 'sliderpro'),
-          value: -1
-        }];
 
-        for (const slider_id in data) {
-          sliders.push({
-            label: data[slider_id] + ' (' + slider_id + ')',
-            value: slider_id
-          });
-        }
+  const getSlidersData = () => new Promise(resolve => {
+    wp.apiFetch({
+      path: 'sliderpro/v1/get_sliders'
+    }).then(function (responseData) {
+      let slidersData = [{
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('None', 'sliderpro'),
+        value: -1
+      }];
 
-        window.sliderpro.loadingSlidersData = false;
-        window.sliderpro.sliders = sliders;
-        setSliders(sliders);
-      });
+      for (const key in responseData) {
+        slidersData.push({
+          label: `${responseData[key]} (${key})`,
+          value: parseInt(key)
+        });
+      }
+
+      resolve(slidersData);
+    });
+  }); // Get a slider by its id.
+
+
+  const getSlider = sliderId => {
+    const slider = sliders.find(slider => {
+      return slider.value === sliderId;
+    });
+    return typeof slider !== 'undefined' ? slider : false;
+  }; // Get the slider's label by its id.
+
+
+  const getSliderLabel = sliderId => {
+    const slider = getSlider(sliderId);
+    return slider !== false ? slider.label : '';
+  }; // Initialize the component by setting the 'sliders' property
+  // which will trigger the rendering of the component.
+  //
+  // If the sliders data is already globally available, set the 'sliders'
+  // immediately. If the sliders data is currently loading, wait for it
+  // to load and then set the 'sliders'. If it's not currently loading,
+  // start the loading process.
+
+
+  const init = () => {
+    if (window.sliderpro.sliders.length !== 0) {
+      setSliders(window.sliderpro.sliders);
     } else if (window.sliderpro.loadingSlidersData === true) {
       const checkApiFetchInterval = setInterval(function () {
         if (window.sliderpro.loadingSlidersData !== true) {
@@ -74,55 +101,48 @@ function edit(props) {
         }
       }, 100);
     } else {
-      setSliders(window.sliderpro.sliders);
+      window.sliderpro.loadingSlidersData = true;
+      getSlidersData().then(slidersData => {
+        window.sliderpro.loadingSlidersData = false;
+        window.sliderpro.sliders = slidersData;
+        setSliders(slidersData);
+      });
     }
   };
 
-  const getSlider = sliderId => {
-    const slider = sliders.find(slider => {
-      return slider.value === sliderId;
-    });
-    return typeof slider !== 'undefined' ? slider : false;
-  };
-
-  const getSliderLabel = sliderId => {
-    const slider = getSlider(sliderId);
-    return slider !== false ? slider.label : '';
-  };
-
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    getSlidersData();
+    init();
   }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, {
     label: "Slider Pro",
     icon: _icons__WEBPACK_IMPORTED_MODULE_4__.sliderIcon
-  }, typeof window.sliderpro !== 'undefined' && window.sliderpro.loadingSlidersData === false ? sliders.length !== 0 ? getSlider(attributes.selectedSlider) !== false ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, typeof window.sliderpro === 'undefined' || window.sliderpro.loadingSlidersData === true ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sp-gutenberg-slider-placeholder-content"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "sp-gutenberg-slider-identifier"
-  }, " ", getSliderLabel(attributes.selectedSlider), " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    className: "sp-gutenberg-edit-slider",
-    href: sp_gutenberg_js_vars.admin_url + '?page=sliderpro&id=' + attributes.selectedSlider + '&action=edit',
-    target: "_blank"
-  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit Slider', 'sliderpro'), " ")) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Loading Slider Pro data...', 'sliderpro'), " ") : window.sliderpro.sliders.length === 0 ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "sp-gutenberg-slider-placeholder-content"
+  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('You don\'t have any created sliders yet.', 'sliderpro'), " ") : attributes.sliderId === -1 || getSlider(attributes.sliderId) === false ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sp-gutenberg-slider-placeholder-content"
   }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select a slider from the Block settings.', 'sliderpro'), " ") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sp-gutenberg-slider-placeholder-content"
-  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('You don\'t have any created sliders yet.', 'sliderpro'), " ") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sp-gutenberg-slider-placeholder-content"
-  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Loading Slider Pro data...', 'sliderpro'), " ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, sliders.length === 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "sp-gutenberg-no-sliders-text",
-    dangerouslySetInnerHTML: {
-      __html: sprintf((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('You don\'t have any created sliders yet. You can create and manage sliders in the <a href="%s" target="_blank">dedicated area</a>, and then use the block to load the sliders.', 'sliderpro'), sp_gutenberg_js_vars.admin_url + '?page=sliderpro')
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "sp-gutenberg-slider-identifier"
+  }, " ", getSliderLabel(attributes.sliderId), " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: "sp-gutenberg-edit-slider",
+    href: `${sp_gutenberg_js_vars.admin_url}?page=sliderpro&id=${attributes.sliderId}&action=edit`,
+    target: "_blank"
+  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit Slider', 'sliderpro'), " "))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     className: "sp-gutenberg-select-slider",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select a slider from the list:', 'sliderpro'),
     options: sliders,
-    value: attributes.selectedSlider,
+    value: attributes.sliderId,
     onChange: newSlider => setAttributes({
-      selectedSlider: newSlider
+      sliderId: parseInt(newSlider)
     })
+  }), window.sliderpro.sliders.length === 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "sp-gutenberg-no-sliders-text",
+    dangerouslySetInnerHTML: {
+      __html: sprintf((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('You don\'t have any created sliders yet. You can create and manage sliders in the <a href="%s" target="_blank">dedicated area</a>, and then use the block to load the sliders.', 'sliderpro'), `${sp_gutenberg_js_vars.admin_url}?page=sliderpro`)
+    }
   })));
 }
 
@@ -174,7 +194,7 @@ function save(props) {
   const {
     attributes
   } = props;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(), '[sliderpro id="' + attributes.selectedSlider + '"]');
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(), attributes.sliderId !== -1 && `[sliderpro id="${attributes.sliderId}"]`);
 }
 
 /***/ }),
@@ -247,7 +267,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"bqworks/sliderpro","version":"0.1.0","title":"Slider Pro","category":"widgets","icon":"slides","description":"Gutenberg block for Slider Pro.","attributes":{"selectedSlider":{"type":"string","default":""}},"supports":{"html":false,"customClassName":false},"textdomain":"sliderpro","editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"bqworks/sliderpro","version":"1.0.0","title":"Slider Pro","category":"widgets","icon":"slides","description":"Insert a Slider Pro instance.","keywords":["sliderpro","slider","slides"],"attributes":{"sliderId":{"type":"integer","default":-1}},"supports":{"html":false,"customClassName":false},"example":{"attributes":{"sliderId":1}},"textdomain":"sliderpro","editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
 
 /***/ })
 
