@@ -26,7 +26,7 @@ export default function edit( props ) {
 	// as 'label' and 'value' to be used in the SelectControl.
 	const getSlidersData = () => new Promise( ( resolve ) => {
 		wp.apiFetch({
-			path: 'sliderpro/v1/get_sliders'
+			path: 'sliderpro/v1/sliders'
 		}).then( function( responseData ) {
 			let slidersData = [];
 			

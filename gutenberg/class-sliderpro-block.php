@@ -53,7 +53,7 @@ class BQW_SliderPro_Block {
 		register_block_type( __DIR__ . '/build' );
 
 		add_action( 'rest_api_init', function() {
-			register_rest_route( 'sliderpro/v1', '/get_sliders', array(
+			register_rest_route( 'sliderpro/v1', '/sliders', array(
 				'method' => 'GET',
 				'callback' => array( $this, 'get_sliders' ),
 				'permission_callback' => '__return_true'
@@ -66,7 +66,7 @@ class BQW_SliderPro_Block {
 	}
 
 	/**
-	 * Endpoint for the 'sliderpro/v1/get_sliders' route that returns
+	 * Endpoint for the 'sliderpro/v1/sliders' route that returns
 	 * the id and name of the sliders.
 	 *
 	 * @since 4.8.3
