@@ -3,7 +3,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 import { InspectorControls } from '@wordpress/blockEditor';
 import { SelectControl, Placeholder } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
-import { sliderIcon } from './icons';
+import { sliderProIcon } from './icons';
 
 import './editor.scss';
 
@@ -18,7 +18,7 @@ export default function edit( props ) {
 	if ( typeof window.sliderpro === 'undefined' ) {
 		window.sliderpro = {
 			sliders: [],
-			loadingSlidersData: false
+			slidersDataStatus: '' // can be '', 'loading' or 'loaded'
 		};
 	}
 
@@ -28,9 +28,7 @@ export default function edit( props ) {
 		wp.apiFetch({
 			path: 'sliderpro/v1/get_sliders'
 		}).then( function( responseData ) {
-			let slidersData = [
-				{ label: __( 'None', 'sliderpro'), value: -1 }
-			];
+			let slidersData = [];
 			
 			for ( const key in responseData ) {
 				slidersData.push({
@@ -67,20 +65,20 @@ export default function edit( props ) {
 	// to load and then set the 'sliders'. If it's not currently loading,
 	// start the loading process.
 	const init = () => {
-		if ( window.sliderpro.sliders.length !== 0 ) {
+		if ( window.sliderpro.slidersDataStatus === 'loaded' ) {
 			setSliders( window.sliderpro.sliders );
-		} else if ( window.sliderpro.loadingSlidersData === true ) {
+		} else if ( window.sliderpro.slidersDataStatus === 'loading' ) {
 			const checkApiFetchInterval = setInterval( function() {
-				if ( window.sliderpro.loadingSlidersData !== true ) {
+				if ( window.sliderpro.slidersDataStatus === 'loaded' ) {
 					clearInterval( checkApiFetchInterval );
 					setSliders( window.sliderpro.sliders );
 				}
 			}, 100 );
 		} else {
-			window.sliderpro.loadingSlidersData = true;
+			window.sliderpro.slidersDataStatus = 'loading';
 
 			getSlidersData().then( ( slidersData ) => {
-				window.sliderpro.loadingSlidersData = false;
+				window.sliderpro.slidersDataStatus = 'loaded';
 				window.sliderpro.sliders = slidersData;
 
 				setSliders( slidersData );
@@ -94,15 +92,15 @@ export default function edit( props ) {
 
 	return (
 		<div { ...useBlockProps() }>
-			<Placeholder label='Slider Pro' icon={ sliderIcon }>
+			<Placeholder label='Slider Pro' icon={ sliderProIcon }>
 				{
-					typeof window.sliderpro === 'undefined' || window.sliderpro.loadingSlidersData === true ?
+					window.sliderpro.slidersDataStatus !== 'loaded' ?
 						<div className='sp-gutenberg-slider-placeholder-content'> { __( 'Loading Slider Pro data...', 'sliderpro' ) } </div>
 					: (
 						window.sliderpro.sliders.length === 0 ?
 							<div className='sp-gutenberg-slider-placeholder-content'> { __( 'You don\'t have any created sliders yet.', 'sliderpro' ) } </div>
 						: (
-							attributes.sliderId === -1 || getSlider( attributes.sliderId ) === false ?
+							getSlider( attributes.sliderId ) === false ?
 								<div className='sp-gutenberg-slider-placeholder-content'> { __( 'Select a slider from the Block settings.', 'sliderpro' ) } </div>
 							: (
 								<div className='sp-gutenberg-slider-placeholder-content'>
@@ -119,9 +117,9 @@ export default function edit( props ) {
 				<SelectControl
 					className='sp-gutenberg-select-slider'
 					label={ __( 'Select a slider from the list:', 'sliderpro' ) }
-					options={ sliders }
+					options={ [ { label: __( 'None', 'sliderpro'), value: -1 }, ...sliders ] }
 					value={ attributes.sliderId }
-					onChange={ ( newSlider ) => setAttributes( { sliderId: parseInt( newSlider ) } ) }
+					onChange={ ( newSliderId ) => setAttributes( { sliderId: parseInt( newSliderId ) } ) }
 				/>
 				{
 					window.sliderpro.sliders.length === 0 &&

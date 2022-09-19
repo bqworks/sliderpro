@@ -43,7 +43,8 @@ function edit(props) {
   if (typeof window.sliderpro === 'undefined') {
     window.sliderpro = {
       sliders: [],
-      loadingSlidersData: false
+      slidersDataStatus: '' // can be '', 'loading' or 'loaded'
+
     };
   } // Load the slider data and store the slider name and id,
   // as 'label' and 'value' to be used in the SelectControl.
@@ -53,10 +54,7 @@ function edit(props) {
     wp.apiFetch({
       path: 'sliderpro/v1/get_sliders'
     }).then(function (responseData) {
-      let slidersData = [{
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('None', 'sliderpro'),
-        value: -1
-      }];
+      let slidersData = [];
 
       for (const key in responseData) {
         slidersData.push({
@@ -91,19 +89,19 @@ function edit(props) {
 
 
   const init = () => {
-    if (window.sliderpro.sliders.length !== 0) {
+    if (window.sliderpro.slidersDataStatus === 'loaded') {
       setSliders(window.sliderpro.sliders);
-    } else if (window.sliderpro.loadingSlidersData === true) {
+    } else if (window.sliderpro.slidersDataStatus === 'loading') {
       const checkApiFetchInterval = setInterval(function () {
-        if (window.sliderpro.loadingSlidersData !== true) {
+        if (window.sliderpro.slidersDataStatus === 'loaded') {
           clearInterval(checkApiFetchInterval);
           setSliders(window.sliderpro.sliders);
         }
       }, 100);
     } else {
-      window.sliderpro.loadingSlidersData = true;
+      window.sliderpro.slidersDataStatus = 'loading';
       getSlidersData().then(slidersData => {
-        window.sliderpro.loadingSlidersData = false;
+        window.sliderpro.slidersDataStatus = 'loaded';
         window.sliderpro.sliders = slidersData;
         setSliders(slidersData);
       });
@@ -115,12 +113,12 @@ function edit(props) {
   }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, {
     label: "Slider Pro",
-    icon: _icons__WEBPACK_IMPORTED_MODULE_4__.sliderIcon
-  }, typeof window.sliderpro === 'undefined' || window.sliderpro.loadingSlidersData === true ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    icon: _icons__WEBPACK_IMPORTED_MODULE_4__.sliderProIcon
+  }, window.sliderpro.slidersDataStatus !== 'loaded' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sp-gutenberg-slider-placeholder-content"
   }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Loading Slider Pro data...', 'sliderpro'), " ") : window.sliderpro.sliders.length === 0 ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sp-gutenberg-slider-placeholder-content"
-  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('You don\'t have any created sliders yet.', 'sliderpro'), " ") : attributes.sliderId === -1 || getSlider(attributes.sliderId) === false ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('You don\'t have any created sliders yet.', 'sliderpro'), " ") : getSlider(attributes.sliderId) === false ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sp-gutenberg-slider-placeholder-content"
   }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select a slider from the Block settings.', 'sliderpro'), " ") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sp-gutenberg-slider-placeholder-content"
@@ -133,10 +131,13 @@ function edit(props) {
   }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit Slider', 'sliderpro'), " "))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     className: "sp-gutenberg-select-slider",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select a slider from the list:', 'sliderpro'),
-    options: sliders,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('None', 'sliderpro'),
+      value: -1
+    }, ...sliders],
     value: attributes.sliderId,
-    onChange: newSlider => setAttributes({
-      sliderId: parseInt(newSlider)
+    onChange: newSliderId => setAttributes({
+      sliderId: parseInt(newSliderId)
     })
   }), window.sliderpro.sliders.length === 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "sp-gutenberg-no-sliders-text",
@@ -156,12 +157,12 @@ function edit(props) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "sliderIcon": function() { return /* binding */ sliderIcon; }
+/* harmony export */   "sliderProIcon": function() { return /* binding */ sliderProIcon; }
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
-const sliderIcon = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+const sliderProIcon = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   viewBox: "0 0 24 24",
   height: "24",
   width: "24"
@@ -358,7 +359,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__, {
-  icon: _icons__WEBPACK_IMPORTED_MODULE_1__.sliderIcon,
+  icon: _icons__WEBPACK_IMPORTED_MODULE_1__.sliderProIcon,
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
