@@ -1,8 +1,8 @@
 {
 	"name": "sliderpro",
 	"version": "1.0.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"description": "Gutenberg block for Slider Pro.",
+	"author": "bqworks",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
