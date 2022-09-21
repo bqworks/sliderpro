@@ -314,12 +314,12 @@ class BQW_SliderPro_Admin {
 				delete_transient( 'sliderpro_post_names' );
 				delete_transient( 'sliderpro_posts_data' );
 
-				include_once( 'views/slider.php' );
+				include_once( 'views/slider/slider.php' );
 			} else {
-				include_once( 'views/sliders.php' );
+				include_once( 'views/sliders/sliders.php' );
 			}
 		} else {
-			include_once( 'views/sliders.php' );
+			include_once( 'views/sliders/sliders.php' );
 		}
 	}
 
@@ -338,7 +338,7 @@ class BQW_SliderPro_Admin {
 		delete_transient( 'sliderpro_post_names' );
 		delete_transient( 'sliderpro_posts_data' );
 
-		include_once( 'views/slider.php' );
+		include_once( 'views/slider/slider.php' );
 	}
 
 	/**
@@ -425,7 +425,7 @@ class BQW_SliderPro_Admin {
 			}
 		}
 		
-		include_once( 'views/plugin-settings.php' );
+		include_once( 'views/settings//plugin-settings.php' );
 	}
 
 	/**
@@ -501,7 +501,7 @@ class BQW_SliderPro_Admin {
 			$slider_created = date( 'm-d-Y' );
 			$slider_modified = date( 'm-d-Y' );
 
-			include( 'views/sliders-row.php' );
+			include( 'views/sliders/sliders-row.php' );
 		}
 
 		die();
@@ -703,7 +703,7 @@ class BQW_SliderPro_Admin {
 		$breakpoints_data = BQW_SliderPro_Validation::validate_slider_breakpoint_settings( json_decode( stripslashes( $_GET['data'] ), true ) );
 
 		foreach ( $breakpoints_data as $breakpoint_settings ) {
-			include( 'views/breakpoint.php' );
+			include( 'views/slider/breakpoint.php' );
 		}
 
 		die();
@@ -735,7 +735,7 @@ class BQW_SliderPro_Admin {
 			$slider_created = date( 'm-d-Y' );
 			$slider_modified = date( 'm-d-Y' );
 
-			include( 'views/sliders-row.php' );
+			include( 'views/sliders/sliders-row.php' );
 		}
 
 		die();
@@ -807,7 +807,7 @@ class BQW_SliderPro_Admin {
 			unset( $slider['id'] );
 			$export_string = json_encode( $slider );
 
-			include( 'views/export-window.php' );
+			include( 'views/sliders/export-window.php' );
 		}
 
 		die();
@@ -820,7 +820,7 @@ class BQW_SliderPro_Admin {
 	 * @since 4.0.0
 	 */
 	public function ajax_import_slider() {
-		include( 'views/import-window.php' );
+		include( 'views/sliders/import-window.php' );
 
 		die();
 	}
@@ -847,7 +847,7 @@ class BQW_SliderPro_Admin {
 			$slide_image = isset( $data['main_image_source'] ) ? $data['main_image_source'] : $slide_image;
 		}
 
-		include( 'views/slide.php' );
+		include( 'views/slide/slide.php' );
 	}
 	
 	/**
@@ -890,7 +890,7 @@ class BQW_SliderPro_Admin {
 		$content_type = isset( $_POST['content_type'] ) && array_key_exists( $_POST['content_type'], $slide_default_settings['content_type']['available_values'] ) ? $_POST['content_type'] : $slide_default_settings['content_type']['default_value'];
 		$content_class = $content_type === 'custom' ? 'custom' : 'dynamic';
 
-		include( 'views/main-image-editor.php' );
+		include( 'views/slide-editors/main-image-editor.php' );
 
 		die();
 	}
@@ -911,7 +911,7 @@ class BQW_SliderPro_Admin {
 		$content_type = isset( $_POST['content_type'] ) && array_key_exists( $_POST['content_type'], $slide_default_settings['content_type']['available_values'] ) ? $_POST['content_type'] : $slide_default_settings['content_type']['default_value'];
 		$content_class = $content_type === 'custom' ? 'custom' : 'dynamic';
 
-		include( 'views/thumbnail-editor.php' );
+		include( 'views/slide-editors/thumbnail-editor.php' );
 
 		die();
 	}
@@ -927,7 +927,7 @@ class BQW_SliderPro_Admin {
 		$caption_content = wp_kses_post( $_POST['data'] );
 		$content_type = isset( $_POST['content_type'] ) && array_key_exists( $_POST['content_type'], $slide_default_settings['content_type']['available_values'] ) ? $_POST['content_type'] : $slide_default_settings['content_type']['default_value'];
 
-		include( 'views/caption-editor.php' );
+		include( 'views/slide-editors/caption-editor.php' );
 
 		die();
 	}
@@ -965,7 +965,7 @@ class BQW_SliderPro_Admin {
 		$html_content = wp_kses( $_POST['data'], $allowed_html );
 		$content_type = isset( $_POST['content_type'] ) && array_key_exists( $_POST['content_type'], $slide_default_settings['content_type']['available_values'] ) ? $_POST['content_type'] : $slide_default_settings['content_type']['default_value'];
 
-		include( 'views/html-editor.php' );
+		include( 'views/slide-editors/html-editor.php' );
 
 		die();
 	}
@@ -982,7 +982,7 @@ class BQW_SliderPro_Admin {
 		$layers = BQW_SliderPro_Validation::validate_slide_layers( json_decode( stripslashes( $_POST['data'] ), true ) );
 		$content_type = isset( $_POST['content_type'] ) && array_key_exists( $_POST['content_type'], $slide_default_settings['content_type']['available_values'] ) ? $_POST['content_type'] : $slide_default_settings['content_type']['default_value'];
 		
-		include( 'views/layers-editor.php' );
+		include( 'views/slide-editors/layers-editor.php' );
 
 		die();
 	}
@@ -1052,7 +1052,7 @@ class BQW_SliderPro_Admin {
 			$layer['image_retina'] = sanitize_text_field( $_POST['image_retina'] );
 		}
 
-		include( 'views/layer-settings.php' );
+		include( 'views/slide-editors/layer-settings.php' );
 
 		die();
 	}
@@ -1067,7 +1067,7 @@ class BQW_SliderPro_Admin {
 		$slide_settings = BQW_SliderPro_Validation::validate_slide_settings( json_decode( stripslashes( $_POST['data'] ), true ) );
 		$content_type = isset( $slide_settings['content_type'] ) && array_key_exists( $slide_settings['content_type'], $slide_default_settings['content_type']['available_values'] ) ? $slide_settings['content_type'] : $slide_default_settings['content_type']['default_value'];
 		
-		include( 'views/settings-editor.php' );
+		include( 'views/slide-editors/settings-editor.php' );
 
 		die();
 	}
@@ -1102,7 +1102,7 @@ class BQW_SliderPro_Admin {
 	public function load_content_type_settings( $type, $slide_settings = NULL ) {
 		$slide_default_settings = BQW_SliderPro_Settings::getSlideSettings();
 
-		$path = 'views/' . $slide_default_settings['content_type']['available_values'][ $type ]['file_name'];
+		$path = 'views/slide-settings/' . $slide_default_settings['content_type']['available_values'][ $type ]['file_name'];
 		include( $path );
 	}
 
@@ -1247,7 +1247,7 @@ class BQW_SliderPro_Admin {
 	public function ajax_add_breakpoint() {
 		$width = floatval( $_GET['data'] );
 
-		include( 'views/breakpoint.php' );
+		include( 'views/slider/breakpoint.php' );
 
 		die();
 	}
