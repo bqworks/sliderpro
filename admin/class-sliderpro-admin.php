@@ -307,7 +307,7 @@ class BQW_SliderPro_Admin {
 				$slider_id = $slider['id'];
 				$slider_name = $slider['name'];
 				$slider_settings = $slider['settings'];
-				$slider_panels_state = $slider['panels_state'];
+				$panels_state = $slider['panels_state'];
 
 				$slides = isset( $slider['slides'] ) ? $slider['slides'] : false;
 

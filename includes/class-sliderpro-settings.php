@@ -19,16 +19,16 @@ class BQW_SliderPro_Settings {
 	protected static $settings = array();
 
 	/**
-	 * The groups of settings.
+	 * The groups of slider setting panels.
 	 *
 	 * The settings are grouped for the purpose of generating
-	 * the slider's admin sidebar.
+	 * the slider's admin sidebar panels.
 	 *
 	 * @since 4.0.0
 	 * 
 	 * @var array
 	 */
-	protected static $setting_groups = array();
+	protected static $slider_settings_panels = array();
 
 	/**
 	 * Layer settings.
@@ -704,15 +704,19 @@ class BQW_SliderPro_Settings {
 	}
 
 	/**
-	 * Return the setting groups.
+	 * Return the slider setting panels.
 	 *
 	 * @since 4.0.0
 	 * 
-	 * @return array The array of setting groups.
+	 * @return array The array of slider setting panels.
 	 */
-	public static function getSettingGroups() {
-		if ( empty( self::$setting_groups ) ) {
-			self::$setting_groups = array(
+	public static function getSliderSettingsPanels() {
+		if ( empty( self::$slider_settings_panels ) ) {
+			self::$slider_settings_panels = array(
+				'presets' => array(
+					'label' => __( 'Presets', 'sliderpro' ),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/presets-panel.php'
+				),
 				'appearance' => array(
 					'label' => __( 'Appearance', 'sliderpro' ),
 					'list' => array(
@@ -734,7 +738,8 @@ class BQW_SliderPro_Settings {
 						'center_selected_slide',
 						'slide_distance',
 						'right_to_left'
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
 				),
 
 				'animations' => array(
@@ -745,7 +750,8 @@ class BQW_SliderPro_Settings {
 						'fade_duration',
 						'slide_animation_duration',
 						'height_animation_duration'
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
 				),
 						
 				'navigation' => array(
@@ -762,7 +768,8 @@ class BQW_SliderPro_Settings {
 						'keyboard_only_on_focus',
 						'touch_swipe',
 						'touch_swipe_threshold'
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
 				),
 				
 				'captions' => array(
@@ -770,7 +777,8 @@ class BQW_SliderPro_Settings {
 					'list' => array(
 						'fade_caption',
 						'caption_fade_duration'
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
 				),
 
 				'full_screen' => array(
@@ -778,7 +786,8 @@ class BQW_SliderPro_Settings {
 					'list' => array(
 						'full_screen',
 						'fade_full_screen'
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
 				),
 
 				'layers' => array(
@@ -787,7 +796,8 @@ class BQW_SliderPro_Settings {
 						'wait_for_layers',
 						'auto_scale_layers',
 						'auto_scale_reference'
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
 				),
 
 				'thumbnails' => array(
@@ -802,7 +812,8 @@ class BQW_SliderPro_Settings {
 						'thumbnail_arrows',
 						'fade_thumbnail_arrows',
 						'thumbnail_touch_swipe',
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
 				),
 
 				'video' => array(
@@ -813,7 +824,8 @@ class BQW_SliderPro_Settings {
 						'play_video_action',
 						'pause_video_action',
 						'end_video_action'
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
 				),
 
 				'miscellaneous' => array(
@@ -829,12 +841,20 @@ class BQW_SliderPro_Settings {
 						'hide_image_title',
 						'link_target',
 						'custom_class'
-					)
+					),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/default-panel.php'
+				),
+
+				'breakpoints' => array(
+					'label' => __( 'Breakpoints', 'sliderpro' ),
+					'renderer' => SLIDERPRO_DIR_PATH . 'admin/views/slider-settings/breakpoints-panel.php'
 				)
 			);
 		}
 
-		return self::$setting_groups;
+		self::$slider_settings_panels = apply_filters( 'sliderpro_slider_settings_panels', self::$slider_settings_panels );
+
+		return self::$slider_settings_panels;
 	}
 	
 	/**
