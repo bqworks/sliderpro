@@ -79,6 +79,7 @@
 			if ( parseInt( sp_js_vars.id, 10 ) !== -1 ) {
 				this.loadSliderData( function() {
 					that.checkSlideImageSize();
+					$( '.slides-container' ).attr( 'data-loaded', 'true' );
 				});
 			}
 
@@ -4719,6 +4720,11 @@
 	$( document ).ready(function() {
 		SliderProAdmin.init();
 	});
+
+	window.sliderpro = window.sliderpro || {};
+
+	window.sliderpro.admin = SliderProAdmin;
+	window.sliderpro.preview = PreviewWindow;
 
 })( jQuery );
 
