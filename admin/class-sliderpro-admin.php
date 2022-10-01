@@ -240,7 +240,7 @@ class BQW_SliderPro_Admin {
 		);
 
 		if ( ! in_array( $this->plugin_slug, $restricted_pages ) ) {
-			$this->plugin_screen_hook_suffixes[] = add_submenu_page(
+			$this->plugin_screen_hook_suffixes['all_sliders'] = add_submenu_page(
 				$this->plugin_slug,
 				__( 'Slider Pro', 'sliderpro' ),
 				__( 'All Sliders', 'sliderpro' ),
@@ -251,7 +251,7 @@ class BQW_SliderPro_Admin {
 		}
 
 		if ( ! in_array( $this->plugin_slug . '-new', $restricted_pages ) ) {
-			$this->plugin_screen_hook_suffixes[] = add_submenu_page(
+			$this->plugin_screen_hook_suffixes['add_new'] = add_submenu_page(
 				$this->plugin_slug,
 				__( 'Add New Slider', 'sliderpro' ),
 				__( 'Add New', 'sliderpro' ),
@@ -262,7 +262,7 @@ class BQW_SliderPro_Admin {
 		}
 
 		if ( ! in_array( $this->plugin_slug . '-settings', $restricted_pages ) ) {
-			$this->plugin_screen_hook_suffixes[] = add_submenu_page(
+			$this->plugin_screen_hook_suffixes['plugin_settings'] = add_submenu_page(
 				$this->plugin_slug,
 				__( 'Plugin Settings', 'sliderpro' ),
 				__( 'Plugin Settings', 'sliderpro' ),
@@ -273,7 +273,7 @@ class BQW_SliderPro_Admin {
 		}
 
 		if ( ! in_array( $this->plugin_slug . '-documentation', $restricted_pages ) ) {
-			$this->plugin_screen_hook_suffixes[] = add_submenu_page(
+			$this->plugin_screen_hook_suffixes['documentation'] = add_submenu_page(
 				$this->plugin_slug,
 				__( 'Documentation', 'sliderpro' ),
 				__( 'Documentation', 'sliderpro' ),
