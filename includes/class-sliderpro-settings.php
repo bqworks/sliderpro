@@ -696,11 +696,15 @@ class BQW_SliderPro_Settings {
 			self::$settings = apply_filters( 'sliderpro_default_settings', self::$settings );
 		}
 
-		if ( ! is_null( $name ) ) {
-			return self::$settings[ $name ];
+		if ( is_null( $name ) ) {
+			return self::$settings;
 		}
 
-		return self::$settings;
+		if ( is_null( self::$settings[ $name ] ) ) {
+			return null;
+		}
+
+		return self::$settings[ $name ];
 	}
 
 	/**
@@ -886,7 +890,7 @@ class BQW_SliderPro_Settings {
 	 * 
 	 * @return array The array of layer settings.
 	 */
-	public static function getLayerSettings() {
+	public static function getLayerSettings( $name = null ) {
 		if ( empty( self::$layer_settings ) ) {
 			self::$layer_settings = array(
 				'type' => array(
@@ -1078,7 +1082,15 @@ class BQW_SliderPro_Settings {
 			self::$layer_settings = apply_filters( 'sliderpro_default_layer_settings', self::$layer_settings );
 		}
 
-		return self::$layer_settings;
+		if ( is_null( $name ) ) {
+			return self::$layer_settings;
+		}
+
+		if ( is_null( self::$layer_settings[ $name ] ) ) {
+			return null;
+		}
+
+		return self::$layer_settings[ $name ];
 	}
 
 	/**
@@ -1088,7 +1100,7 @@ class BQW_SliderPro_Settings {
 	 * 
 	 * @return array The array of slide settings.
 	 */
-	public static function getSlideSettings() {
+	public static function getSlideSettings( $name = null ) {
 		if ( empty( self::$slide_settings ) ) {
 			self::$slide_settings = array(
 				'content_type' => array(
@@ -1211,8 +1223,16 @@ class BQW_SliderPro_Settings {
 
 			self::$slide_settings = apply_filters( 'sliderpro_default_slide_settings', self::$slide_settings );
 		}
+		
+		if ( is_null( $name ) ) {
+			return self::$slide_settings;
+		}
 
-		return self::$slide_settings;
+		if ( is_null( self::$slide_settings[ $name ] ) ) {
+			return null;
+		}
+
+		return self::$slide_settings[ $name ];
 	}
 
 	/**
