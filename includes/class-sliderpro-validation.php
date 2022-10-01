@@ -39,9 +39,7 @@ class BQW_SliderPro_Validation {
 		$default_panels_state = BQW_SliderPro_Settings::getPanelsState();
 
 		foreach ( $data as $panel_name => $panel_state) {
-			if ( array_key_exists( $panel_name, $default_panels_state ) ) {
-				$slider_panels_state[ $panel_name ] = ( $panel_state === 'closed' || $panel_state === '' ) ? $panel_state : 'closed';
-			}
+			$slider_panels_state[ $panel_name ] = ( $panel_state === 'closed' || $panel_state === '' ) ? $panel_state : 'closed';
 		}
 
 		return $slider_panels_state;
