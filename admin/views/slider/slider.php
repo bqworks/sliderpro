@@ -64,7 +64,7 @@
                         $default_panels_state = BQW_SliderPro_Settings::getPanelsState();
 
                         foreach ( $settings_panels as $panel_name => $panel ) {
-                            $panel_state_class = isset( $panels_state ) && isset( $panels_state[ $panel_name ] ) ? $panels_state[ $panel_name ] : $default_panels_state[ $panel_name ];
+                            $panel_state_class = isset( $panels_state ) && isset( $panels_state[ $panel_name ] ) ? $panels_state[ $panel_name ] : ( isset( $default_panels_state[ $panel_name ] ) ? $default_panels_state[ $panel_name ] : 'closed' );
                     ?>
                             <div class="postbox <?php echo $panel_name; ?>-panel <?php echo $panel_state_class; ?>" data-name="<?php echo $panel_name; ?>">
                                 <div class="handlediv"></div>
