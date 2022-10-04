@@ -3,7 +3,7 @@ Contributors: bqworks
 Tags: slider, post slider, content slider, responsive slider, touch slider, carousel slider, image slider, thumbnail scroller, lightbox slider, animated layers, full width
 Requires at least: 4.0
 Tested up to: 6.0
-Stable tag: 4.8.3
+Stable tag: 4.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,10 @@ When you select an image from the Media Library, in the right columns, under 'AT
 10. Adding dynamic tags for sliders generated from posts.
 
 == Changelog ==
+
+= 4.8.4 =
+* add possibility to extend the sidebar settings panels
+* other fixes and improvements
 
 = 4.8.3 =
 * add Gutenberg block
