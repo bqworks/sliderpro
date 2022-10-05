@@ -1,5 +1,6 @@
 === Slider Pro ===
 Contributors: bqworks
+Donate link: https://bqworks.net/premium-add-ons/
 Tags: slider, post slider, content slider, responsive slider, touch slider, carousel slider, image slider, thumbnail scroller, lightbox slider, animated layers, full width
 Requires at least: 4.0
 Tested up to: 6.0
@@ -17,30 +18,35 @@ See a few examples on the [slider's presentation page](https://bqworks.net/slide
 
 Features:
 
-* Fully responsive
-* Touch support
-* Change the slider's aspect and configuration based on screen size (using breakpoints)
-* Load different images based on the size of the slider
+* Fully responsive on any device
+* Touch support for touch-enabled screens
+* Set different configurations for the same slider, based on screen sizes (using breakpoints)
+* Load images conditionally based on the size of the slider (different image sizes for different screen sizes)
 * Animated and static layers, which can contain text, images or any HTML content
 * Lightbox integration
 * Full Width and Full Window support
-* Carousel layout
+* Carousel layout with looping/infinite scrolling
 * Thumbnails that contain both images and text.
-* Auto height
-* Lazy loading
-* Deep linking
+* Auto height based on inner content size
+* Lazy loading for images
+* Deep linking (link to specific slide inside the slider)
 * Keyboard navigation
 * Clean and intuitive admin interface
 * Preview sliders directly in the admin area
-* Drag and drop slide sorting
+* Drag and drop slide sorting for easy management of the slides' order
 * Publish sliders in any post (including pages and custom post types), in PHP code, and widget areas
 * Caching system for quick loading times
 * Optimized file loading. The JavaScript and CSS files are loaded only in pages where there are sliders
-* Load images and content dynamically, from posts (including custom post types), WordPress galleries and Flickr
-* Action and filter hooks
-* Import and export sliders
+* Load images (e.g., featured images) and content dynamically, from posts (including custom post types), WordPress galleries and Flickr
+* Action and filter hooks to add to the functionality of the slider
+* Import and export sliders between different plugin installations
 
 [These videos](https://bqworks.net/slider-pro/screencasts/) demonstrate the full capabilities of the plugin.
+
+[Premium Add-ons](https://bqworks.net/premium-add-ons/#sliderpro) allow you to further extend the functionality of the slider:
+
+* [Custom CSS and JavaScript](https://bqworks.net/premium-add-ons/#custom-css-js-for-sliderpro): Allows you to add custom CSS and JavaScript code to your sliders in a syntax highlighting code editor. It also features a revisions system that will backup all your code edits, allow you to compare between multiple revisions and restore a certain revision.
+* [Revisions](https://bqworks.net/premium-add-ons/#revisions-for-sliderpro): Automatically stores a record of each edit/update of your sliders, for comparison or backup purposes. Each slider will have its own list of revisions, allowing you to easily preview a revision, analyze its settings, compare it to other revisions or restore it.
 
 == Installation ==
 
