@@ -488,7 +488,7 @@ class BQW_SliderPro_Admin {
 		$slider_data = BQW_SliderPro_Validation::validate_slider_data( $data );
 		$id = $slider_data['id'];
 
-		if ( ! wp_verify_nonce( $nonce, 'save-slider' . $id ) || ! current_user_can( 'customize' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'save-slider' . $id ) || ! current_user_can( 'edit_posts' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
@@ -656,7 +656,7 @@ class BQW_SliderPro_Admin {
 		$name = sanitize_text_field( $_POST['name'] );
 		$settings = BQW_SliderPro_Validation::validate_slider_settings( json_decode( stripslashes( $_POST['settings'] ), true ) );
 
-		if ( ! wp_verify_nonce( $nonce, 'update-presets' ) || ! current_user_can( 'customize' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'update-presets' ) || ! current_user_can( 'edit_posts' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
@@ -724,7 +724,7 @@ class BQW_SliderPro_Admin {
 		$nonce = $_POST['nonce'];
 		$original_slider_id = intval( $_POST['id'] );
 
-		if ( ! wp_verify_nonce( $nonce, 'duplicate-slider' . $original_slider_id ) || ! current_user_can( 'customize' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'duplicate-slider' . $original_slider_id ) || ! current_user_can( 'edit_posts' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
@@ -756,7 +756,7 @@ class BQW_SliderPro_Admin {
 		$nonce = $_POST['nonce'];
 		$id = intval( $_POST['id'] );
 
-		if ( ! wp_verify_nonce( $nonce, 'delete-slider' . $id ) || ! current_user_can( 'customize' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'delete-slider' . $id ) || ! current_user_can( 'delete_posts' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
@@ -1339,7 +1339,7 @@ class BQW_SliderPro_Admin {
 	public function ajax_clear_all_cache() {
 		$nonce = $_POST['nonce'];
 
-		if ( ! wp_verify_nonce( $nonce, 'clear-all-cache' ) || ! current_user_can( 'customize' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'clear-all-cache' ) || ! current_user_can( 'edit_posts' ) ) {
 			die( 'This action was stopped for security purposes.' );
 		}
 
