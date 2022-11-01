@@ -13,7 +13,7 @@ class BQW_SliderPro {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '4.8.4';
+	const VERSION = '4.8.5';
 
 	/**
 	 * Plugin slug.
