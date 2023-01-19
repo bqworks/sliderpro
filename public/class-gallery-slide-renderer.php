@@ -50,20 +50,26 @@ class BQW_SP_Gallery_Slide_Renderer extends BQW_SP_Dynamic_Slide_Renderer {
 	 */
 	protected function get_gallery_images() {
 		global $post;
+		$raw_ids = '';
 
-		preg_match_all( '/\[gallery.*ids=.(.*).\]/', $post->post_content, $matches, PREG_SET_ORDER );
+		// Check if there is a classic gallery shortcode in the page and get the 'ids' attribute,
+		// which contains the list of image ID's.
+		// If a classic gallery was not found, check if there is a gallery block and get the ID's
+		// from each gallery image.
+		if ( preg_match( '/\[\s*gallery\s+ids=\W?([0-9,\s]+)\W?.*?\/?\][^\[\]]*\[sliderpro\s+id=\W' . $this->slider_id . '\W/m', $post->post_content, $matches ) ) {
+			$raw_ids = $matches[ 1 ];
+		} else if ( preg_match( '/wp:gallery[^\[\]]*\[sliderpro\s+id=\W' . $this->slider_id . '/ms', $post->post_content, $matches ) ) {
+			if ( preg_match_all( '/wp:image.*?"id":([\d]+),.*?\/wp:image/ms', $matches[ 0 ], $id_matches ) ) {
+				foreach ( $id_matches[ 1 ] as $id_match ) {
+					$raw_ids .= ( $raw_ids !== '' ? ',' : '' ) . $id_match;
+				}
+			}
+		}
 
 		$images = array();
 
-		foreach ( $matches as $match ) {
-
-			$atts = shortcode_parse_atts( $match[0] );
-
-			if ( ! isset( $atts[ 'ids' ] ) ) {
-				continue;
-			}
-
-			$ids = explode( ',', $atts[ 'ids' ] );
+		if ( ! empty( $raw_ids ) ) {
+			$ids = explode( ',', str_replace( ' ', '', $raw_ids ) );
 
 			foreach ( $ids as $id ) {
 				$image = get_post( $id );
