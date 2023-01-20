@@ -1,3 +1,8 @@
+[![Version](https://img.shields.io/wordpress/plugin/v/sliderpro)](https://wordpress.org/plugins/sliderpro/)
+[![License](https://img.shields.io/github/license/bqworks/sliderpro)](https://wordpress.org/plugins/sliderpro/)
+[![Downloads](https://img.shields.io/wordpress/plugin/dt/sliderpro)](https://wordpress.org/plugins/sliderpro/)
+[![Installs](https://img.shields.io/wordpress/plugin/installs/sliderpro)](https://wordpress.org/plugins/sliderpro/)
+
 # [Slider Pro - WordPress slider plugin](https://bqworks.net/slider-pro/) #
 
 >Slider Pro is a fully responsive and touch-enabled WordPress slider plugin that allows you to create professional and elegant sliders. This slider plugin was built with user experience in mind, providing a clean and intuitive user interface in the admin area and a smooth navigation experience for the end-users.
