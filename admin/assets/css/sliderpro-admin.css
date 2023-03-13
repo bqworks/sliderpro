@@ -19,23 +19,31 @@ All sliders page
 }
 
 .sliders-pagination {
+	display: flex;
 	float: right;
-	margin-top: 20px;
+	margin-top: 25px;
 }
 
-.sliders-pagination-link {
+.sliders-pagination-item {
     border: 1px solid;
     text-decoration: none;
     padding: 5px;
     margin-left: 5px;
-    color: #999;
+}
+
+.sliders-pagination-item .sliders-pagination-link {
+    text-decoration: none;
+	color: #999;
 }
 
 .sliders-pagination .selected-page {
-	color: #FFF;
 	background-color: #0073AA;
 	border-color: #0073AA;
 	pointer-events: none;
+}
+
+.selected-page .sliders-pagination-link {
+	color: #FFF;
 }
 
 .inline-info {

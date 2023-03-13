@@ -127,21 +127,29 @@
 
 	<?php
 		if ( $max_sliders_on_page < $total_sliders ) {
-			echo '<div class="sliders-pagination">';
+			echo '<ul class="sliders-pagination">';
+
+			if ( $current_page - 2 > 1 ) {
+				echo '<li class="sliders-pagination-item"><a class="sliders-pagination-link" href="' . admin_url( 'admin.php?page=sliderpro&sp_page=1' ) . '">&Lt;</a></li>';
+			}
 
 			for ( $i = $current_page - 2; $i <= $current_page; $i++ ) {
 				if ( $i >= 1 ) {
-					echo '<a class="sliders-pagination-link' . ( $i === $current_page ? ' selected-page' : '' ) . '" href="' . admin_url( 'admin.php?page=sliderpro&sp_page=' ) . $i . '">' . $i . '</a>';
+					echo '<li class="sliders-pagination-item' . ( $i === $current_page ? ' selected-page' : '' ) . '"><a class="sliders-pagination-link" href="' . admin_url( 'admin.php?page=sliderpro&sp_page=' ) . $i . '">' . $i . '</a></li>';
 				}
 			}
 
 			$last_page = min( $total_pages, ( $current_page + 2 ) + max( 0, ( 3 - $current_page ) ) );
 
 			for ( $i = $current_page + 1; $i <= $last_page ; $i++ ) {
-				echo '<a class="sliders-pagination-link" href="' . admin_url( 'admin.php?page=sliderpro&sp_page=' ) . $i . '">' . $i . '</a>';
+				echo '<li class="sliders-pagination-item"><a class="sliders-pagination-link" href="' . admin_url( 'admin.php?page=sliderpro&sp_page=' ) . $i . '">' . $i . '</a></li>';
 			}
 
-			echo '</div>';
+			if ( $last_page < $total_pages ) {
+				echo '<li class="sliders-pagination-item"><a class="sliders-pagination-link" href="' . admin_url( 'admin.php?page=sliderpro&sp_page=' . $total_pages ) . '">&Gt;</a></li>';
+			}
+
+			echo '</ul>';
 		}
 	?>
 
