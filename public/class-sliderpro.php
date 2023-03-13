@@ -456,11 +456,11 @@ class BQW_SliderPro {
 		}
 		
 		$inline_js = "\r\n" . '<script type="text/javascript">' .
-					"\r\n" . 'if (window.jQuery && window.jQuery?.fn.sliderPro) {' .
+					"\r\n" . 'if (window.jQuery && window.jQuery.fn.sliderPro) {' .
 					"\r\n" . '	initSliderPro();' .
 					"\r\n" . '} else {' .
 					"\r\n" . '	const initSliderProTimer = setInterval(() => {' .
-					"\r\n" . '		if (window.jQuery && window.jQuery?.fn.sliderPro) {' .
+					"\r\n" . '		if (window.jQuery && window.jQuery.fn.sliderPro) {' .
 					"\r\n" . '			initSliderPro();' .
 					"\r\n" . '			clearInterval(initSliderProTimer);' .
 					"\r\n" . '		}' .
