@@ -456,6 +456,18 @@ class BQW_SliderPro {
 		}
 		
 		$inline_js = "\r\n" . '<script type="text/javascript">' .
+					"\r\n" . 'if (window.jQuery && window.jQuery?.fn.sliderPro) {' .
+					"\r\n" . '	initSliderPro();' .
+					"\r\n" . '} else {' .
+					"\r\n" . '	const initSliderProTimer = setInterval(() => {' .
+					"\r\n" . '		if (window.jQuery && window.jQuery?.fn.sliderPro) {' .
+					"\r\n" . '			initSliderPro();' .
+					"\r\n" . '			clearInterval(initSliderProTimer);' .
+					"\r\n" . '		}' .
+					"\r\n" . '	}, 100);' .
+					"\r\n" . '}' . "\r\n" .
+
+					"\r\n" . 'function initSliderPro() {' .
 					"\r\n" . '	jQuery( document ).ready(function( $ ) {' .
 					$this->js_output;
 
@@ -466,6 +478,7 @@ class BQW_SliderPro {
 		}
 
 		$inline_js .= "\r\n" . '	});' .
+					"\r\n" . '}' .
 					"\r\n" . '</script>' . "\r\n\r\n";
 
 		$inline_js = apply_filters( 'sliderpro_javascript', $inline_js );
