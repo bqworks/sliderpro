@@ -4,10 +4,12 @@
 	$duplicate_nonce = wp_create_nonce( 'duplicate-slider' . $slider_id );
 	$export_nonce = wp_create_nonce( 'export-slider' . $slider_id );
 
+	$paging_params = $total_pages > 1 ? '&pages=' . $total_pages . '&sp_page=' . $current_page : '';
+
 	$edit_url = admin_url( 'admin.php?page=sliderpro&id=' . $slider_id . '&action=edit' );
 	$preview_url = admin_url( 'admin.php?page=sliderpro&id=' . $slider_id . '&action=preview' ) . '&lad_nonce=' . $lad_nonce;
 	$delete_url = admin_url( 'admin.php?page=sliderpro&id=' . $slider_id . '&action=delete' ) . '&da_nonce=' . $delete_nonce;
-	$duplicate_url = admin_url( 'admin.php?page=sliderpro&id=' . $slider_id . '&action=duplicate' ) . '&dua_nonce=' . $duplicate_nonce;
+	$duplicate_url = admin_url( 'admin.php?page=sliderpro&id=' . $slider_id . '&action=duplicate' ) . '&dua_nonce=' . $duplicate_nonce . $paging_params;
 	$export_url = admin_url( 'admin.php?page=sliderpro&id=' . $slider_id . '&action=export' ) . '&ea_nonce=' . $export_nonce;
 ?>
 <tr class="slider-row">

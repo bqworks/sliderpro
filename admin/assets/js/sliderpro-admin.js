@@ -278,8 +278,17 @@
 			});
 
 			$( '.import-slider' ).on( 'click', function( event ) {
+				var url = $.lightURLParse( $( this ).attr( 'href' ) ),
+					currentPage = typeof url.sp_page !== 'undefined' ? parseInt( url.sp_page, 10 ) : 1,
+					totalPages = typeof url.pages !== 'undefined' ? parseInt( url.pages, 10 ) : 1;
+
 				event.preventDefault();
+
 				ImportWindow.open();
+				ImportWindow.setPaginationParams({
+					currentPage: currentPage,
+					totalPages: totalPages
+				})
 			});
 
 			$( '.clear-all-cache' ).on( 'click', function( event ) {
@@ -717,16 +726,27 @@
 		duplicateSlider: function( target ) {
 			var url = $.lightURLParse( target.attr( 'href' ) ),
 				nonce = url.dua_nonce,
-				id = parseInt( url.id, 10 );
+				id = parseInt( url.id, 10 ),
+				totalPages = typeof url.pages !== 'undefined' ? parseInt( url.pages, 10 ) : 1,
+				currentPage = typeof url.sp_page !== 'undefined' ? parseInt( url.sp_page, 10 ) : 1;
 
 			$.ajax({
 				url: sp_js_vars.ajaxurl,
 				type: 'post',
-				data: { action: 'sliderpro_duplicate_slider', id: id, nonce: nonce },
+				data: {
+					action: 'sliderpro_duplicate_slider',
+					id: id,
+					nonce: nonce,
+					total_pages: totalPages,
+					current_page: currentPage
+				},
 				complete: function( data ) {
-					var row = $( data.responseText ).appendTo( $( '.sliders-list tbody' ) );
-					
-					row.hide().fadeIn();
+					if ( totalPages > 1 && currentPage !== totalPages ) {
+						window.location = sp_js_vars.admin + '?page=sliderpro&sp_page=' + totalPages;
+					} else {
+						var row = $( data.responseText ).appendTo( $( '.sliders-list tbody' ) );
+						row.hide().fadeIn();
+					}
 				}
 			});
 		},
@@ -1411,6 +1431,15 @@
 		$importButton: null,
 
 		/**
+		 * Store the pagination parameters.
+		 *
+		 * @since 4.8.6
+		 * 
+		 * @type {jQuery Object}
+		 */
+		paginationParams: null,
+
+		/**
 		 * Open the modal window.
 		 *
 		 * @since 4.0.0
@@ -1427,6 +1456,21 @@
 					that.init();
 				}
 			});
+		},
+
+		/**
+		 * Sets the pagination parameters, which are used to determine
+		 * whether the page should reload after adding the new slider row to
+		 * the list of sliders or, if the current page is also the last or single
+		 * page, the slider row should be added without reloading.
+		 *
+		 * @since 4.8.6
+		 */
+		setPaginationParams: function( params ) {
+			this.paginationParams = this.paginationParams || {};
+
+			this.paginationParams.currentPage = params.currentPage;
+			this.paginationParams.totalPages = params.totalPages;
 		},
 
 		/**
@@ -1509,19 +1553,34 @@
 			sliderData[ 'nonce' ] = sp_js_vars.sa_nonce;
 			sliderData[ 'action' ] = 'import';
 
+			var paginationData = this.paginationParams !== null ? 
+				{
+					sp_page: this.paginationParams.currentPage !== undefined ? this.paginationParams.currentPage : 1,
+					pages: this.paginationParams.totalPages !== undefined ? this.paginationParams.totalPages : 1
+				}
+				: {};
+
 			$.ajax({
 				url: sp_js_vars.ajaxurl,
 				type: 'post',
-				data: { action: 'sliderpro_save_slider', data: JSON.stringify( sliderData ) },
+				data: {
+					action: 'sliderpro_save_slider',
+					data: JSON.stringify( sliderData ),
+					...paginationData
+				},
 				complete: function( data ) {
 					if ( $( '.sliders-list .no-slider-row' ).length !== 0 ) {
 						$( '.sliders-list .no-slider-row' ).remove();
 					}
 
-					var row = $( data.responseText ).appendTo( $( '.sliders-list tbody' ) );
-					
-					row.hide().fadeIn();
-					that.close();
+					if ( that.paginationParams !== null && that.paginationParams.totalPages > 1 && that.paginationParams.currentPage !== that.paginationParams.totalPages ) {
+						window.location = sp_js_vars.admin + '?page=sliderpro&sp_page=' + that.paginationParams.totalPages;
+					} else {
+						var row = $( data.responseText ).appendTo( $( '.sliders-list tbody' ) );
+						
+						row.hide().fadeIn();
+						that.close();
+					}
 				}
 			});
 		},

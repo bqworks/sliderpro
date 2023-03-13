@@ -500,6 +500,8 @@ class BQW_SliderPro_Admin {
 			$slider_name = $slider_data['name'];
 			$slider_created = date( 'm-d-Y' );
 			$slider_modified = date( 'm-d-Y' );
+			$total_pages = isset( $_POST['pages'] ) ? intval( $_POST['pages'] ) : 1;
+			$current_page = isset( $_POST['sp_page'] ) ? intval( $_POST['sp_page'] ) : 1;
 
 			include( 'views/sliders/sliders-row.php' );
 		}
@@ -723,6 +725,8 @@ class BQW_SliderPro_Admin {
 	public function ajax_duplicate_slider() {
 		$nonce = $_POST['nonce'];
 		$original_slider_id = intval( $_POST['id'] );
+		$total_pages = isset( $_POST['total_pages'] ) ? intval( $_POST['total_pages'] ) : 1;
+		$current_page = isset( $_POST['current_page'] ) ? intval( $_POST['current_page'] ) : 1;
 
 		if ( ! wp_verify_nonce( $nonce, 'duplicate-slider' . $original_slider_id ) || ! current_user_can( 'edit_posts' ) ) {
 			die( 'This action was stopped for security purposes.' );
