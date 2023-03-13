@@ -187,7 +187,7 @@ class BQW_SliderPro_Admin {
 
 			$id = isset( $_GET['id'] ) ? intval( $_GET['id'] ) : -1;
 
-			if ( strpos( $screen->id, $this->plugin_slug . '-new' ) || $id !== -1 ) {
+			if ( function_exists('wp_enqueue_code_editor') && ( strpos( $screen->id, $this->plugin_slug . '-new' ) || $id !== -1 ) ) {
 				wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
 			}
 
