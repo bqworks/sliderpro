@@ -93,7 +93,7 @@ class BQW_SP_Layer_Renderer {
 		$this->slider_id = $slider_id;
 		$this->slide_index = $slide_index;
 		$this->lazy_loading = $lazy_loading;
-		$this->settings = $this->data['settings'];
+		$this->settings = isset( $this->data['settings'] ) ? $this->data['settings'] : [];
 	}
 
 	/**
