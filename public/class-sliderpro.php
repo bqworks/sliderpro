@@ -564,9 +564,11 @@ class BQW_SliderPro {
 			}
 
 			$slider = array( 'settings' => array() );
+
+			$slider['name'] = isset( $atts['name'] ) ? $atts['name'] : '';
 		}
 
-		// add the if of the slider to the array of slider data
+		// add the id of the slider to the array of slider data
 		if ( ! isset( $slider['id'] ) ) {
 			$slider['id'] = $id;
 		}
