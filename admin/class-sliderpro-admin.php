@@ -199,6 +199,7 @@ class BQW_SliderPro_Admin {
 				'id' => $id,
 				'lad_nonce' => wp_create_nonce( 'load-slider-data' . $id ),
 				'sa_nonce' => wp_create_nonce( 'save-slider' . $id ),
+				'cp_nonce' => wp_create_nonce( 'close-panel' ),
 				'no_image' => __( 'Click to add image', 'sliderpro' ),
 				'remove_custom_css_js_warning' => __( 'Are you sure you want to remove the existing custom CSS and/or JavaScript? <br/> Only do this after you\'ve copied the existing code in another place.', 'sliderpro' ),
 				'posts_slides' => __( 'Posts slides', 'sliderpro' ),
@@ -1366,6 +1367,12 @@ class BQW_SliderPro_Admin {
 	 * @since 4.0.0
 	 */
 	public function ajax_close_getting_started() {
+		$nonce = $_POST['nonce'];
+
+		if ( ! wp_verify_nonce( $nonce, 'close-panel' ) || ! current_user_can( 'manage_options' ) ) {
+			die( 'This action was stopped for security purposes.' );
+		}
+
 		update_option( 'sliderpro_hide_getting_started_info', true );
 
 		die();
@@ -1377,6 +1384,12 @@ class BQW_SliderPro_Admin {
 	 * @since 4.7.0
 	 */
 	public function ajax_close_custom_css_js_warning() {
+		$nonce = $_POST['nonce'];
+
+		if ( ! wp_verify_nonce( $nonce, 'close-panel' ) || ! current_user_can( 'manage_options' ) ) {
+			die( 'This action was stopped for security purposes.' );
+		}
+
 		update_option( 'sliderpro_hide_custom_css_js_warning', true );
 
 		delete_option( 'sliderpro_custom_css' );
@@ -1393,6 +1406,12 @@ class BQW_SliderPro_Admin {
 	 * @since 4.6.0
 	 */
 	public function ajax_close_image_size_warning() {
+		$nonce = $_POST['nonce'];
+
+		if ( ! wp_verify_nonce( $nonce, 'close-panel' ) || ! current_user_can( 'manage_options' ) ) {
+			die( 'This action was stopped for security purposes.' );
+		}
+
 		update_option( 'sliderpro_hide_image_size_warning', true );
 
 		die();

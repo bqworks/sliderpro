@@ -179,7 +179,10 @@
 				$.ajax({
 					url: sp_js_vars.ajaxurl,
 					type: 'post',
-					data: { action: 'sliderpro_close_image_size_warning' }
+					data: { 
+						action: 'sliderpro_close_image_size_warning',
+						nonce: sp_js_vars.cp_nonce
+					}
 				});
 			});
 
@@ -213,7 +216,10 @@
 				$.ajax({
 					url: sp_js_vars.ajaxurl,
 					type: 'post',
-					data: { action: 'sliderpro_close_getting_started' }
+					data: { 
+						action: 'sliderpro_close_getting_started',
+						nonce: sp_js_vars.cp_nonce
+					}
 				});
 			});
 
@@ -241,7 +247,10 @@
 					$.ajax({
 						url: sp_js_vars.ajaxurl,
 						type: 'post',
-						data: { action: 'sliderpro_close_custom_css_js_warning' }
+						data: {
+							action: 'sliderpro_close_custom_css_js_warning',
+							nonce: sp_js_vars.cp_nonce
+						}
 					});
 
 					dialog.remove();
