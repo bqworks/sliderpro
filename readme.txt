@@ -4,7 +4,7 @@ Donate link: https://bqworks.net/premium-add-ons/
 Tags: slider, post slider, content slider, responsive slider, touch slider, carousel slider, image slider, thumbnail scroller, lightbox slider, animated layers, full width
 Requires at least: 4.0
 Tested up to: 6.3
-Stable tag: 4.8.7
+Stable tag: 4.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,9 @@ When you select an image from the Media Library, in the right columns, under 'AT
 10. Adding dynamic tags for sliders generated from posts.
 
 == Changelog ==
+
+= 4.8.8 =
+* fix deprecation notice regarding optional parameter in php 8
 
 = 4.8.7 =
 * minor security hardening
