@@ -23,7 +23,7 @@
 			</thead>
 			<tbody class="content-type-settings">
 				<?php
-					$this->load_content_type_settings( $content_type, $slide_settings );
+					$this->load_content_type_settings( $content_type, $slide_default_settings, $slide_settings );
 				?>
 			</tbody>
 		</table>

@@ -1091,7 +1091,7 @@ class BQW_SliderPro_Admin {
 		$type = isset( $_POST['type'] ) && array_key_exists( $_POST['type'], $slide_default_settings['content_type']['available_values'] ) ? $_POST['type'] : $slide_default_settings['content_type']['default_value'];
 		$slide_settings = BQW_SliderPro_Validation::validate_slide_settings( json_decode( stripslashes( $_POST['data'] ), true ) );
 
-		echo $this->load_content_type_settings( $type, $slide_settings );
+		echo $this->load_content_type_settings( $type, $slide_default_settings, $slide_settings );
 
 		die();
 	}
@@ -1104,9 +1104,7 @@ class BQW_SliderPro_Admin {
 	 * @param  string $type           The slide's content type.
 	 * @param  array  $slide_settings The slide's settings.
 	 */
-	public function load_content_type_settings( $type, $slide_settings = NULL ) {
-		$slide_default_settings = BQW_SliderPro_Settings::getSlideSettings();
-
+	public function load_content_type_settings( $type, $slide_default_settings, $slide_settings = NULL ) {
 		$path = 'views/slide-settings/' . $slide_default_settings['content_type']['available_values'][ $type ]['file_name'];
 		include( $path );
 	}
