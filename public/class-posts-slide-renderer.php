@@ -169,11 +169,13 @@ class BQW_SP_Posts_Slide_Renderer extends BQW_SP_Dynamic_Slide_Renderer {
 		if ( ! has_post_thumbnail( $post->ID ) ) {
 			return;
 		}
+		else { //olg20240808 php8 fix 
 
 		$image_size = $tag_arg !== false ? $tag_arg : 'full';
 		$image_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), $image_size );
 
 		return $image_src[0];
+		}
 	}
 
 	/**
