@@ -125,6 +125,11 @@ class BQW_SP_Posts_Slide_Renderer extends BQW_SP_Dynamic_Slide_Renderer {
 
 			foreach ( $tags as $tag ) {
 				$result = $this->render_tag( $tag['name'], $tag['arg'], $post );
+				
+				if ( is_null( $result ) ) {
+					$result = "";
+				}
+
 				$content = str_replace( $tag['full'], $result, $content );
 			}
 

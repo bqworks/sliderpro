@@ -111,6 +111,11 @@ class BQW_SP_Flickr_Slide_Renderer extends BQW_SP_Dynamic_Slide_Renderer {
 
 			foreach ( $tags as $tag ) {
 				$result = $this->render_tag( $tag['name'], $tag['arg'], $photo );
+
+				if ( is_null( $result ) ) {
+					$result = "";
+				}
+				
 				$content = str_replace( $tag['full'], $result, $content );
 			}
 
