@@ -52,6 +52,15 @@ class BQW_SP_Slide_Renderer {
 	protected $lightbox = null;
 
 	/**
+	 * Indicates whether the slide's image or link can be opened in a lightbox.
+	 *
+	 * @since 4.8.11
+	 * 
+	 * @var bool
+	 */
+	protected $hide_image_title = null;
+
+	/**
 	 * Indicates the target of the slide links.
 	 *
 	 * @since 4.1
