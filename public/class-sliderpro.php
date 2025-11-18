@@ -13,7 +13,7 @@ class BQW_SliderPro {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '4.8.12';
+	const VERSION = '4.8.13';
 
 	/**
 	 * Plugin slug.
@@ -669,7 +669,12 @@ class BQW_SliderPro {
 		if ( ! empty( $atts ) ) {
 			foreach ( $atts as $key => $value ) {
 				if ( $key === 'posts_post_types' || $key === 'posts_taxonomies' ) {
-					$value = explode( ',', $value );
+					$value = array_map(
+						fn( $val ) => sanitize_text_field( $val ),
+						explode( ',', $value )
+					);
+				} else {
+					$value = sanitize_text_field( $value );
 				}
 
 				$slide['settings'][ $key ] = $value;
@@ -725,17 +730,23 @@ class BQW_SliderPro {
 		$content = do_shortcode( $content );
 
 		$attributes = array( 'layer_settings' => array() );
+		$name = sanitize_text_field( $atts[$key] );
 
 		foreach ( $atts as $key => $value ) {
 			if ( $key === 'name' ) {
-				$attributes[ $atts['name'] ] = $content;
-			} else if ( isset( $atts['name'] ) && $atts['name'] === 'layer' ) {
+				$attributes[ $name ] = $content;
+			} else if ( isset( $name ) && $name === 'layer' ) {
 				if ( $value === 'true' ) {
 					$value = true;
 				} else if ( $value === 'false' ) {
 					$value = false;
 				} else if ( $key === 'preset_styles' ) {
-					$value = explode( ',', $value );
+					$value = array_map(
+						fn( $val ) => sanitize_text_field( $val ),
+						explode( ',', $value )
+					);
+				} else {
+					$value = sanitize_text_field( $value );
 				}
 
 				$attributes['layer_settings'][ $key ] = $value;
