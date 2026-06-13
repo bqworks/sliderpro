@@ -639,12 +639,19 @@ class BQW_SliderPro_Admin {
 	 * @since 4.0.0
 	 */
 	public function ajax_preview_slider() {
-		$slider = BQW_SliderPro_Validation::validate_slider_data( json_decode( stripslashes( $_POST['data'] ), true ) );
+		$data = json_decode( stripslashes( $_POST['data'] ), true );
+		$nonce = isset( $data['nonce'] ) ? $data['nonce'] : '';
+		$slider = BQW_SliderPro_Validation::validate_slider_data( $data );
+
+		if ( ! wp_verify_nonce( $nonce, 'load-slider-data' . $slider['id'] ) || ! current_user_can( 'edit_posts' ) ) {
+			die( 'This action was stopped for security purposes.' );
+		}
+
 		$slider_output = $this->plugin->output_slider( $slider, false ) . $this->plugin->get_inline_scripts();
 
 		echo $slider_output;
 
-		die();	
+		die();
 	}
 
 	/**

@@ -469,7 +469,10 @@
 		 * @since 4.0.0
 		 */
 		previewSlider: function() {
-			PreviewWindow.open( this.getSliderData() );
+			var sliderData = this.getSliderData();
+			sliderData[ 'nonce' ] = sp_js_vars.lad_nonce;
+
+			PreviewWindow.open( sliderData );
 		},
 
 		/**
@@ -488,6 +491,7 @@
 				data: { action: 'sliderpro_get_slider_data', id: id, nonce: nonce },
 				complete: function( data ) {
 					var sliderData = $.parseJSON( data.responseText );
+					sliderData[ 'nonce' ] = nonce;
 
 					PreviewWindow.open( sliderData );
 				}
