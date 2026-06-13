@@ -4,7 +4,7 @@
 	Plugin Name: SliderPro
 	Plugin URI:  https://bqworks.net/slider-pro/
 	Description: Elegant and professional sliders.
-	Version:     4.8.13
+	Version:     4.8.14
 	Author:      bqworks
 	Author URI:  https://bqworks.net
 */
