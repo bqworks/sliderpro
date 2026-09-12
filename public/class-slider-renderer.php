@@ -272,15 +272,17 @@ class BQW_SP_Slider_Renderer {
 			$breakpoints_js = "";
 
 			foreach ( $this->settings['breakpoints'] as $breakpoint ) {
-				if ( $breakpoint['breakpoint_width'] === '' ) {
+				if ( ! isset( $breakpoint['breakpoint_width'] ) || ! is_numeric( $breakpoint['breakpoint_width'] ) ) {
 					continue;
 				}
+
+				$breakpoint_width = floatval( $breakpoint['breakpoint_width'] );
 
 				if ( $breakpoints_js !== '' ) {
 					$breakpoints_js .= ',';
 				}
 
-				$breakpoints_js .= "\r\n" . '				' . $breakpoint['breakpoint_width'] . ': {';
+				$breakpoints_js .= "\r\n" . '				' . $breakpoint_width . ': {';
 
 				unset( $breakpoint['breakpoint_width'] );
 
@@ -288,6 +290,10 @@ class BQW_SP_Slider_Renderer {
 					$breakpoint_setting_js = '';
 
 					foreach ( $breakpoint as $name => $value ) {
+						if ( ! isset( $this->default_settings[ $name ]['js_name'] ) ) {
+							continue;
+						}
+
 						if ( $breakpoint_setting_js !== '' ) {
 							$breakpoint_setting_js .= ',';
 						}
