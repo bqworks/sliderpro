@@ -101,7 +101,17 @@ class BQW_SP_Slider_Renderer {
 		$this->settings = $this->data['settings'];
 		$this->default_settings = BQW_SliderPro_Settings::getSettings();
 
-		$this->idAttribute = isset( $this->settings['use_name_as_id'] ) && $this->settings['use_name_as_id'] === true ? str_replace( ' ', '-', strtolower( $this->name ) ) : 'slider-pro-' . $this->id;
+		$this->idAttribute = 'slider-pro-' . $this->id;
+
+		if ( isset( $this->settings['use_name_as_id'] ) && $this->settings['use_name_as_id'] === true ) {
+			// Limit the id to characters that are safe in HTML attributes, CSS selectors and
+			// JavaScript strings, and fall back to the default id if nothing usable remains.
+			$name_id = sanitize_html_class( str_replace( ' ', '-', strtolower( $this->name ) ) );
+
+			if ( $name_id !== '' ) {
+				$this->idAttribute = $name_id;
+			}
+		}
 	}
 
 	/**
@@ -229,6 +239,10 @@ class BQW_SP_Slider_Renderer {
 		$js_output = '';
 		$settings_js = '';
 
+		// the id is inserted in double-quoted JavaScript strings, so it needs to be escaped
+		// for the JavaScript context
+		$id_js = esc_js( $this->idAttribute );
+
 		foreach ( $this->default_settings as $name => $setting ) {
 			if ( ! isset( $setting['js_name'] ) ) {
 				continue;
@@ -304,7 +318,7 @@ class BQW_SP_Slider_Renderer {
 
 		$this->add_js_dependency( 'plugin' );
 
-		$js_output .= "\r\n" . '		$( "#' . $this->idAttribute . '" ).sliderPro({' .
+		$js_output .= "\r\n" . '		$( "#' . $id_js . '" ).sliderPro({' .
 											$settings_js .
 						"\r\n" . '		});' . "\r\n";
 
@@ -332,13 +346,13 @@ class BQW_SP_Slider_Renderer {
 				}
 			}
 
-			$js_output .= "\r\n" . '		$( "#' . $this->idAttribute . ' .sp-image" ).parent( "a" ).on( "click", function( event ) {' .
+			$js_output .= "\r\n" . '		$( "#' . $id_js . ' .sp-image" ).parent( "a" ).on( "click", function( event ) {' .
 							"\r\n" . '			event.preventDefault();' .
-							"\r\n" . '			if ( $( "#' . $this->idAttribute . '" ).hasClass( "sp-swiping" ) === false ) {' .
-							"\r\n" . '				var sliderInstance = $( "#' . $this->idAttribute . '" ).data( "sliderPro" ),' .
+							"\r\n" . '			if ( $( "#' . $id_js . '" ).hasClass( "sp-swiping" ) === false ) {' .
+							"\r\n" . '				var sliderInstance = $( "#' . $id_js . '" ).data( "sliderPro" ),' .
 							"\r\n" . '					isAutoplay = sliderInstance.settings.autoplay;' .
 							"\r\n" .
-							"\r\n" . '				$.fancybox.open( $( "#' . $this->idAttribute . ' .sp-image" ).parent( "a" ), {' .
+							"\r\n" . '				$.fancybox.open( $( "#' . $id_js . ' .sp-image" ).parent( "a" ), {' .
 							"\r\n" . '					index: $( this ).parents( ".sp-slide" ).index(),' .
 							"\r\n" . '					afterShow: function() {' .
 							"\r\n" . '						if ( isAutoplay === true ) {' .
